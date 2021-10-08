@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title> VariousJS </title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.compact.min.css" />
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various/dist/index.js"></script>
+<script>
+var config = {
+  root: '#root',
+  entry: './dist/entry.js',
+  routerMode: 'hash',
+  dependencies: {
+    // 依赖定义
+    moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',
+    antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',
+  },
+  components: {
+    // 组件定义
+    card: './dist/card.js',
+    next: './dist/next.js',
+  },
+
+  // 以下属于自定义属性
+  pages: [
+    {
+      path: ['/', '/com/:id'],
+      components: ['card', 'next']
+    },
+    {
+      path: '/error',
+      components: ['error'],
+    },
+  ],
+  links: [
+    {
+      name: 'Router `/`',
+      path: '/',
+    },
+    {
+      name: 'Router `/com/5`',
+      path: '/com/5',
+    },
+    {
+      name: 'Router `error`',
+      path: '/error',
+    },
+  ],
+}
+
+var various = new window.Various(config)
+
+various.onError = function(e) {
+  console.log(e)
+  document.write(e.message)
+}
+
+various.start()
+</script>
+
+</body>
+</html>
