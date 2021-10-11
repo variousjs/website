@@ -15,6 +15,11 @@ declare module 'antd' {
     static Meta: ComponentType<any>
   }
 
+  export class Menu extends Component<any> {
+    static SubMenu: ComponentType<any>
+    static Item: ComponentType<any>
+  }
+
   export class Descriptions extends Component<any> {
     static Item: ComponentType<any>
   }

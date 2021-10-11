@@ -9,5 +9,12 @@ export type Config = {
   links: {
     path: string,
     name: string,
-  }[]
+  }[],
+  nav: {
+    name: string,
+    children: {
+      name: string,
+      path: string,
+    }[],
+  }[],
 }

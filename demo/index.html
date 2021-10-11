@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <title> VariousJS </title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.compact.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.min.css" />
 </head>
 <body>
-<div id="root"></div>
+<div style="height:100%" id="root"></div>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@variousjs/various/dist/index.js"></script>
 <script>
@@ -26,6 +26,31 @@ var config = {
   },
 
   // 以下属于自定义属性
+  nav: [
+    {
+      name: 'start',
+      children: [
+        {
+          name: '# Getting started',
+          path: '/doc',
+        },
+        {
+          name: '# Authorization',
+          path: '/doc1',
+        },
+      ],
+    },
+    {
+      name: 'API',
+      children: [
+        {
+          name: '# Integration',
+          path: '/api',
+        },
+      ],
+    },
+  ],
+
   pages: [
     {
       path: ['/', '/com/:id'],
