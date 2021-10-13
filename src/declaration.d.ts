@@ -4,6 +4,7 @@ declare module 'antd' {
   import { ComponentType, Component } from 'react'
 
   export const Spin: ComponentType<any>
+  export const Divider: ComponentType<any>
   export const Skeleton: ComponentType<any>
   export const Badge: ComponentType<any>
   export const Alert: ComponentType<any>
@@ -23,6 +24,13 @@ declare module 'antd' {
 
   export class Descriptions extends Component<any> {
     static Item: ComponentType<any>
+  }
+
+  export class Typography extends Component<any> {
+    static Title: ComponentType<any>
+    static Paragraph: ComponentType<any>
+    static Text: ComponentType<any>
+    static Link: ComponentType<any>
   }
 
   export const message: {

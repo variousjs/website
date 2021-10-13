@@ -21,8 +21,6 @@ var config = {
   },
   components: {
     // 组件定义
-    card: './dist/card.js',
-    next: './dist/next.js',
     introduction: './dist/introduction.js',
   },
 
@@ -30,10 +28,10 @@ var config = {
   nav: [
     {
       name: '简介',
-      path: '/doc',
+      path: '/',
     },
     {
-      name: 'start',
+      name: '基础说明',
       children: [
         {
           name: '# Getting started',
@@ -46,7 +44,7 @@ var config = {
       ],
     },
     {
-      name: 'API',
+      name: 'API 说明',
       children: [
         {
           name: '# Integration',
@@ -58,30 +56,8 @@ var config = {
 
   pages: [
     {
-      path: '/',
+      path: ['/'],
       components: ['introduction'],
-    },
-    {
-      path: ['/com/:id'],
-      components: ['card', 'next']
-    },
-    {
-      path: '/error',
-      components: ['error'],
-    },
-  ],
-  links: [
-    {
-      name: 'Router `/`',
-      path: '/',
-    },
-    {
-      name: 'Router `/com/5`',
-      path: '/com/5',
-    },
-    {
-      name: 'Router `error`',
-      path: '/error',
     },
   ],
 }

@@ -6,10 +6,6 @@ export type Config = {
     path: string[] | string,
     components: string[],
   }[],
-  links: {
-    path: string,
-    name: string,
-  }[],
   nav: {
     name: string,
     path?: string,

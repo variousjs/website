@@ -1,7 +1,7 @@
 import React, { Component, ComponentType } from 'react'
 import { Route, Link } from 'react-router-dom'
 import { ContainerProps } from '@variousjs/various'
-import { Radio, Badge, Button, Menu } from 'antd'
+import { Menu } from 'antd'
 import { Store, Config } from '../types'
 import csses from './entry.less'
 
@@ -20,16 +20,14 @@ class Container extends Component<ContainerProps<Store, Config>> {
   }
 
   render() {
-    const { Router, $component, $config, $store } = this.props
+    const { Router, $component, $config } = this.props
 
     return (
       <div className={csses.container}>
         <div className={csses.header}>
           <div className={csses.logo}>VariousJS</div>
-          {/* <div className={csses.search}></div> */}
           <div className={csses.nav}>
-            <Link to="start">文档</Link>
-            <Link to="release">更新日志</Link>
+            <Link to="/">文档</Link>
             <a
               rel="noreferrer"
               target="_blank"
@@ -82,47 +80,13 @@ class Container extends Component<ContainerProps<Store, Config>> {
           </div>
 
           <div className={csses.right}>
-            <div className={csses.top}>
-              <Radio.Group
-                size="large"
-                value={this.state.path}
-                onChange={this.onRouterChange}
-                buttonStyle="solid"
-              >
-                {
-                  $config.links.map(({ path, name }) => (
-                    <Radio.Button key={path} value={path}>
-                      {name}
-                    </Radio.Button>
-                  ))
-                }
-              </Radio.Group>
-
-              <div>
-                Store:
-                <Badge
-                  style={{ marginLeft: 10 }}
-                  count={$store.user.name}
-                />
-                <Button
-                  style={{ marginLeft: 10 }}
-                  onClick={() => this.props.$dispatch('card', 'getName', 'Card')}
-                >
-                  Card Name
-                </Button>
-              </div>
-            </div>
-
             <Router>
               {
                 $config.pages.map(({ path, components }) => {
                   const cs = () => components.map((name) => {
                     const C = $component(name)
                     return (
-                      <div
-                        key={name}
-                        style={{ display: 'inline-block', width: 300, verticalAlign: 'top' }}
-                      >
+                      <div key={name}>
                         <C />
                       </div>
                     )
