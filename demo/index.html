@@ -23,10 +23,15 @@ var config = {
     // 组件定义
     card: './dist/card.js',
     next: './dist/next.js',
+    introduction: './dist/introduction.js',
   },
 
   // 以下属于自定义属性
   nav: [
+    {
+      name: '简介',
+      path: '/doc',
+    },
     {
       name: 'start',
       children: [
@@ -53,7 +58,11 @@ var config = {
 
   pages: [
     {
-      path: ['/', '/com/:id'],
+      path: '/',
+      components: ['introduction'],
+    },
+    {
+      path: ['/com/:id'],
       components: ['card', 'next']
     },
     {

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Spin } from 'antd'
+import { Skeleton } from 'antd'
 
 export default function Loader() {
   return (
-    <Spin />
+    <Skeleton active />
   )
 }

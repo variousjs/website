@@ -49,22 +49,34 @@ class Container extends Component<ContainerProps<Store, Config>> {
               style={{ width: '100%' }}
             >
               {
-                $config.nav.map((item, i) => (
-                  <Menu.SubMenu
-                    key={i}
-                    title={item.name}
-                  >
-                    {
-                      item.children.map((route, j) => (
-                        <Menu.Item key={j}>
-                          <Link to={route.path}>
-                            {route.name}
-                          </Link>
-                        </Menu.Item>
-                      ))
-                    }
-                  </Menu.SubMenu>
-                ))
+                $config.nav.map((item, i) => {
+                  if (item.path) {
+                    return (
+                      <Menu.Item key={i}>
+                        <Link to={item.path}>
+                          {item.name}
+                        </Link>
+                      </Menu.Item>
+                    )
+                  }
+
+                  return (
+                    <Menu.SubMenu
+                      key={i}
+                      title={item.name}
+                    >
+                      {
+                        item.children?.map((route, j) => (
+                          <Menu.Item key={j}>
+                            <Link to={route.path}>
+                              {route.name}
+                            </Link>
+                          </Menu.Item>
+                        ))
+                      }
+                    </Menu.SubMenu>
+                  )
+                })
               }
           </Menu>
           </div>

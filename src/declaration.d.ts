@@ -4,6 +4,7 @@ declare module 'antd' {
   import { ComponentType, Component } from 'react'
 
   export const Spin: ComponentType<any>
+  export const Skeleton: ComponentType<any>
   export const Badge: ComponentType<any>
   export const Alert: ComponentType<any>
   export const Button: ComponentType<any>

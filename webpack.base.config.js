@@ -1,14 +1,22 @@
 const path = require('path')
+const fs = require('fs')
 
 const { NODE_ENV = 'development' } = process.env
+const components = {}
+
+fs
+  .readdirSync(path.join(__dirname, './src/components'))
+  .filter((name) => name.includes('.tsx'))
+  .forEach((name) => {
+    components[name.split('.tsx')[0]] = path.join(__dirname, './src/components', name)
+  })
 
 const config = {
   entry: {
     entry: path.join(__dirname, './src/entry'),
 
-    // 组件入口定义
-    card: path.join(__dirname, './src/components/card.tsx'),
-    next: path.join(__dirname, './src/components/next.tsx'),
+    // 组件入口
+    ...components,
   },
   output: {
     path: path.resolve(__dirname, './demo/dist'),

@@ -12,7 +12,8 @@ export type Config = {
   }[],
   nav: {
     name: string,
-    children: {
+    path?: string,
+    children?: {
       name: string,
       path: string,
     }[],
