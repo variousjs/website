@@ -49,6 +49,10 @@ const config = {
       root: 'antd',
       amd: 'antd',
     },
+    highlighter: {
+      root: 'highlighter',
+      amd: 'highlighter',
+    },
   },
   mode: NODE_ENV,
   devtool: 'source-map',

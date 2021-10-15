@@ -38,6 +38,13 @@ declare module 'antd' {
   }
 }
 
+declare module 'highlighter' {
+  import { ComponentType } from 'react'
+  type P = { code: string, language: string }
+  const d: ComponentType<P>
+  export = d
+}
+
 declare module '*.less' {
   const resource: Record<string, string>
   export = resource

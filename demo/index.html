@@ -18,10 +18,12 @@ var config = {
     // 依赖定义
     moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',
     antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',
+    highlighter: './dist/highlighter.js',
   },
   components: {
     // 组件定义
     introduction: './dist/introduction.js',
+    start: './dist/start.js',
   },
 
   // 以下属于自定义属性
@@ -34,12 +36,12 @@ var config = {
       name: '基础说明',
       children: [
         {
-          name: '# Getting started',
-          path: '/doc',
+          name: '# 基础概念',
+          path: '/start',
         },
         {
-          name: '# Authorization',
-          path: '/doc1',
+          name: '# 组件开发',
+          path: '/dev',
         },
       ],
     },
@@ -58,6 +60,10 @@ var config = {
     {
       path: ['/'],
       components: ['introduction'],
+    },
+    {
+      path: '/start',
+      components: ['start'],
     },
   ],
 }

@@ -21,13 +21,14 @@ class Container extends Component<ContainerProps<Store, Config>> {
 
   render() {
     const { Router, $component, $config } = this.props
+    const { path } = this.state
 
     return (
       <div className={csses.container}>
         <div className={csses.header}>
           <div className={csses.logo}>VariousJS</div>
           <div className={csses.nav}>
-            <Link to="/">文档</Link>
+            {/* <Link to="/">文档</Link> */}
             <a
               rel="noreferrer"
               target="_blank"
@@ -44,13 +45,14 @@ class Container extends Component<ContainerProps<Store, Config>> {
             <Menu
               className={csses.menu}
               mode="inline"
+              selectedKeys={[path]}
               style={{ width: '100%' }}
             >
               {
                 $config.nav.map((item, i) => {
                   if (item.path) {
                     return (
-                      <Menu.Item key={i}>
+                      <Menu.Item key={item.path}>
                         <Link to={item.path}>
                           {item.name}
                         </Link>
@@ -64,8 +66,8 @@ class Container extends Component<ContainerProps<Store, Config>> {
                       title={item.name}
                     >
                       {
-                        item.children?.map((route, j) => (
-                          <Menu.Item key={j}>
+                        item.children?.map((route) => (
+                          <Menu.Item key={route.path}>
                             <Link to={route.path}>
                               {route.name}
                             </Link>

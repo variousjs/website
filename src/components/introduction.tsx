@@ -14,7 +14,7 @@ const H: FC = () => (
       <Typography.Title level={5}>一切皆为组件</Typography.Title>
       <Typography.Paragraph>在 VariousJS 体系下，任何页面/功能/小部件都可以认为是一个组件</Typography.Paragraph>
       <Typography.Title level={5}>独立解耦</Typography.Title>
-      <Typography.Paragraph>组件代码独立，独立开发，互不干扰。不推崇 monorepo 方式管理代码，避免项目越大越复杂</Typography.Paragraph>
+      <Typography.Paragraph>组件代码独立，独立开发，互不干扰。不推崇 monorepo 方式管理代码，避免项目随着需求变更/增加逐步变得难以维护</Typography.Paragraph>
 
       <Divider />
 
