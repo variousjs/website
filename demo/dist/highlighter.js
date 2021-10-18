@@ -28906,6 +28906,9 @@ var H = function H(props) {
   var code = props.code,
       language = props.language;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    customStyle: {
+      marginBottom: 30
+    },
     language: language,
     style: react_syntax_highlighter_dist_esm_styles_prism__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, code);

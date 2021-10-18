@@ -12,9 +12,15 @@
 <script>
 var config = {
   root: '#root',
-  entry: './dist/entry.js',
+  entry: './dist/entry.js', // 容器组件
   routerMode: 'hash',
   dependencies: {
+    // 内置依赖重写
+    react: 'https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js',
+    'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js',
+    'react-router-dom': 'https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js',
+    nycticorax: 'https://cdn.jsdelivr.net/npm/nycticorax@2.0.6/dist/umd/index.js',
+
     // 依赖定义
     moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',
     antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',
@@ -24,6 +30,7 @@ var config = {
     // 组件定义
     introduction: './dist/introduction.js',
     start: './dist/start.js',
+    dev: './dist/dev.js',
   },
 
   // 以下属于自定义属性
@@ -33,20 +40,20 @@ var config = {
       path: '/',
     },
     {
-      name: '基础说明',
+      name: '快速上手',
       children: [
         {
-          name: '# 基础概念',
+          name: '# 基础介绍',
           path: '/start',
         },
         {
-          name: '# 组件开发',
+          name: '# 开发说明',
           path: '/dev',
         },
       ],
     },
     {
-      name: 'API 说明',
+      name: '组件 API',
       children: [
         {
           name: '# Integration',
@@ -64,6 +71,10 @@ var config = {
     {
       path: '/start',
       components: ['start'],
+    },
+    {
+      path: '/dev',
+      components: ['dev'],
     },
   ],
 }

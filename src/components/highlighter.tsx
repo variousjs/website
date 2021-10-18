@@ -10,7 +10,7 @@ type P = {
 const H: FC<P> = (props) => {
   const { code, language } = props
   return (
-    <SyntaxHighlighter language={language} style={base16AteliersulphurpoolLight}>
+    <SyntaxHighlighter customStyle={{ marginBottom: 30 }} language={language} style={base16AteliersulphurpoolLight}>
       {code}
     </SyntaxHighlighter>
   )

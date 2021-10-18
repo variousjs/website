@@ -7,7 +7,6 @@ import csses from './entry.less'
 
 class Container extends Component<ContainerProps<Store, Config>> {
   state = {
-    path: '/'
   }
 
   onRouterChange = (e: any) => {
@@ -15,13 +14,8 @@ class Container extends Component<ContainerProps<Store, Config>> {
     this.setState({ path: e.target.value })
   }
 
-  componentDidMount() {
-    this.setState({ path: this.props.$router.location.pathname })
-  }
-
   render() {
-    const { Router, $component, $config } = this.props
-    const { path } = this.state
+    const { Router, $component, $config, $router } = this.props
 
     return (
       <div className={csses.container}>
@@ -45,7 +39,8 @@ class Container extends Component<ContainerProps<Store, Config>> {
             <Menu
               className={csses.menu}
               mode="inline"
-              selectedKeys={[path]}
+              defaultSelectedKeys={[$router.location.pathname]}
+              defaultOpenKeys={['0', '1', '2']}
               style={{ width: '100%' }}
             >
               {

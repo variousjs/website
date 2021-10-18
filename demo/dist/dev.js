@@ -628,9 +628,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_highlighter__;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!**********************************!*\
-  !*** ./src/components/start.tsx ***!
-  \**********************************/
+/*!********************************!*\
+  !*** ./src/components/dev.tsx ***!
+  \********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -645,33 +645,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var Title = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Title,
     Paragraph = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Paragraph;
-var html = "<!doctype html>\n<html>\n<head>\n<meta charset=\"UTF-8\" />\n<title> VariousJS </title>\n</head>\n<body>\n<div id=\"root\"></div>\n<script src=\"https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/@variousjs/various/dist/index.js\"></script>\n<script>\nvar config = {\n  root: '#root',\n  entry: './dist/entry.js',\n  routerMode: 'hash',\n  dependencies: {\n    // \u4F9D\u8D56\u5B9A\u4E49\n    moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',\n    antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',\n  },\n  components: {\n    // \u7EC4\u4EF6\u5B9A\u4E49\n    introduction: './dist/introduction.js',\n  },\n\n  // \u4EE5\u4E0B\u5C5E\u4E8E\u81EA\u5B9A\u4E49\u5C5E\u6027\n  nav: [\n    {\n      name: '\u7B80\u4ECB',\n      path: '/',\n    },\n    {\n      name: '\u57FA\u7840\u8BF4\u660E',\n      children: [\n        {\n          name: '# Getting started',\n          path: '/doc',\n        },\n        {\n          name: '# Authorization',\n          path: '/doc1',\n        },\n      ],\n    },\n    {\n      name: 'API \u8BF4\u660E',\n      children: [\n        {\n          name: '# Integration',\n          path: '/api',\n        },\n      ],\n    },\n  ],\n\n  pages: [\n    {\n      path: ['/'],\n      components: ['introduction'],\n    },\n  ],\n}\n\nvar various = new window.Various(config)\n\nvarious.onError = function(e) {\n  console.log(e)\n  document.write(e.message)\n}\n\n// \u521D\u59CB\u5316\nvarious.start()\n</script>\n\n</body>\n</html>";
-var tf = "interface Config {\n  dependencies?: { [key: string]: string }, // \u4F9D\u8D56\u7EC4\u4EF6\u5B9A\u4E49\n  components: { [key: string]: string }, // \u529F\u80FD\u7EC4\u4EF6\u5B9A\u4E49\n  entry?: string, // \u5BB9\u5668\u7EC4\u4EF6\u5B9A\u4E49\n  routerMode?: 'browser' | 'hash', // react-router \u8DEF\u7531\u6A21\u5F0F\n  root?: string, // \u5E94\u7528\u6E32\u67D3\u9875\u9762\u8282\u70B9\n}";
+var wp = "// webpack \u6253\u5305\u53C2\u8003\nmodule.exports = {\n  // ...,\n  output: {\n    // ...,\n    libraryTarget: 'amd', // \u6307\u5B9A amd \u683C\u5F0F\n    // ...,\n  },\n  // ...,\n}";
 
 var H = function H() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _component_less__WEBPACK_IMPORTED_MODULE_3__["default"].container
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Typography, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 2
-  }, "\u57FA\u7840\u6982\u5FF5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5728 VariousJS \u4F53\u7CFB\u4E0B\uFF0C\u4E00\u5207\u529F\u80FD\uFF0C\u4F9D\u8D56\uFF0C\u9875\u9762\u90FD\u53EF\u4EE5\u8BA4\u4E3A\u662F\u4E00\u4E2A\u7EC4\u4EF6\uFF0C\u867D\u7136\u5E95\u5C42\u6784\u5EFA\u6A21\u5F0F\u90FD\u662F\u4E00\u76F4\u7684 AMD \u6A21\u5F0F\uFF0C\u4F46\u6709\u4E00\u5B9A\u7684\u533A\u522B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 3
-  }, "\u7EC4\u4EF6\u8BF4\u660E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7EC4\u4EF6\u7C7B\u578B\u53EF\u4EE5\u5927\u6982\u5206\u4E3A\u4E09\u7C7B\uFF0C\u5BF9\u5E94\u63D0\u4F9B\u4E0D\u540C\u7684\u80FD\u529B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 5
-  }, "\u5BB9\u5668\u7EC4\u4EF6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5BB9\u5668\u7EC4\u4EF6\u662F\u5168\u5C40\u9875\u9762\u5B9A\u4E49\u7EC4\u4EF6\uFF0C\u5305\u62EC\u9875\u9762\u8DEF\u7531\u5B9A\u4E49\uFF0C\u5982\u4F55\u653E\u7F6E\u7EC4\u4EF6\u5B9A\u4E49\u7B49\u3002\u53E6\u5916\u5B9A\u4E49\u63D0\u4F9B\u5168\u5C40\u6570\u636E\u8BBF\u95EE\u3002\u53EF\u4EE5\u6839\u636E\u914D\u7F6E\u751F\u6210\u5404\u79CD\u81EA\u5B9A\u4E49\u9875\u9762\u3002\u6B64\u5BB9\u5668\u7EC4\u4EF6\u4E3A\u5FC5\u987B\u63D0\u4F9B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 5
-  }, "\u4F9D\u8D56\u7EC4\u4EF6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u4F9D\u8D56\u7EC4\u4EF6\u5373\u516C\u5171\uFF08\u5171\u4EAB\uFF09\u7EC4\u4EF6\uFF0C\u4F8B\u5982 \u2018antd\u2019 \u57FA\u7840 UI \u7EC4\u4EF6\u5E93\uFF0C\u9AD8\u4EAE\u4EE3\u7801\u7EC4\u4EF6\u7B49\u3002\u5F15\u5165\u4F9D\u8D56\u7EC4\u4EF6\u51CF\u5C11\u91CD\u590D\u52A0\u8F7D\u7684\u6D6A\u8D39\u3002VariousJS \u5DF2\u7ECF\u5185\u7F6E \u2018React\u2019\uFF0C\u2018ReactDOM\u2019\uFF0C\u2018ReactRouterDOM\u2019 \u7B49\u57FA\u7840\u4F9D\u8D56\uFF0C\u5176\u4ED6\u7EC4\u4EF6\u53EF\u4EE5\u76F4\u63A5\u4F7F\u7528"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 5
-  }, "\u529F\u80FD\u7EC4\u4EF6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u529F\u80FD\u7EC4\u4EF6\u662F\u4E00\u4E2A\u72EC\u7ACB\u7684\u7EC4\u4EF6\uFF0C\u4E0D\u8026\u5408\u5176\u4ED6\u7EC4\u4EF6\uFF0C\u53EF\u4EE5\u5355\u72EC\u8FD0\u884C\u3002\u53EF\u4EE5\u975E\u5E38\u7B80\u5355\uFF0C\u53EF\u4EE5\u662F\u4E00\u4E2A\u5C0F\u6309\u94AE\uFF0C\u4E5F\u53EF\u4EE5\u975E\u5E38\u590D\u6742\uFF0C\u751A\u81F3\u53EF\u4EE5\u662F\u4E00\u4E2A\u9875\u9762\u3002\u8FD9\u4E9B\u529F\u80FD\u7EC4\u4EF6\u53EF\u4EE5\u88AB\u914D\u7F6E\u7531\u5BB9\u5668\u7EC4\u4EF6\u8FDB\u884C\u8DEF\u7531\u5206\u914D\u653E\u7F6E\u5230\u5BF9\u5E94\u4F4D\u7F6E\u63D0\u4F9B\u529F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 3
-  }, "\u9875\u9762\u7ED3\u6784"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u56E0\u4E3A VariousJS \u57FA\u4E8E RequireJS\uFF0C\u6240\u4EE5\u5176\u6838\u5FC3\u5E76\u4E0D\u53C2\u4E0E\u5E94\u7528\u6253\u5305\uFF0C\u53EA\u9700\u8981\u9875\u9762 script \u5F15\u5165\u5373\u53EF\u3002\u5E76\u63D0\u4F9B\u4E00\u4E9B\u53C2\u6570\u914D\u7F6E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    code: html,
-    language: "html"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 3
-  }, "\u53C2\u6570\u914D\u7F6E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5BB9\u5668\u7EC4\u4EF6\u53EF\u4EE5\u8BFB\u53D6\u81EA\u5B9A\u4E49\u914D\u7F6E\u53C2\u6570\uFF0C\u53E6\u5916\u9700\u8981\u5B9A\u4E49\u7EC4\u4EF6\u914D\u7F6E\uFF0C\u4EE5\u4E0B\u4E3A\u5185\u7F6E\u53C2\u6570\u914D\u7F6E\u8BF4\u660E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    code: tf,
-    language: "typescript"
-  })));
+  }, "\u5F00\u53D1\u8BF4\u660E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "VariousJS \u9700\u8981\u9700\u8981\u63D0\u4F9B html \u6A21\u677F\uFF0C\u5BB9\u5668\u7EC4\u4EF6\u5E94\u914D\u7F6E\u5373\u53EF\u751F\u6210\u4E00\u4E2A\u7F51\u7AD9\u3002\u4F46\u6709\u4EE5\u4E0B\u7684\u9650\u5236\u53CA\u914D\u7F6E\u8BF4\u660E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    level: 4
+  }, "\u7EC4\u4EF6\u9650\u5236"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7EC4\u4EF6\u5FC5\u987B\u4E3A AMD \u6A21\u5F0F\u7684 React \u7EC4\u4EF6\u3002\u53EA\u8981\u7B26\u5408\u8981\u6C42\u7684\u7EC4\u4EF6\u90FD\u53EF\u4EE5\u52A0\u8F7D\uFF0C\u751A\u81F3\u53EF\u4EE5\u662F\u7B2C\u4E09\u65B9\u7EC4\u4EF6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    level: 4
+  }, "\u5185\u7F6E\u4F9D\u8D56"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "VariousJS \u5185\u7F6E\u4E00\u4E9B\u5E95\u5C42\u4F9D\u8D56\uFF0C\u5176\u4ED6\u7EC4\u4EF6\u5F00\u53D1\u53EF\u4EE5\u76F4\u63A5\u4F7F\u7528"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "React"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "React-DOM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "React-Router-DOM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "nycticorax: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    rel: "noreferrer",
+    target: "_blank",
+    href: "https://github.com/fratercula/nycticorax"
+  }, "https://github.com/fratercula/nycticorax"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    level: 4
+  }, "\u7EC4\u4EF6\u6253\u5305"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7EC4\u4EF6\u9700\u8981\u6253\u5305\u6210 AMD \u683C\u5F0F\uFF08UMD \u4E5F\u53EF\u4EE5\uFF09\uFF0C\u4F46\u662F\u4E0D\u80FD\u6307\u5B9A library name\uFF0C\u5982\u679C\u6307\u5B9A\u4E86\u53EF\u80FD\u4F1A\u9020\u6210\u627E\u4E0D\u5230\u7EC4\u4EF6\u9519\u8BEF"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
+    language: "javascript",
+    code: wp
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    level: 4
+  }, "\u7EC4\u4EF6\u5F00\u53D1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7531\u4E8E\u7EC4\u4EF6\u90FD\u662F RequireJS \u5F15\u5165\uFF0C\u8FD9\u65F6\u5019 webpack dev \u6A21\u5F0F\u7684\u914D\u7F6E\u4E0D\u80FD\u4F7F\u7528\u5E73\u5E38\u5165\u53E3\u52A0\u8F7D\u6A21\u5F0F\uFF0C\u9700\u8981\u4E00\u5B9A\u7684\u914D\u7F6E\uFF0C\u4E0D\u7136\u53EF\u80FD\u5BFC\u81F4\u5931\u6548\u6216\u8005\u91CD\u590D\u52A0\u8F7D\u70ED\u66F4\u65B0 js \u7B49\u9519\u8BEF\u60C5\u51B5")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (H);
@@ -680,4 +676,4 @@ var H = function H() {
 /******/ })()
 ;
 });;
-//# sourceMappingURL=start.js.map
+//# sourceMappingURL=dev.js.map

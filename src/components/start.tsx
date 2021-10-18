@@ -81,6 +81,14 @@ various.start()
 </body>
 </html>`
 
+const tf = `interface Config {
+  dependencies?: { [key: string]: string }, // 依赖组件定义
+  components: { [key: string]: string }, // 功能组件定义
+  entry?: string, // 容器组件定义
+  routerMode?: 'browser' | 'hash', // react-router 路由模式
+  root?: string, // 应用渲染页面节点
+}`
+
 const H: FC = () => {
   return (
     <div className={csses.container}>
@@ -101,8 +109,14 @@ const H: FC = () => {
 
         <Title level={3}>页面结构</Title>
         <Paragraph>因为 VariousJS 基于 RequireJS，所以其核心并不参与应用打包，只需要页面 script 引入即可。并提供一些参数配置</Paragraph>
+        <Hl code={html} language="html" />
+
+        <Divider />
+
+        <Title level={3}>参数配置</Title>
+        <Paragraph>容器组件可以读取自定义配置参数，另外需要定义组件配置，以下为内置参数配置说明</Paragraph>
+        <Hl code={tf} language="typescript" />
       </Typography>
-      <Hl code={html} language="html" />
     </div>
   )
 }
