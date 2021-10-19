@@ -31,6 +31,7 @@ var config = {
     introduction: './dist/introduction.js',
     start: './dist/start.js',
     dev: './dist/dev.js',
+    dependencies: './dist/dependencies.js',
   },
 
   // 以下属于自定义属性
@@ -53,11 +54,11 @@ var config = {
       ],
     },
     {
-      name: '组件 API',
+      name: '组件说明',
       children: [
         {
-          name: '# Integration',
-          path: '/api',
+          name: '# 依赖组件',
+          path: '/dependencies',
         },
       ],
     },
@@ -75,6 +76,10 @@ var config = {
     {
       path: '/dev',
       components: ['dev'],
+    },
+    {
+      path: '/dependencies',
+      components: ['dependencies'],
     },
   ],
 }
