@@ -26,7 +26,7 @@ const config = {
   },
   target: ['web', 'es5'],
   externals: {
-    // 通用排除
+    // 内置排除
     react: {
       root: 'React',
       amd: 'react',

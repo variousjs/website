@@ -646,6 +646,10 @@ __webpack_require__.r(__webpack_exports__);
 var Title = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Title,
     Paragraph = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Paragraph;
 var wp = "// webpack \u6253\u5305\u53C2\u8003\nmodule.exports = {\n  // ...,\n  output: {\n    // ...,\n    libraryTarget: 'amd', // \u6307\u5B9A amd \u683C\u5F0F\n    // ...,\n  },\n  // ...,\n}";
+var ins = "$ cd <dir>\n$ npm init @variousjs\n$ npm i\n\n# \u5F00\u53D1\n$ npm start\n\n# \u6784\u5EFA\n$ npm run build";
+var fl = "\u251C\u2500\u2500 LICENSE\n\u251C\u2500\u2500 README.md\n\u251C\u2500\u2500 demo\n|  \u251C\u2500\u2500 dist             # \u6784\u5EFA\u76EE\u5F55\n\u2502  \u2514\u2500\u2500 index.html       # \u6A21\u677F\n\u251C\u2500\u2500 node_modules\n\u251C\u2500\u2500 package-lock.json\n\u251C\u2500\u2500 package.json\n\u251C\u2500\u2500 src\n\u2502  \u251C\u2500\u2500 components       # \u7EC4\u4EF6\n\u2502  \u251C\u2500\u2500 declaration.d.ts\n\u2502  \u251C\u2500\u2500 entry            # \u5165\u53E3\u7EC4\u4EF6\n\u2502  \u2514\u2500\u2500 types.ts\n\u251C\u2500\u2500 tsconfig.json\n\u251C\u2500\u2500 webpack.base.config.js\n\u251C\u2500\u2500 webpack.component.config.js\n\u2514\u2500\u2500 webpack.entry.config.js";
+var st = "\"start\": \"webpack --progress --config webpack.component.config.js & webpack serve --config webpack.entry.config.js --progress\"";
+var ex = "externals: {\n  antd: {\n    root: 'antd',\n    amd: 'antd',\n  },\n  highlighter: {\n    root: 'highlighter',\n    amd: 'highlighter',\n  },\n}";
 
 var H = function H() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -653,6 +657,20 @@ var H = function H() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Typography, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 2
   }, "\u5F00\u53D1\u8BF4\u660E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "VariousJS \u9700\u8981\u9700\u8981\u63D0\u4F9B html \u6A21\u677F\uFF0C\u5BB9\u5668\u7EC4\u4EF6\u5E94\u914D\u7F6E\u5373\u53EF\u751F\u6210\u4E00\u4E2A\u7F51\u7AD9\u3002\u4F46\u6709\u4EE5\u4E0B\u7684\u9650\u5236\u53CA\u914D\u7F6E\u8BF4\u660E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    level: 3
+  }, "\u811A\u624B\u67B6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7531\u4E8E VariosuJS \u7684\u7EC4\u4EF6\u5F00\u53D1\u53CA\u6253\u5305\u8DDF\u666E\u901A\u5F00\u53D1\u6709\u5F88\u591A\u4E0D\u4E00\u6837\u7684\u5730\u65B9\uFF0C\u8FD9\u91CC\u63D0\u4F9B\u811A\u624B\u67B6\uFF0C\u53EF\u4EE5\u5FEB\u901F\u5F00\u59CB\u7EC4\u4EF6\u5F00\u53D1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5B89\u88C5 VariousJS \u975E\u5E38\u65B9\u4FBF\u7B80\u5355"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
+    language: "bash",
+    code: ins
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u811A\u624B\u67B6\u9ED8\u8BA4\u96C6\u6210 TypeScript\uFF0CESlint"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
+    language: "bash",
+    code: fl
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7531\u4E8E\u591A\u7EC4\u4EF6\u5F00\u53D1\uFF0Cwebpack \u914D\u7F6E\u4F1A\u6709\u591A\u5165\u53E3\uFF0C\u5F00\u53D1\u65F6\u5019\u547D\u4EE4\u4F1A\u7279\u6B8A\u5904\u7406\uFF0C\u907F\u514D\u591A\u5165\u53E3\u5BFC\u81F4 dev server \u91CD\u590D\u52A0\u8F7D\u95EE\u9898"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
+    language: "json",
+    code: st
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5982\u679C\u5B9A\u4E49\u4E86\u4F9D\u8D56\u7EC4\u4EF6\uFF0C\u8BF7\u6CE8\u610F\u9700\u8981 webpack externals \u914D\u7F6E\u6DFB\u52A0\u6392\u9664"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
+    language: "javascript",
+    code: ex
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5982\u679C\u4F7F\u7528\u81EA\u5B9A\u4E49\u6784\u5EFA\u5DE5\u5177\u5F00\u53D1 VariousJS \u7EC4\u4EF6\uFF0C\u9700\u8981\u6CE8\u610F\u4EE5\u4E0B\u8BF4\u660E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 4
   }, "\u7EC4\u4EF6\u9650\u5236"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7EC4\u4EF6\u5FC5\u987B\u4E3A AMD \u6A21\u5F0F\u7684 React \u7EC4\u4EF6\u3002\u53EA\u8981\u7B26\u5408\u8981\u6C42\u7684\u7EC4\u4EF6\u90FD\u53EF\u4EE5\u52A0\u8F7D\uFF0C\u751A\u81F3\u53EF\u4EE5\u662F\u7B2C\u4E09\u65B9\u7EC4\u4EF6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 4
@@ -667,7 +685,9 @@ var H = function H() {
     code: wp
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 4
-  }, "\u7EC4\u4EF6\u5F00\u53D1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7531\u4E8E\u7EC4\u4EF6\u90FD\u662F RequireJS \u5F15\u5165\uFF0C\u8FD9\u65F6\u5019 webpack dev \u6A21\u5F0F\u7684\u914D\u7F6E\u4E0D\u80FD\u4F7F\u7528\u5E73\u5E38\u5165\u53E3\u52A0\u8F7D\u6A21\u5F0F\uFF0C\u9700\u8981\u4E00\u5B9A\u7684\u914D\u7F6E\uFF0C\u4E0D\u7136\u53EF\u80FD\u5BFC\u81F4\u5931\u6548\u6216\u8005\u91CD\u590D\u52A0\u8F7D\u70ED\u66F4\u65B0 js \u7B49\u9519\u8BEF\u60C5\u51B5")));
+  }, "\u7EC4\u4EF6\u5F00\u53D1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7531\u4E8E\u591A\u4E2A\u7EC4\u4EF6\u7531 RequireJS \u5F15\u5165\uFF0C\u8FD9\u65F6\u5019 webpack dev \u6A21\u5F0F\u7684\u914D\u7F6E\u4E0D\u80FD\u4F7F\u7528\u5E73\u5E38\u5165\u53E3\u52A0\u8F7D\u6A21\u5F0F\uFF0C\u9700\u8981\u5165\u53E3\u7279\u6B8A\u914D\u7F6E\uFF0C\u4E0D\u7136\u53EF\u80FD\u5BFC\u81F4\u5931\u6548\u6216\u8005\u91CD\u590D\u52A0\u8F7D\u70ED\u66F4\u65B0 js \u7B49\u9519\u8BEF\u60C5\u51B5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    level: 4
+  }, "\u6D4F\u89C8\u5668 Polyfill"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u8003\u8651\u5230\u7EC4\u4EF6\u4EE3\u7801\u5171\u4EAB\u53CA\u51CF\u5C11\u91CD\u590D\u4EE3\u7801\u52A0\u8F7D\uFF0CVariousJS \u6838\u5FC3 js \u5DF2\u7ECF\u5C06\u6D4F\u89C8\u5668\u517C\u5BB9 Polyfill \u5305\u542B\uFF0C\u6240\u4EE5\u7EC4\u4EF6\u6784\u5EFA\u9002\u5408\u9700\u8981\u6CE8\u610F\u4E0D\u9700\u8981\u6DFB\u52A0\u989D\u5916\u7684 Polyfill \u652F\u6301")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (H);
