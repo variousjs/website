@@ -32,6 +32,7 @@ var config = {
     start: './dist/start.js',
     dev: './dist/dev.js',
     dependencies: './dist/dependencies.js',
+    container: './dist/container.js',
   },
 
   // 以下属于自定义属性
@@ -60,6 +61,10 @@ var config = {
           name: '# 依赖组件',
           path: '/dependencies',
         },
+        {
+          name: '# 容器组件',
+          path: '/container',
+        },
       ],
     },
   ],
@@ -80,6 +85,10 @@ var config = {
     {
       path: '/dependencies',
       components: ['dependencies'],
+    },
+    {
+      path: '/container',
+      components: ['container'],
     },
   ],
 }

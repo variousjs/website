@@ -648,7 +648,7 @@ var Title = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Title,
 var wp = "// \u6392\u9664 antd \u6253\u5305\nexternals: {\n  antd: {\n    root: 'antd',\n    amd: 'antd',\n  }\n}";
 var hl = "<!-- \u5F15\u5165 antd \u6837\u5F0F -->\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.min.css\" />\n<script>\nvar config = {\n  // ...,\n  dependencies: {\n    // antd \u4F9D\u8D56 moment\n    moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',\n    antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',\n\n    // ...,\n  },\n  // ...,\n}\n</script>";
 var antd = "import { Button } from 'antd'\n\nexport default () => (\n  <Button>Button</Button>\n)";
-var ts = "// react \u63D0\u4F9B\u4E86 @types/react\uFF0C\u53EF\u4EE5\u76F4\u63A5\u5B89\u88C5 typescript \u63D0\u793A\n// \u4F46\u662F antd \u6CA1\u6709\u63D0\u4F9B\uFF08\u4EE5\u524D\u7248\u672C\u63D0\u4F9B\u4E86 @types/antd\uFF0C\u4F46\u540E\u9762\u6CA1\u6709\u7EF4\u62A4\u4E86\uFF09\n// \u6240\u4EE5\u81EA\u5B9A\u4E49 declaration.d.ts \u6587\u4EF6\ndeclare module 'antd' {\n  import { ComponentType } from 'react'\n\n  export const Button: ComponentType<any>\n}";
+var ts = "// react \u63D0\u4F9B\u4E86 @types/react\uFF0C\u53EF\u4EE5\u76F4\u63A5\u5B89\u88C5 typescript \u63D0\u793A\n// \u4F46\u662F antd \u6CA1\u6709\u63D0\u4F9B\uFF08\u4EE5\u524D\u7248\u672C\u63D0\u4F9B\u4E86 @types/antd\uFF0C\u4F46\u540E\u9762\u6CA1\u6709\u7EF4\u62A4\u4E86\uFF09\n// \u8FD9\u91CC\u81EA\u5B9A\u4E49 declaration.d.ts \u6587\u4EF6\ndeclare module 'antd' {\n  import { ComponentType } from 'react'\n\n  export const Button: ComponentType<any>\n}";
 
 var H = function H() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {

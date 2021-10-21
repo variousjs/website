@@ -33,7 +33,7 @@ export default () => (
 )`
 const ts = `// react 提供了 @types/react，可以直接安装 typescript 提示
 // 但是 antd 没有提供（以前版本提供了 @types/antd，但后面没有维护了）
-// 所以自定义 declaration.d.ts 文件
+// 这里自定义 declaration.d.ts 文件
 declare module 'antd' {
   import { ComponentType } from 'react'
 

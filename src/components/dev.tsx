@@ -64,7 +64,7 @@ const H: FC = () => {
         <Paragraph>由于 VariosuJS 的组件开发及打包跟普通开发有很多不一样的地方，这里提供脚手架，可以快速开始组件开发</Paragraph>
         <Paragraph>安装 VariousJS 非常方便简单</Paragraph>
         <Hl language="bash" code={ins} />
-        <Paragraph>脚手架默认集成 TypeScript，ESlint</Paragraph>
+        <Paragraph>脚手架默认集成 TypeScript，ESlint。安装 “@variousjs/various” 用于 VariousJS 编写提示</Paragraph>
         <Hl language="bash" code={fl} />
         <Paragraph>由于多组件开发，webpack 配置会有多入口，开发时候命令会特殊处理，避免多入口导致 dev server 重复加载问题</Paragraph>
         <Hl language="json" code={st} />
