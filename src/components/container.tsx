@@ -46,6 +46,7 @@ type $render = (params: {
 }) => () => void
 type $preload = (names: string[]) => Promise<void>
 
+// 泛型，S 为全局数据类型定义，C 为自定义属性
 export interface ContainerProps<S = {}, C = {}> {
   Router: ComponentType<{ children?: ReactNode }>,          // 路由组件
   $config: Readonly<C>,                                     // 自定义配置

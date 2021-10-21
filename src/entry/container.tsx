@@ -6,14 +6,6 @@ import { Store, Config } from '../types'
 import csses from './entry.less'
 
 class Container extends Component<ContainerProps<Store, Config>> {
-  state = {
-  }
-
-  onRouterChange = (e: any) => {
-    this.props.$router.history.push(e.target.value)
-    this.setState({ path: e.target.value })
-  }
-
   render() {
     const { Router, $component, $config, $router } = this.props
 
@@ -40,7 +32,7 @@ class Container extends Component<ContainerProps<Store, Config>> {
               className={csses.menu}
               mode="inline"
               defaultSelectedKeys={[$router.location.pathname]}
-              defaultOpenKeys={['0', '1', '2']}
+              defaultOpenKeys={['0', '1', '2', '3', '4']}
               style={{ width: '100%' }}
             >
               {

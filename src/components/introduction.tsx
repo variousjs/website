@@ -6,7 +6,7 @@ const H: FC = () => (
   <div className={csses.container}>
     <Typography>
       <Typography.Title level={2}>VariousJS 简介</Typography.Title>
-      <Typography.Paragraph>VariousJS 是一个基于 RequireJS + React 的一个运行框架。提供灵活的组件加载及通信能力，提高多组件合作及复用效率的一种方案。</Typography.Paragraph>
+      <Typography.Paragraph>VariousJS 是一个基于 RequireJS + React 的一个运行框架。提供灵活的组件加载及通信能力，提供提高多组件合作及复用效率的一种方案。</Typography.Paragraph>
       <Typography.Paragraph>需要特别说明的是，VariousJS 并不是微前端框架。它并不是为了解决多业务多系统项目合并在一起的问题。</Typography.Paragraph>
 
       <Typography.Title level={3}>设计理念</Typography.Title>
@@ -33,7 +33,7 @@ const H: FC = () => (
       <Typography.Title level={5}>组件共享</Typography.Title>
       <Typography.Paragraph>基于 RequireJS 模块共享机制，组件都可以共享使用</Typography.Paragraph>
       <Typography.Title level={5}>容错机制</Typography.Title>
-      <Typography.Paragraph>组件间各自独立，都有独立的错误判断机制及重试机制，组件的错误并不会影响其他。类比小程序出错并不会影响微信主体。这一点保证线上发布的安全稳定性</Typography.Paragraph>
+      <Typography.Paragraph>组件间各自独立，都有独立的错误判断机制及重试机制，组件的错误并不会影响其他。类比小程序出错并不会影响微信主体或者其他小程序。这一点保证线上发布的安全稳定性</Typography.Paragraph>
       <Typography.Title level={5}>快速接入</Typography.Title>
       <Typography.Paragraph>在 VariousJS 环境下，组件的接入是非常方便的，只需要指定组件配置即可，不需要重新构建。另外发布/回滚切换版本号也是直接修改配置即可。基于此特性，组件还可以对用户进行版本灰度控制。保证线上发布安全</Typography.Paragraph>
       <Typography.Paragraph>另外基于这个快速接入不需要重新构建特性，其他基于 VariousJS 系统也非常方便接入组件，组件升级等操作</Typography.Paragraph>

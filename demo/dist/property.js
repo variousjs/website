@@ -628,9 +628,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_highlighter__;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!**************************************!*\
-  !*** ./src/components/container.tsx ***!
-  \**************************************/
+/*!*************************************!*\
+  !*** ./src/components/property.tsx ***!
+  \*************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -644,111 +644,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Title = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Title,
-    Paragraph = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Paragraph,
-    Link = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Link;
-var et = "// \u5206\u522B\u662F \u5168\u5C40\u6570\u636E/\u5168\u5C40\u6570\u636E\u64CD\u4F5C/\u9875\u9762\u5B9A\u4E49\u7EC4\u4EF6/\u52A0\u8F7D\u63D0\u793A\u7EC4\u4EF6/\u9519\u8BEF\u63D0\u793A\u7EC4\u4EF6\nexport { default as store } from './store'\nexport { default as actions } from './actions'\nexport { default as Container } from './container'\nexport { default as Loader } from './loader'\nexport { default as Error } from './error'";
-var st = "// store.ts\nexport default {\n  user: {\n    name: 'various',\n  },\n}";
-var ac = "// actions.ts\nimport { Actions } from '@variousjs/various'\nimport store from './store'\n\ntype Store = typeof store\n\nconst actions: Actions<Store> = {\n  async setName({ dispatch, getStore }, value) {\n    await new Promise((r) => setTimeout(r, 1000))\n    const { user } = getStore()\n    user.name = value\n    dispatch({ user })\n  },\n}\n\nexport default actions";
-var ct = "import { RouteComponentProps } from 'react-router-dom'\nimport { ComponentType, ReactNode } from 'react'\n\ntype $dispatch = (type: string, method: string, value?: any) => unknown\ntype $render = (params: {\n  name: string,\n  url?: string,\n  module?: string,\n  props?: { [key: string]: any },\n  target: Element | null,\n  onMounted?: () => void,\n}) => () => void\ntype $preload = (names: string[]) => Promise<void>\n\n// \u6CDB\u578B\uFF0CS \u4E3A\u5168\u5C40\u6570\u636E\u7C7B\u578B\u5B9A\u4E49\uFF0CC \u4E3A\u81EA\u5B9A\u4E49\u5C5E\u6027\nexport interface ContainerProps<S = {}, C = {}> {\n  Router: ComponentType<{ children?: ReactNode }>,          // \u8DEF\u7531\u7EC4\u4EF6\n  $config: Readonly<C>,                                     // \u81EA\u5B9A\u4E49\u914D\u7F6E\n  // \u6839\u636E\u7EC4\u4EF6\u914D\u7F6E\u7684\u540D\u5B57\u751F\u6210 React \u7EC4\u4EF6\n  $component: (name: string) => ComponentType<{\n    silent?: boolean,\n    [key: string]: any,\n  }>,\n  $store: Readonly<S>,                                      // \u5168\u5C40\u6570\u636E\n  $mounted: string[],                                       // \u9875\u9762\u5F53\u524D\u52A0\u8F7D\u7684\u7EC4\u4EF6\n  $dispatch: $dispatch,                                     // \u7EC4\u4EF6/\u5168\u5C40\u901A\u4FE1\u65B9\u6CD5\n  $render: $render,                                         // \u52A8\u6001\u52A0\u8F7D\u7EC4\u4EF6\u65B9\u6CD5\n  $preload: $preload,                                       // \u7EC4\u4EF6\u9884\u52A0\u8F7D\u65B9\u6CD5\n  $router: RouteComponentProps<{ [key: string]: string }>,  // \u5F53\u524D\u9875\u9762\u8DEF\u7531\u53C2\u6570\n}";
-var ctx = "import React, { Component, ComponentType } from 'react'\nimport { Route, Link } from 'react-router-dom'\nimport { ContainerProps } from '@variousjs/various'\nimport store from './store'\n\ntype Store = typeof store\ntype Config = {\n  pages: {\n    path: string[] | string,\n    components: string[],\n  }[],\n}\n\nclass Container extends Component<ContainerProps<Store, Config>> {\n  render() {\n    const { Router, $component, $config, $router } = this.props\n\n    return (\n      <Router>\n        {\n          $config.pages.map(({ path, components }) => {\n            const cs = () => components.map((name) => {\n              const C = $component(name)\n              return (\n                <div key={name}>\n                  <C />\n                </div>\n              )\n            })\n\n            return (\n              <Route\n                key={Array.isArray(path) ? path.join() : path}\n                exact\n                path={path}\n                component={cs as unknown as ComponentType}\n              />\n            )\n          })\n        }\n      </Router>\n    )\n  }\n}\n\nexport default Container";
-var es = "export interface ErrorProps {\n  reload?: () => void,\n  type: 'LOADING_ERROR' | 'DEPENDENCIES_LOADING_ERROR' | 'NOT_DEFINED' | 'INVALID_COMPONENT' | 'SCRIPT_ERROR' | 'ROUTER_ERROR' | 'CONTAINER_ERROR',\n  message?: string,\n}";
-var col = [{
-  title: '类型',
-  dataIndex: 'type'
-}, {
-  title: '描述',
-  dataIndex: 'desc'
-}, {
-  title: '是否可以重新加载',
-  dataIndex: 'reloadable'
-}];
-var data = [{
-  type: 'LOADING_ERROR',
-  desc: '组件加载失败',
-  reloadable: 'yes'
-}, {
-  type: 'DEPENDENCIES_LOADING_ERROR',
-  desc: '组件依赖加载失败',
-  reloadable: 'yes'
-}, {
-  type: 'NOT_DEFINED',
-  desc: '组件未定义',
-  reloadable: 'no'
-}, {
-  type: 'INVALID_COMPONENT',
-  desc: '错误的组件类型',
-  reloadable: 'no'
-}, {
-  type: 'SCRIPT_ERROR',
-  desc: '组件运行出错了',
-  reloadable: 'yes'
-}, {
-  type: 'ROUTER_ERROR',
-  desc: '页面路由出错',
-  reloadable: 'no'
-}, {
-  type: 'CONTAINER_ERROR',
-  desc: '容器组件出错了',
-  reloadable: 'no'
-}];
-var er = "import React, { FC } from 'react'\nimport { Alert, Button } from 'antd'\nimport { ErrorProps } from '@variousjs/various'\n\nconst errorComponent: FC<ErrorProps> = ({ reload, type, message }) => (\n  <>\n    <Alert\n      message=\"Error\"\n      description={message || '\u7EC4\u4EF6\u9519\u8BEF'}\n      type=\"error\"\n    />\n    {\n      reload && <Button onClick={reload}>\u5237\u65B0</Button>\n    }\n  </>\n)\n\nexport default errorComponent";
-var ld = "import React from 'react'\nimport { Skeleton } from 'antd'\n\nexport default function Loader() {\n  return (\n    <div style={{ padding: '32px 48px 60px' }}>\n      <Skeleton active />\n    </div>\n  )\n}";
-var cst = "// ...\nconst C = $component(name)\nreturn (\n  <div key={name}>\n    <C slient />\n  </div>\n)\n// ...";
+    Paragraph = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Paragraph;
 
 var H = function H() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _component_less__WEBPACK_IMPORTED_MODULE_3__["default"].container
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Typography, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 2
-  }, "\u5BB9\u5668\u7EC4\u4EF6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5BB9\u5668\u7EC4\u4EF6\u7528\u4E8E\u5B9A\u4E49\u9875\u9762\u7ED3\u6784\uFF0C\u5168\u5C40\u6570\u636E\uFF0C\u63A7\u5236\u7EC4\u4EF6\u52A0\u8F7D\u3002\u53EF\u4EE5\u6839\u636E\u81EA\u5B9A\u4E49\u914D\u7F6E\u751F\u6210\u5404\u79CD\u7C7B\u578B\u9875\u9762"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5BB9\u5668\u7EC4\u4EF6\u9700\u8981\u5BFC\u51FA\u4EE5\u4E0B\u6A21\u5757"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
+  }, "\u7EC4\u4EF6\u5C5E\u6027"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5BB9\u5668\u7EC4\u4EF6\u53CA\u529F\u80FD\u7EC4\u4EF6\u90FD\u80FD\u83B7\u53D6\u67D0\u4E9B\u5C5E\u6027\u5B57\u6BB5\uFF0C\u4F8B\u5982\u5168\u5C40\u6570\u636E\uFF0C\u9875\u9762\u8DEF\u7531\u7B49"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    level: 4
+  }, "$mounted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u6B64\u5C5E\u6027\u53EF\u4EE5\u76F4\u63A5\u83B7\u53D6\u5F53\u524D\u9875\u9762\u5DF2\u7ECF\u52A0\u8F7D\u5B8C\u6210\u7684\u7EC4\u4EF6\u3002\u4F7F\u7528\u573A\u666F\u5728\u7EC4\u4EF6\u4F9D\u8D56\u573A\u666F\uFF0C\u5224\u65AD\u53E6\u5916\u4E00\u4E2A\u7EC4\u4EF6\u662F\u5426\u5B8C\u6210\u52A0\u8F7D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
     language: "ts",
-    code: et
+    code: "$mounted: string[]"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 4
-  }, "\u5168\u5C40\u6570\u636E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5168\u5C40\u6570\u636E\u53EF\u4EE5\u88AB\u6240\u6709\u7EC4\u4EF6\u8BBF\u95EE\uFF0C\u901A\u5E38\u7528\u4E8E\u5B58\u50A8\u9700\u8981\u88AB\u5168\u5C40\u8BBF\u95EE\u6570\u636E\uFF0C\u4F8B\u5982\u7528\u6237\u9A8C\u8BC1\u4FE1\u606F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    language: "ts",
-    code: st
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+  }, "$config"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u6B64\u5C5E\u6027\u4E3A\u7528\u6237\u81EA\u5B9A\u4E49\u914D\u7F6E\u5C5E\u6027"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 4
-  }, "\u6570\u636E\u64CD\u4F5C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u5B9A\u4E49\u8BBF\u95EE\u5168\u5C40\u6570\u636E\u65B9\u6CD5\uFF08\u6570\u636E\u5904\u7406\uFF09\uFF0C\u540C\u65F6\u63D0\u4F9B\u6539\u53D8\u5168\u5C40\u6570\u636E\u65B9\u6CD5\u3002\u6570\u636E\u64CD\u4F5C\u57FA\u4E8E ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Link, {
-    target: "_blank",
-    href: "https://github.com/fratercula/nycticorax"
-  }, "nycticorax")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    code: ac,
-    language: "ts"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+  }, "$store"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u6B64\u5C5E\u6027\u4E3A\u5168\u5C40\u6570\u636E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 4
-  }, "\u9875\u9762\u5B9A\u4E49"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u9875\u9762\u5B9A\u4E49\u7EC4\u4EF6\u7528\u4E8E\u6839\u636E\u81EA\u5B9A\u4E49\u914D\u7F6E\u751F\u6210\u9875\u9762\u7ED3\u6784\uFF0C\u9875\u9762\u8DEF\u7531\u76F8\u5173\u3002\u5176\u65B9\u6CD5\u5B9A\u4E49\u5982\u4E0B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    language: "ts",
-    code: ct
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u9875\u9762\u81EA\u5B9A\u4E49\u4F8B\u5B50\uFF0C\u6839\u636E pages \u914D\u7F6E\u751F\u6210\u8DEF\u7531\u914D\u7F6E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Alert, {
-    message: "\u8BF7\u6CE8\u610F\u5B9A\u4E49\u9875\u9762\u8DEF\u7531\u65F6\u5019\u4E00\u5B9A\u8981\u7528 VariousJS \u63D0\u4F9B\u7684 Router \u7EC4\u4EF6\u5305\u88F9\uFF0C\u4E0D\u7136\u4F1A\u5F15\u8D77\u95EE\u9898\u3002\u5176\u4ED6 Route/Link \u4E4B\u7C7B\u7EC4\u4EF6\u53EF\u4EE5\u4F7F\u7528 \u201CReact-Router\u201D \u63D0\u4F9B\u7684",
+  }, "$router"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u6B64\u5C5E\u6027\u4E3A\u9875\u9762\u8DEF\u7531\u53C2\u6570\uFF0C\u5373 react-router \u8DEF\u7531\u53C2\u6570"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Alert, {
+    message: "\u52A8\u6001\u52A0\u8F7D\u7684\u7EC4\u4EF6\u6CA1\u6709\u8FD9\u4E2A\u53C2\u6570",
+    type: "warning"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Alert, {
+    style: {
+      marginTop: 10
+    },
+    message: "\u5BB9\u5668\u7EC4\u4EF6\u7684\u8DEF\u7531\u53C2\u6570 match.params \u5C5E\u6027\u4E3A\u7A7A",
     type: "warning"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    language: "tsx",
-    code: ctx
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 4
-  }, "\u9519\u8BEF\u63D0\u793A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u9519\u8BEF\u63D0\u793A\u9488\u5BF9\u7EC4\u4EF6\u52A0\u8F7D/\u8FD0\u884C\u671F\u95F4\u7684\u9519\u8BEF\u53CB\u597D\u63D0\u793A\uFF0C\u5E76\u63D0\u4F9B\u91CD\u65B0\u52A0\u8F7D\u65B9\u6CD5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
     language: "ts",
-    code: es
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u53C2\u8003\u4F8B\u5B50"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    language: "tsx",
-    code: er
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u9519\u8BEF\u7C7B\u578B\u5B9A\u4E49"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Table, {
-    bordered: true,
-    size: "small",
-    dataSource: data,
-    columns: col,
-    pagination: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
+    code: "$router?: RouteComponentProps<{ [key: string]: string }>"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
     level: 4
-  }, "\u52A0\u8F7D\u63D0\u793A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u7EC4\u4EF6\u90FD\u662F\u52A8\u6001\u6309\u9700\u52A0\u8F7D\uFF0C\u9700\u8981\u4E00\u4E2A\u53CB\u597D\u7684\u52A0\u8F7D\u63D0\u793A\u3002\u53C2\u8003\u4F8B\u5B50"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    language: "tsx",
-    code: ld
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u8FD0\u884C\u7EC4\u4EF6\u4F7F\u7528\u81EA\u5B9A\u4E49\u52A0\u8F7D\uFF0C\u53EA\u9700\u8981\u5728\u5B9A\u4E49\u751F\u6210\u7684\u7EC4\u4EF6\u914D\u7F6E slient \u53C2\u6570\u5373\u53EF\uFF0C\u8FD9\u65F6\u5019\u7EC4\u4EF6\u7684\u52A0\u8F7D\u53CA\u51FA\u9519\u90FD\u4E0D\u4F1A\u6709\u63D0\u793A\uFF0C\u9700\u8981\u7EC4\u4EF6\u81EA\u884C\u5904\u7406"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    code: cst,
-    language: "tsx"
+  }, "Router"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u6B64\u5C5E\u6027\u4E3A\u9875\u9762\u8DEF\u7531\u5305\u88F9\u7EC4\u4EF6\uFF0C\u9875\u9762\u8DEF\u7531\u5B9A\u4E49\u5FC5\u987B\u4F5C\u4E3A\u5B50\u7EC4\u4EF6\u3002\u53EA\u6709\u5728\u5BB9\u5668\u7EC4\u4EF6\u63D0\u4F9B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
+    language: "ts",
+    code: "ComponentType<{ children?: ReactNode }>"
   })));
 };
 
@@ -758,4 +688,4 @@ var H = function H() {
 /******/ })()
 ;
 });;
-//# sourceMappingURL=container.js.map
+//# sourceMappingURL=property.js.map
