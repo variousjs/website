@@ -19,7 +19,7 @@ const config = {
     ...components,
   },
   output: {
-    path: path.resolve(__dirname, './demo/dist'),
+    path: path.resolve(__dirname, './docs/dist'),
     publicPath: '/dist/',
     filename: '[name].js',
     libraryTarget: 'amd',
@@ -66,10 +66,10 @@ const config = {
     host: '0.0.0.0',
     https: true,
     static: {
-      directory: path.join(__dirname, './demo'),
+      directory: path.join(__dirname, './docs'),
     },
     // 监听文件构建后重新刷新页面，包括 html 文件
-    watchFiles: ['demo'],
+    watchFiles: ['docs'],
   },
   module: {
     rules: [
