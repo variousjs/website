@@ -35,6 +35,10 @@ var config = {
     container: './dist/container.js',
     feature: './dist/feature.js',
     property: './dist/property.js',
+    dispatch: './dist/dispatch.js',
+    render: './dist/render.js',
+    preload: './dist/preload.js',
+    component: './dist/component.js',
   },
 
   // 以下属于自定义属性
@@ -81,8 +85,20 @@ var config = {
       name: '组件 API',
       children: [
         {
+          name: '# $component',
+          path: '/component',
+        },
+        {
           name: '# $dispatch',
           path: '/dispatch',
+        },
+        {
+          name: '# $render',
+          path: '/render',
+        },
+        {
+          name: '# $preload',
+          path: '/preload',
         },
       ],
     },
@@ -116,6 +132,22 @@ var config = {
     {
       path: '/property',
       components: ['property'],
+    },
+    {
+      path: '/dispatch',
+      components: ['dispatch'],
+    },
+    {
+      path: '/render',
+      components: ['render'],
+    },
+    {
+      path: '/preload',
+      components: ['preload'],
+    },
+    {
+      path: '/component',
+      components: ['component'],
     },
   ],
 }
