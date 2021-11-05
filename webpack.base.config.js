@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 
-const { NODE_ENV = 'development' } = process.env
 const components = {}
 
 fs
@@ -12,6 +11,7 @@ fs
   })
 
 const config = {
+  stats: 'minimal',
   entry: {
     entry: path.join(__dirname, './src/entry'),
 
@@ -54,7 +54,7 @@ const config = {
       amd: 'highlighter',
     },
   },
-  mode: NODE_ENV,
+  mode: 'production',
   devtool: 'source-map',
   resolve: {
     // 必须加上 .js，不然 webpack dev server 会报错找不到模块
