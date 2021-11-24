@@ -1,13 +1,12 @@
 import React, { Component, ComponentType } from 'react'
-import { Route, Link } from 'react-router-dom'
-import { ContainerProps } from '@variousjs/various'
+import { ContainerProps, Route, Link, Router } from '@variousjs/various'
 import { Menu } from 'antd'
 import { Store, Config } from '../types'
 import csses from './entry.less'
 
 class Container extends Component<ContainerProps<Store, Config>> {
   render() {
-    const { Router, $component, $config, $router } = this.props
+    const { $component, $config, $router } = this.props
 
     return (
       <div className={csses.container}>
