@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 
+const { NODE_ENV = 'development' } = process.env
 const components = {}
 
 fs
@@ -50,7 +51,7 @@ const config = {
       amd: 'highlighter',
     },
   },
-  mode: 'production',
+  mode: NODE_ENV,
   devtool: 'source-map',
   resolve: {
     // 必须加上 .js，不然 webpack dev server 会报错找不到模块
@@ -107,6 +108,17 @@ const config = {
                 javascriptEnabled: true,
               },
             },
+          },
+        ],
+      },
+      {
+        test: /\.md$/i,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: path.resolve(__dirname, './md-loader.js'),
           },
         ],
       },

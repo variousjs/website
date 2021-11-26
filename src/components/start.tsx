@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { Typography, Divider } from 'antd'
 import Hl from 'highlighter'
 import csses from './component.less'
+import md from './test.md'
 
 const { Title, Paragraph } = Typography
 const html = `<!doctype html>
@@ -92,6 +93,7 @@ const tf = `interface Config {
 const H: FC = () => {
   return (
     <div className={csses.container}>
+      {/* <div dangerouslySetInnerHTML={{ __html: md }} /> */}
       <Typography>
         <Title level={2}>基础概念</Title>
         <Paragraph>在 VariousJS 体系下，一切功能，依赖，页面都可以认为是一个组件，虽然底层构建模式都是一直的 AMD 模式，但有一定的区别</Paragraph>
