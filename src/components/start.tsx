@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { Typography, Divider } from 'antd'
 import Hl from 'highlighter'
 import csses from './component.less'
+import Md from '../helper/markdown'
 import md from './test.md'
 
 const { Title, Paragraph } = Typography
@@ -93,6 +94,7 @@ const tf = `interface Config {
 const H: FC = () => {
   return (
     <div className={csses.container}>
+      <Md>{md}</Md>
       {/* <div dangerouslySetInnerHTML={{ __html: md }} /> */}
       <Typography>
         <Title level={2}>基础概念</Title>

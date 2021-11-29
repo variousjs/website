@@ -6,9 +6,17 @@ const components = {}
 
 fs
   .readdirSync(path.join(__dirname, './src/components'))
-  .filter((name) => name.includes('.tsx'))
+  .filter((name) => {
+    const filePath = path.join(__dirname, './src/components', name)
+    return name.includes('.tsx') || fs.lstatSync(filePath).isDirectory()
+  })
   .forEach((name) => {
-    components[name.split('.tsx')[0]] = path.join(__dirname, './src/components', name)
+    const filePath = path.join(__dirname, './src/components', name)
+    if (name.includes('.tsx')) {
+      components[name.split('.tsx')[0]] = filePath
+    } else {
+      components[name] = path.join(filePath, 'index.tsx')
+    }
   })
 
 const config = {
