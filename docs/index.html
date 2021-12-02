@@ -37,6 +37,8 @@ var config = {
     render: './dist/render.js',
     preload: './dist/preload.js',
     component: './dist/component.js',
+
+    home: './dist/home.js',
   },
 
   // 以下属于自定义属性
@@ -105,8 +107,13 @@ var config = {
   pages: [
     {
       path: ['/'],
-      components: ['introduction'],
+      components: ['home'],
     },
+
+    // {
+    //   path: ['/'],
+    //   components: ['introduction'],
+    // },
     {
       path: '/start',
       components: ['start'],
