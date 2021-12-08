@@ -13,7 +13,11 @@ class Container extends Component<ContainerProps<Store, Config>> {
         <div className={csses.header}>
           <div className={csses.logo}>VariousJS</div>
           <div className={csses.nav}>
-            {/* <Link to="/">文档</Link> */}
+            {
+              $config.menu.map((item) => (
+                <Link key={item.path} to={item.path}>{item.name}</Link>
+              ))
+            }
             <a
               rel="noreferrer"
               target="_blank"

@@ -4,7 +4,8 @@
 
 ## 前期准备
 
-开始之前需要了解 React 相关，以及应用构建打包工具，例如 webpack 等。应用打包可以使用 VariousJS 模版打包或者自行配置，需要注意以下两点
+开始之前需要了解 React 相关，以及应用构建打包工具，例如 webpack 等。另外需要明白 VariousJS 的组件体系，以及配置核心由主组件/功能呢组件构成。
+应用打包可以使用 VariousJS 模版打包或者自行配置，需要注意以下两点
 
 - 应用需要打包成 amd 格式
 - 需要将 `react` / `react-dom` / `@variousjs/various` 构建排除
@@ -59,6 +60,7 @@ module.exports = {
     // 指定打包成 amd 格式
     libraryTarget: 'amd',
   },
+  // 不需要任何 polyfill，因为 variousjs 默认都包含了
   targets: { esmodules: true },
   mode: 'production',
   sourceMap: false,
@@ -73,7 +75,7 @@ $ falco -c
 
 ## 创建主组件
 
-主应用承载全局数据及控制页面组件展示，以及页面路由定义相关
+主组件承载全局数据及控制页面组件展示，以及页面路由定义相关
 
 ### 定义全局数据
 
@@ -144,9 +146,9 @@ export default function Loader() {
 
 ### 创建组件容器
 
-容器定义页面路由，及页面布局。理论上可以根据配置定义页面各种各样的样式。这里创建最简单的页面结构，接入的组件只需要按顺序排布即可。另外也创建路由相关，以下创建 `container.jsx`
+容器定义页面路由，及页面布局。理论上可以根据配置定义页面各种各样的样式。这里创建最简单的页面结构，接入的组件只需要按顺序排布即可。另外也创建路由相关，创建 `container.jsx`
 
-```js
+```jsx
 import React, { Component } from 'react'
 import { Router, Route } from '@variousjs/various'
 import { Radio, Badge, Button } from 'antd'
@@ -299,7 +301,7 @@ export { default as Error } from './error'
 
 A 组件提供方法给其他组件调用，进行通信
 
-```js
+```jsx
 import React from 'react'
 import { Card, Button, message } from 'antd'
 
@@ -362,7 +364,7 @@ export default A
 
 B 组件提供方法给其他组件调用改变自身状态，其中 Store 使用可以参考 [nycticorax](https://github.com/fratercula/nycticorax)
 
-```js
+```jsx
 import React, { Component } from 'react'
 import { Store } from '@variousjs/various'
 import { Descriptions } from 'antd'
