@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title> VariousJS </title>
+<!-- antd 样式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.compact.min.css" />
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.3.0/dist/index.js"></script>
+<script>
+var config = {
+  root: '#root',
+  entry: './dist/entry.js',
+  routerMode: 'hash',
+  dependencies: {
+    // 内置依赖，如果不定义会默认使用 unpkg cdn 链接
+    react: 'https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js',
+    'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js',
+
+    // 依赖定义，antd 依赖 moment
+    moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',
+    antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',
+  },
+  components: {
+    // 组件定义
+    a: './dist/a.js',
+    b: './dist/b.js',
+  },
+
+  // 以下属于自定义属性
+  pages: [
+    {
+      path: ['/', '/com/:id'],
+      components: ['a', 'b']
+    },
+    {
+      path: '/error',
+      // 定义不存在的组件，测试错误情况
+      components: ['error'],
+    },
+  ],
+  links: [
+    {
+      name: 'Router `/`',
+      path: '/',
+    },
+    {
+      name: 'Router `/com/5`',
+      path: '/com/5',
+    },
+    {
+      name: 'Router `error`',
+      path: '/error',
+    },
+  ],
+}
+
+var various = new window.Various(config)
+
+various.onError = function(e) {
+  console.log(e)
+  document.write(e.message)
+}
+
+various.start()
+</script>
+
+</body>
+</html>
