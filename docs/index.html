@@ -39,6 +39,7 @@ var config = {
 
     home: './dist/home.js',
     tutorial: './dist/tutorial.js',
+    'getting-started': './dist/getting-started.js',
   },
 
   // 以下属于自定义属性
@@ -55,10 +56,14 @@ var config = {
   nav: [
     {
       name: '简介',
-      path: '/',
+      path: '/docs',
     },
     {
-      name: '快速上手',
+      name: '开始',
+      path: '/getting-started',
+    },
+    {
+      name: '核心概念',
       children: [
         {
           name: '# 基础介绍',
@@ -116,12 +121,16 @@ var config = {
 
   pages: [
     {
-      path: ['/'],
+      path: ['/', '/docs'],
       components: ['home'],
     },
     {
       path: ['/tutorial'],
       components: ['tutorial'],
+    },
+    {
+      path: '/getting-started',
+      components: ['getting-started'],
     },
 
     // {
