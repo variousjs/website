@@ -21,7 +21,8 @@ VariousJS 基于 RequireJS，组件的加载处理由 RequireJS 提供，Various
 
 ## 脚手架
 
-VariousJS 提供开箱即用的脚手架（typescript + webpack），可以快速构建页面应用。脚手架没有进行黑魔法封装，都是裸露的基本配置。
+VariousJS 提供开箱即用的脚手架（基于 webpack），可以快速构建页面应用。脚手架没有进行黑魔法封装，都是裸露的基本配置。
+脚手架默认集成 `TypeScript`，`ESlint`。集成 `@variousjs/various` 用于 VariousJS API，属性相关提示
 
 ```bash
 # 创建
@@ -39,6 +40,52 @@ $ npm run build
 # 代码检查
 $ npm run lint
 ```
+
+如果使用自定义构建工具开发 VariousJS 应用，需要注意以下
+
+### 组件要求
+
+组件必须为 AMD（UMD） 导出的 React 组件。只要符合要求的组件都可以加载，甚至可以是第三方组件，所以组件需要打包成 AMD 格式（UMD 也可以），但是不能指定 `library name`，如果指定了可能会造成找不到组件错误
+
+```js
+module.exports = {
+  // ...,
+  output: {
+    // ...,
+    libraryTarget: 'amd', // 指定 amd 格式
+    // ...,
+  },
+  // 如果定义了依赖组件，注意需要 externals 配置添加排除
+  externals: {
+    antd: {
+      root: 'antd',
+      amd: 'antd',
+    },
+    // ...
+  }，
+  // ...
+}
+```
+
+### 内置依赖
+
+VariousJS 内置一些底层依赖，需要在配置 `externals`，其他组件开发可以直接使用
+
+- react
+- react-dom
+- @variousjs/various：包含路由/状态支持
+
+### 组件开发
+
+由于多个组件由 RequireJS 引入，这时候在开发时候 webpack-dev-server 会在多个组件重复加载热更新 js，造成热更新失效或者出错问题。所以需要进行一些处理，例如分离 webpack 配置
+
+```json
+"start": "webpack --progress --config webpack.component.config.js & webpack serve --config webpack.entry.config.js --progress"
+```
+
+### Polyfill
+
+考虑到组件代码共享及减少重复代码加载，VariousJS 核心 js 已经将浏览器兼容 Polyfill 包含，所以组件构建适合需要注意不需要添加额外的 Polyfill 支持
 
 ## CDN 链接
 
