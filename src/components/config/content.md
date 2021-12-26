@@ -8,13 +8,19 @@ VariousJS 核心不参与应用打包，类似 RequireJS 的加载配置，使�
 
 ```ts
 interface Config {
-  dependencies?: { [key: string]: string }, // 依赖组件定义
-  components: { [key: string]: string }, // 功能组件定义
-  entry?: string, // 主体组件入口定义
-  routerMode?: 'browser' | 'hash', // react-router 路由模式
-  root?: string, // 应用渲染页面节点
+  dependencies?: { [key: string]: string },
+  components: { [key: string]: string },
+  entry: string,
+  routerMode?: 'browser' | 'hash',
+  root?: string,
 }
 ```
+
+- dependencies：定义依赖组件名及加载路径
+- components：定义功能组件名及加载路径
+- entry：主体组件加载路径
+- routerMode：页面路由模式（browser 或者 hash），默认 hash
+- root：应用渲染节点（默认 #root）
 
 ### 自定义参数
 

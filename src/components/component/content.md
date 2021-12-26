@@ -11,7 +11,7 @@
 
 - 全局数据定义
 - 全局数据操作方法
-- 页面定义组件
+- 容器组件
 - 加载提示组件
 - 错误提示组件
 
@@ -59,9 +59,9 @@ const actions: Actions<Store> = {
 export default actions
 ```
 
-### 页面定义组件
+### 容器组件
 
-页面定义组件用于根据自定义配置生成页面结构，页面路由相关，并且负责其他组件的加载控制。
+容器组件用于根据自定义配置生成页面结构，页面路由相关，并且负责其他组件的加载控制。
 可以根据配置进行页面路由及组件控制定义，通过这种形式，就可以通过配置生成新的页面，添加新的功能了，并且不需要主应用重新构建打包
 
 ```tsx
@@ -147,6 +147,26 @@ return (
 ### 错误提示组件
 
 当组件加载/运行期间出现问题，并不会导致全局应用或者其他组件受到影响，但需要一个友好的错误提示
+
+```ts
+interface ErrorProps {
+  reload?: () => void,
+  type: 'LOADING_ERROR' | 'DEPENDENCIES_LOADING_ERROR' | 'NOT_DEFINED' | 'INVALID_COMPONENT' | 'SCRIPT_ERROR' | 'ROUTER_ERROR' | 'CONTAINER_ERROR',
+  message?: string,
+}
+```
+
+错误提示组件有重新加载方法，但并不是所有错误都可以重新加载。以下为错误类型定义及是否可以重新加载
+
+| 类型                       | 描述             | 是否可以重新加载 |
+|----------------------------|------------------|------------------|
+| LOADING_ERROR              | 组件加载失败     | yes              |
+| DEPENDENCIES_LOADING_ERROR | 组件依赖加载失败 | yes              |
+| NOT_DEFINED                | 组件未定义       | no               |
+| INVALID_COMPONENT          | 错误的组件类型   | no               |
+| SCRIPT_ERROR               | 组件运行出错了   | yes              |
+| ROUTER_ERROR               | 页面路由出错     | no               |
+| CONTAINER_ERROR            | 容器组件出错了   | no               |
 
 ```tsx
 import React, { FC } from 'react'

@@ -50,6 +50,8 @@ import {
   Redirect,
   Prompt,
   NavLink,
+  matchPath,
+  Switch,
 } from '@variousjs/various'
 ```
 
