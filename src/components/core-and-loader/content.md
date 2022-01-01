@@ -7,30 +7,18 @@ VariousJS 由核心及加载器两部分构成。应用页面引入加载器，�
 加载器用于加载 VariousJS 核心，应用主体组件，以及 react / react-dom，并加载浏览器 polyfill。依赖 RequireJS，需要 script 方式引入
 
 ```html
+<script>
+// 应用配置
+var VARIOUS_CONFIG = { /* ... */ }
+</script>
+
 <!-- 引入 RequireJS -->
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
 <!-- 引入 VariousJS 加载器 -->
 <script src="https://cdn.jsdelivr.net/npm/@variousjs/various/dist/index.js"></script>
 ```
 
-引入后，提供 `window.Various` 对象，用于初始化 VariousJS 应用环境，并提供 `onError`, `start` 方法
-
-```html
-<script>
-// 相关配置
-var config = { /* ... */ }
-var various = new window.Various(config)
-
-// 出错处理（通常是初始化错误）
-various.onError = function(e) {
-  console.log(e)
-  document.write(e.message)
-}
-
-// 启动应用
-various.start()
-</script>
-```
+引入后，会读取 `VARIOUS_CONFIG` 变量，初始化 VariousJS 应用环境
 
 ### 核心组件
 

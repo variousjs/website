@@ -32,15 +32,8 @@ interface Config {
 <head>
 <meta charset="UTF-8" />
 <title> VariousJS </title>
-</head>
-<body>
-<div id="root"></div>
-<!-- 引入 RequireJS -->
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<!-- 引入 VariousJS 加载器 -->
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various/dist/index.js"></script>
 <script>
-var config = {
+var VARIOUS_CONFIG = {
   root: '#root',
   entry: './dist/entry.js',
   routerMode: 'hash',
@@ -87,18 +80,14 @@ var config = {
     },
   ],
 }
-
-var various = new window.Various(config)
-
-various.onError = function(e) {
-  console.log(e)
-  document.write(e.message)
-}
-
-// 初始化
-various.start()
 </script>
-
+</head>
+<body>
+<div id="root"></div>
+<!-- 引入 RequireJS -->
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
+<!-- 引入 VariousJS 加载器 -->
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various/dist/index.js"></script>
 </body>
 </html>
 ```
