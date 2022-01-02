@@ -4,7 +4,7 @@ VariousJS 核心不参与应用打包，类似 RequireJS 的加载配置，使�
 
 ### 内置参数
 
-约定一些参数用于配制组件，主体组件及路由相关
+需要页面定义 `VARIOUS_CONFIG` 参数并配置相关参数，约定一些参数用于配制组件，主体组件及路由相关
 
 ```ts
 interface Config {

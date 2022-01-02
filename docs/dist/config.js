@@ -1,11 +1,38 @@
-define(["react","antd","highlighter"], function(__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_antd__, __WEBPACK_EXTERNAL_MODULE_highlighter__) { return /******/ (function() { // webpackBootstrap
+define(["react"], function(__WEBPACK_EXTERNAL_MODULE_react__) { return /******/ (function() { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/component.less":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/component.less ***!
-  \****************************************************************************************************************************************************************************/
+/***/ "./src/helper/markdown.tsx":
+/*!*********************************!*\
+  !*** ./src/helper/markdown.tsx ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _markdown_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./markdown.less */ "./src/helper/markdown.less");
+
+
+
+var M = function M(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "".concat(_markdown_less__WEBPACK_IMPORTED_MODULE_1__["default"].md, " markdown-body"),
+    dangerouslySetInnerHTML: {
+      __html: children
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (M);
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/helper/markdown.less":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/helper/markdown.less ***!
+  \***********************************************************************************************************************************************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -18,10 +45,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".container_PppZ6 {\n  margin: 32px 48px 60px;\n  max-width: 720px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/component.less"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,gBAAA;AACF","sourcesContent":[".container {\n  margin: 32px 48px 60px;\n  max-width: 720px;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".md_eATBI {\n  margin: 32px 48px 60px;\n  max-width: 720px;\n}\n", "",{"version":3,"sources":["webpack://./src/helper/markdown.less"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,gBAAA;AACF","sourcesContent":[".md {\n  margin: 32px 48px 60px;\n  max-width: 720px;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"container": "container_PppZ6"
+	"md": "md_eATBI"
 };
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -170,10 +197,24 @@ module.exports = function (item) {
 
 /***/ }),
 
-/***/ "./src/components/component.less":
-/*!***************************************!*\
-  !*** ./src/components/component.less ***!
-  \***************************************/
+/***/ "./src/components/config/content.md":
+/*!******************************************!*\
+  !*** ./src/components/config/content.md ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// Module
+var code = "<h1>\n  <a href=\"#配置\" id=\"配置\"></a>配置\n</h1><p>VariousJS 核心不参与应用打包，类似 RequireJS 的加载配置，使用 script 方式引入，通过配置启动应用</p><h3>\n  <a href=\"#内置参数\" id=\"内置参数\"></a>内置参数\n</h3><p>需要页面定义 <code>VARIOUS_CONFIG</code> 参数并配置相关参数，约定一些参数用于配制组件，主体组件及路由相关</p><pre class=\"language-ts\"><code class=\"language-ts\"><span class=\"token keyword\">interface</span> <span class=\"token class-name\">Config</span> <span class=\"token punctuation\">{</span>\n  dependencies<span class=\"token operator\">?</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span> <span class=\"token punctuation\">[</span>key<span class=\"token operator\">:</span> <span class=\"token builtin\">string</span><span class=\"token punctuation\">]</span><span class=\"token operator\">:</span> <span class=\"token builtin\">string</span> <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  components<span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span> <span class=\"token punctuation\">[</span>key<span class=\"token operator\">:</span> <span class=\"token builtin\">string</span><span class=\"token punctuation\">]</span><span class=\"token operator\">:</span> <span class=\"token builtin\">string</span> <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  entry<span class=\"token operator\">:</span> <span class=\"token builtin\">string</span><span class=\"token punctuation\">,</span>\n  routerMode<span class=\"token operator\">?</span><span class=\"token operator\">:</span> <span class=\"token string\">'browser'</span> <span class=\"token operator\">|</span> <span class=\"token string\">'hash'</span><span class=\"token punctuation\">,</span>\n  root<span class=\"token operator\">?</span><span class=\"token operator\">:</span> <span class=\"token builtin\">string</span><span class=\"token punctuation\">,</span>\n<span class=\"token punctuation\">}</span></code></pre><ul>\n<li>dependencies：定义依赖组件名及加载路径</li>\n<li>components：定义功能组件名及加载路径</li>\n<li>entry：主体组件加载路径</li>\n<li>routerMode：页面路由模式（browser 或者 hash），默认 hash</li>\n<li>root：应用渲染节点（默认 #root）</li>\n</ul>\n<h3>\n  <a href=\"#自定义参数\" id=\"自定义参数\"></a>自定义参数\n</h3><p>自定义参数可以被组件获取到，通常用于定义页面结构，路由相关。通过自定义配置可以生成各种页面结构</p><pre class=\"language-html\"><code class=\"language-html\"><span class=\"token doctype\"><span class=\"token punctuation\">&lt;!</span><span class=\"token doctype-tag\">doctype</span> <span class=\"token name\">html</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>html</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>head</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>meta</span> <span class=\"token attr-name\">charset</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>UTF-8<span class=\"token punctuation\">\"</span></span> <span class=\"token punctuation\">/></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>title</span><span class=\"token punctuation\">></span></span> VariousJS <span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>title</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>script</span><span class=\"token punctuation\">></span></span><span class=\"token script\"><span class=\"token language-javascript\">\n<span class=\"token keyword\">var</span> <span class=\"token constant\">VARIOUS_CONFIG</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span>\n  root<span class=\"token operator\">:</span> <span class=\"token string\">'#root'</span><span class=\"token punctuation\">,</span>\n  entry<span class=\"token operator\">:</span> <span class=\"token string\">'./dist/entry.js'</span><span class=\"token punctuation\">,</span>\n  routerMode<span class=\"token operator\">:</span> <span class=\"token string\">'hash'</span><span class=\"token punctuation\">,</span>\n  dependencies<span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token comment\">// 依赖定义</span>\n    moment<span class=\"token operator\">:</span> <span class=\"token string\">'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js'</span><span class=\"token punctuation\">,</span>\n    antd<span class=\"token operator\">:</span> <span class=\"token string\">'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js'</span><span class=\"token punctuation\">,</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  components<span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token comment\">// 组件定义</span>\n    introduction<span class=\"token operator\">:</span> <span class=\"token string\">'./dist/introduction.js'</span><span class=\"token punctuation\">,</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n\n  <span class=\"token comment\">// 以下属于自定义属性</span>\n  nav<span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n    <span class=\"token punctuation\">{</span>\n      name<span class=\"token operator\">:</span> <span class=\"token string\">'简介'</span><span class=\"token punctuation\">,</span>\n      path<span class=\"token operator\">:</span> <span class=\"token string\">'/'</span><span class=\"token punctuation\">,</span>\n    <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n    <span class=\"token punctuation\">{</span>\n      name<span class=\"token operator\">:</span> <span class=\"token string\">'基础说明'</span><span class=\"token punctuation\">,</span>\n      children<span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n        <span class=\"token punctuation\">{</span>\n          name<span class=\"token operator\">:</span> <span class=\"token string\">'# Getting started'</span><span class=\"token punctuation\">,</span>\n          path<span class=\"token operator\">:</span> <span class=\"token string\">'/doc'</span><span class=\"token punctuation\">,</span>\n        <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n      <span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n    <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n    <span class=\"token punctuation\">{</span>\n      name<span class=\"token operator\">:</span> <span class=\"token string\">'API 说明'</span><span class=\"token punctuation\">,</span>\n      children<span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n        <span class=\"token punctuation\">{</span>\n          name<span class=\"token operator\">:</span> <span class=\"token string\">'# Integration'</span><span class=\"token punctuation\">,</span>\n          path<span class=\"token operator\">:</span> <span class=\"token string\">'/api'</span><span class=\"token punctuation\">,</span>\n        <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n      <span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n    <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n\n  pages<span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n    <span class=\"token punctuation\">{</span>\n      path<span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span><span class=\"token string\">'/'</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n      components<span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span><span class=\"token string\">'introduction'</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n    <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n<span class=\"token punctuation\">}</span>\n</span></span><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>script</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>head</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>body</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>div</span> <span class=\"token attr-name\">id</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>root<span class=\"token punctuation\">\"</span></span><span class=\"token punctuation\">></span></span><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>div</span><span class=\"token punctuation\">></span></span>\n<span class=\"token comment\">&lt;!-- 引入 RequireJS --></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>script</span> <span class=\"token attr-name\">src</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js<span class=\"token punctuation\">\"</span></span><span class=\"token punctuation\">></span></span><span class=\"token script\"></span><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>script</span><span class=\"token punctuation\">></span></span>\n<span class=\"token comment\">&lt;!-- 引入 VariousJS 加载器 --></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>script</span> <span class=\"token attr-name\">src</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>https://cdn.jsdelivr.net/npm/@variousjs/various/dist/index.js<span class=\"token punctuation\">\"</span></span><span class=\"token punctuation\">></span></span><span class=\"token script\"></span><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>script</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>body</span><span class=\"token punctuation\">></span></span>\n<span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;/</span>html</span><span class=\"token punctuation\">></span></span></code></pre>";
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (code);
+
+/***/ }),
+
+/***/ "./src/helper/markdown.less":
+/*!**********************************!*\
+  !*** ./src/helper/markdown.less ***!
+  \**********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -189,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_component_less__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!../../node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./component.less */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/component.less");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_markdown_less__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!../../node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./markdown.less */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/helper/markdown.less");
 
       
       
@@ -211,12 +252,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_component_less__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_markdown_less__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_component_less__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_component_less__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_component_less__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_markdown_less__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_markdown_less__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_node_modules_less_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_markdown_less__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -535,26 +576,6 @@ module.exports = styleTagTransform;
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 
-/***/ }),
-
-/***/ "antd":
-/*!*********************************************!*\
-  !*** external {"root":"antd","amd":"antd"} ***!
-  \*********************************************/
-/***/ (function(module) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_antd__;
-
-/***/ }),
-
-/***/ "highlighter":
-/*!***********************************************************!*\
-  !*** external {"root":"highlighter","amd":"highlighter"} ***!
-  \***********************************************************/
-/***/ (function(module) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_highlighter__;
-
 /***/ })
 
 /******/ 	});
@@ -628,38 +649,20 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_highlighter__;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!************************************!*\
-  !*** ./src/components/feature.tsx ***!
-  \************************************/
+/*!*****************************************!*\
+  !*** ./src/components/config/index.tsx ***!
+  \*****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var highlighter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! highlighter */ "highlighter");
-/* harmony import */ var highlighter__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(highlighter__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _component_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./component.less */ "./src/components/component.less");
+/* harmony import */ var _helper_markdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helper/markdown */ "./src/helper/markdown.tsx");
+/* harmony import */ var _content_md__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content.md */ "./src/components/config/content.md");
 
 
 
-
-var Title = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Title,
-    Paragraph = antd__WEBPACK_IMPORTED_MODULE_1__.Typography.Paragraph;
-var p = "import { RouteComponentProps } from 'react-router-dom'\nimport { ComponentType, ReactNode } from 'react'\n\ntype $dispatch = (type: string, method: string, value?: any) => unknown\ntype $render = (params: {\n  name: string,\n  url?: string,\n  module?: string,\n  props?: { [key: string]: any },\n  target: Element | null,\n  onMounted?: () => void,\n}) => () => void\ntype $preload = (names: string[]) => Promise<void>\n\n// \u6CDB\u578B\uFF0CS \u4E3A\u5168\u5C40\u6570\u636E\u7C7B\u578B\u5B9A\u4E49\uFF0CC \u4E3A\u81EA\u5B9A\u4E49\u5C5E\u6027\nexport interface ComponentProps<S = {}, C = {}> {\n  $config: Readonly<C>,                                     // \u81EA\u5B9A\u4E49\u914D\u7F6E\n  $mounted: string[],                                       // \u5F53\u524D\u9875\u9762\u5DF2\u52A0\u8F7D\u7EC4\u4EF6\n  $router?: RouteComponentProps<{ [key: string]: string }>, // \u9875\u9762\u8DEF\u7531\u53C2\u6570\uFF08\u52A8\u6001\u7EC4\u4EF6\u65E0\u6B64\u5C5E\u6027\uFF09\n  $store: Readonly<S>,                                      // \u5168\u5C40\u6570\u636E\n  $dispatch: $dispatch,                                     // \u7EC4\u4EF6/\u5168\u5C40\u901A\u4FE1\u65B9\u6CD5\n  $render?: $render,                                        // \u52A8\u6001\u52A0\u8F7D\u7EC4\u4EF6\u65B9\u6CD5\uFF08\u52A8\u6001\u7EC4\u4EF6\u65E0\u6B64\u65B9\u6CD5\uFF09\n  $preload?: $preload,                                      // \u7EC4\u4EF6\u9884\u52A0\u8F7D\u65B9\u6CD5\uFF08\u52A8\u6001\u7EC4\u4EF6\u65E0\u6B64\u65B9\u6CD5\uFF09\n}";
-var ex = "import React, { FC, useCallback } from 'react'\nimport { Button } from 'antd'\nimport { ComponentProps } from '@variousjs/various'\nimport store from './store'\n\ntype Store = typeof store\n\nconst H: FC<ComponentProps<Store>> = (props) => {\n  const onSet = useCallback(async () => {\n    await props.$dispatch('store', 'updateUserName', 'various')\n  }, [props])\n\n  return (\n    <div>\n      <p>\n        \u5168\u5C40\u503C:\n        {props.$store.user.name}\n      </p>\n      <p>\n        mounted:\n        {props.$mounted.join(', ')}\n      </p>\n      <Button onClick={onSet}>\u66F4\u65B0\u5168\u5C40</Button>\n    </div>\n  )\n}\n\nexport default H";
 
 var H = function H() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _component_less__WEBPACK_IMPORTED_MODULE_3__["default"].container
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(antd__WEBPACK_IMPORTED_MODULE_1__.Typography, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, {
-    level: 2
-  }, "\u529F\u80FD\u7EC4\u4EF6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u529F\u80FD\u7EC4\u4EF6\u53EF\u4EE5\u662F\u4E00\u4E2A\u5C0F\u6309\u94AE\uFF0C\u4E5F\u53EF\u4EE5\u662F\u4E00\u4E2A\u9875\u9762\uFF0C\u72EC\u7ACB\u529F\u80FD\u4E0D\u8026\u5408\u5176\u4ED6\u7EC4\u4EF6\uFF0C\u4F46\u53EF\u4EE5\u8DDF\u5168\u5C40\u6216\u8005\u5176\u4ED6\u7EC4\u4EF6\u901A\u4FE1\u4EA7\u751F\u8054\u7CFB\uFF0C\u7531\u4E3B\u5BB9\u5668\u7EC4\u4EF6\u52A0\u8F7D\u53CA\u63A7\u5236\u5C55\u793A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    language: "ts",
-    code: p
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Paragraph, null, "\u53C2\u8003\u4F8B\u5B50"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((highlighter__WEBPACK_IMPORTED_MODULE_2___default()), {
-    code: ex,
-    language: "tsx"
-  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_helper_markdown__WEBPACK_IMPORTED_MODULE_1__["default"], null, _content_md__WEBPACK_IMPORTED_MODULE_2__["default"]);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (H);
@@ -668,4 +671,4 @@ var H = function H() {
 /******/ })()
 ;
 });;
-//# sourceMappingURL=feature.js.map
+//# sourceMappingURL=config.js.map
