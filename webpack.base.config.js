@@ -48,12 +48,6 @@ const config = {
       root: 'various',
       amd: '@variousjs/various',
     },
-
-    // 自定义
-    antd: {
-      root: 'antd',
-      amd: 'antd',
-    },
   },
   mode: NODE_ENV,
   devtool: 'source-map',

@@ -1,12 +1,11 @@
 import React, { Component, ComponentType } from 'react'
 import { ContainerProps, Route, Link, Router } from '@variousjs/various'
-import { Menu } from 'antd'
 import { Store, Config } from '../types'
 import csses from './entry.less'
 
 class Container extends Component<ContainerProps<Store, Config>> {
   render() {
-    const { $component, $config, $router } = this.props
+    const { $component, $config } = this.props
 
     return (
       <div className={csses.container}>
@@ -31,44 +30,19 @@ class Container extends Component<ContainerProps<Store, Config>> {
 
         <div className={csses.content}>
           <div className={csses.left}>
-            <Menu
-              className={csses.menu}
-              mode="inline"
-              defaultSelectedKeys={[$router.location.pathname]}
-              defaultOpenKeys={['0', '1', '2', '3', '4']}
-              style={{ width: '100%' }}
-            >
+            <div className={csses.menu}>
               {
-                $config.nav.map((item, i) => {
-                  if (item.path) {
-                    return (
-                      <Menu.Item key={item.path}>
-                        <Link to={item.path}>
-                          {item.name}
-                        </Link>
-                      </Menu.Item>
-                    )
-                  }
-
+                $config.nav.map((item) => {
                   return (
-                    <Menu.SubMenu
-                      key={i}
-                      title={item.name}
-                    >
-                      {
-                        item.children?.map((route) => (
-                          <Menu.Item key={route.path}>
-                            <Link to={route.path}>
-                              {route.name}
-                            </Link>
-                          </Menu.Item>
-                        ))
-                      }
-                    </Menu.SubMenu>
+                    <div key={item.path}>
+                      <Link to={item.path}>
+                        {item.name}
+                      </Link>
+                    </div>
                   )
                 })
               }
-          </Menu>
+            </div>
           </div>
 
           <div className={csses.right}>
