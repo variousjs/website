@@ -2,6 +2,42 @@ define(["react","@variousjs/various"], function(__WEBPACK_EXTERNAL_MODULE_react_
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/svg/external-link.svg":
+/*!***********************************!*\
+  !*** ./src/svg/external-link.svg ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _excluded = ["styles"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var _ref$styles = _ref.styles,
+      styles = _ref$styles === void 0 ? {} : _ref$styles,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", _extends({
+    className: styles["icon"] || "icon",
+    viewBox: "0 0 1024 1024",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "200",
+    height: "200"
+  }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M719.168 207.168L576 64h384v384L809.728 297.728 545.6 561.792l-90.496-90.496 264.064-264.128zM192 960H64V64h384v128H192v640h640V576h128v384H192z"
+  }));
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/header/index.less":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/components/header/index.less ***!
@@ -18,11 +54,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header_GbwTn {\n  padding: 0 24px;\n  box-sizing: border-box;\n  border-bottom: 1px solid #e5f0f5;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-shrink: 0;\n}\n.logo_n4_X7 {\n  font-size: 22px;\n  color: #1b2023;\n  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;\n}\n.nav_I2F21 {\n  display: flex;\n  align-items: center;\n}\n.nav_I2F21 > a {\n  font-size: 14px;\n  color: #1b2023;\n  margin-left: 16px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/header/index.less"],"names":[],"mappings":"AAAA;EACE,eAAA;EACA,sBAAA;EACA,gCAAA;EACA,YAAA;EACA,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,cAAA;AACF;AACA;EACE,eAAA;EACA,cAAA;EACA,sHAAA;AACF;AACA;EACE,aAAA;EACA,mBAAA;AACF;AACE;EACE,eAAA;EACA,cAAA;EACA,iBAAA;AACJ","sourcesContent":[".header {\n  padding: 0 24px;\n  box-sizing: border-box;\n  border-bottom: 1px solid #e5f0f5;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-shrink: 0;\n}\n.logo {\n  font-size: 22px;\n  color: #1b2023;\n  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;\n}\n.nav {\n  display: flex;\n  align-items: center;\n\n  & > a {\n    font-size: 14px;\n    color: #1b2023;\n    margin-left: 16px;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header_GbwTn {\n  box-sizing: border-box;\n  height: 60px;\n  flex-shrink: 0;\n  background: #20232a;\n  position: relative;\n  z-index: 1;\n}\n.inner__xCSn {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 90%;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.logo_n4_X7 {\n  font-size: 19px;\n  letter-spacing: 2px;\n  color: #fff;\n  font-family: Georgia, 'Times New Roman', Times, serif;\n}\n.github__ekXl {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.github__ekXl span {\n  margin-right: 5px;\n}\n.nav_I2F21 {\n  display: flex;\n  align-items: center;\n}\n.nav_I2F21 > a {\n  font-size: 14px;\n  color: rgba(255, 255, 255, 0.85);\n  margin-left: 20px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/header/index.less"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,YAAA;EACA,cAAA;EACA,mBAAA;EACA,kBAAA;EACA,UAAA;AACF;AACA;EACE,YAAA;EACA,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,UAAA;EACA,iBAAA;EACA,cAAA;AACF;AACA;EACE,eAAA;EACA,mBAAA;EACA,WAAA;EACA,qDAAA;AACF;AACA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;AACF;AAJA;EAMI,iBAAA;AACJ;AAEA;EACE,aAAA;EACA,mBAAA;AAAF;AAEE;EACE,eAAA;EACA,gCAAA;EACA,iBAAA;AAAJ","sourcesContent":[".header {\n  box-sizing: border-box;\n  height: 60px;\n  flex-shrink: 0;\n  background: #20232a;\n  position: relative;\n  z-index: 1;\n}\n.inner {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 90%;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.logo {\n  font-size: 19px;\n  letter-spacing: 2px;\n  color: #fff;\n  font-family: Georgia, 'Times New Roman', Times, serif;\n}\n.github {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n\n  span {\n    margin-right: 5px;\n  }\n}\n.nav {\n  display: flex;\n  align-items: center;\n\n  & > a {\n    font-size: 14px;\n    color: rgba(255, 255, 255, .85);\n    margin-left: 20px;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"header": "header_GbwTn",
+	"inner": "inner__xCSn",
 	"logo": "logo_n4_X7",
+	"github": "github__ekXl",
 	"nav": "nav_I2F21"
 };
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
@@ -628,7 +666,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _variousjs_various__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @variousjs/various */ "@variousjs/various");
 /* harmony import */ var _variousjs_various__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_variousjs_various__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.less */ "./src/components/header/index.less");
+/* harmony import */ var _svg_external_link_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../svg/external-link.svg */ "./src/svg/external-link.svg");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.less */ "./src/components/header/index.less");
+
 
 
 
@@ -636,11 +676,14 @@ __webpack_require__.r(__webpack_exports__);
 var H = function H(_ref) {
   var $config = _ref.$config;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _index_less__WEBPACK_IMPORTED_MODULE_2__["default"].header
+    className: _index_less__WEBPACK_IMPORTED_MODULE_3__["default"].header
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _index_less__WEBPACK_IMPORTED_MODULE_2__["default"].logo
+    className: _index_less__WEBPACK_IMPORTED_MODULE_3__["default"].inner
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_variousjs_various__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    className: _index_less__WEBPACK_IMPORTED_MODULE_3__["default"].logo,
+    to: "/"
   }, "VariousJS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _index_less__WEBPACK_IMPORTED_MODULE_2__["default"].nav
+    className: _index_less__WEBPACK_IMPORTED_MODULE_3__["default"].nav
   }, $config.menu.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_variousjs_various__WEBPACK_IMPORTED_MODULE_1__.Link, {
       key: item.path,
@@ -650,8 +693,12 @@ var H = function H(_ref) {
     rel: "noreferrer",
     target: "_blank",
     href: "https://github.com/variousjs/various",
-    className: _index_less__WEBPACK_IMPORTED_MODULE_2__["default"].github
-  }, "GitHub")));
+    className: _index_less__WEBPACK_IMPORTED_MODULE_3__["default"].github
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "GitHub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_svg_external_link_svg__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    width: "10",
+    height: "10",
+    fill: "#c5c5c5"
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (H);

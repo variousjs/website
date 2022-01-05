@@ -15,10 +15,6 @@ class Container extends Component<ContainerProps<Store, Config>> {
 
         <div className={csses.content}>
           <div className={csses.left}>
-            <Nav />
-          </div>
-
-          <div className={csses.right}>
             <Router>
               {
                 $config.pages.map(({ path, components }) => {
@@ -42,6 +38,10 @@ class Container extends Component<ContainerProps<Store, Config>> {
                 })
               }
             </Router>
+          </div>
+
+          <div className={csses.right}>
+            <Nav />
           </div>
         </div>
       </div>
