@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { ComponentProps, Link } from '@variousjs/various'
+import { ComponentProps, NavLink } from '@variousjs/various'
 import { Config } from '../../types'
 import csses from './index.less'
 
@@ -9,11 +9,14 @@ const H: FC<ComponentProps<{}, Config>> = ({ $config }) => {
       {
         $config.nav.map((item) => {
           return (
-            <div key={item.path}>
-              <Link to={item.path}>
-                {item.name}
-              </Link>
-            </div>
+            <NavLink
+              exact
+              activeClassName={csses.active}
+              key={item.path}
+              to={item.path}
+            >
+              {item.name}
+            </NavLink>
           )
         })
       }

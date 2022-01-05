@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { ComponentProps, Link } from '@variousjs/various'
+import { ComponentProps, NavLink, Link } from '@variousjs/various'
 import ExternalIcon from '../../svg/external-link.svg'
 import { Config } from '../../types'
 import csses from './index.less'
@@ -12,7 +12,14 @@ const H: FC<ComponentProps<{}, Config>> = ({ $config }) => {
         <div className={csses.nav}>
           {
             $config.menu.map((item) => (
-              <Link key={item.path} to={item.path}>{item.name}</Link>
+              <NavLink
+                exact
+                activeClassName={csses.active}
+                key={item.path}
+                to={item.path}
+              >
+                {item.name}
+              </NavLink>
             ))
           }
           <a

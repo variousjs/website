@@ -54,14 +54,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header_GbwTn {\n  box-sizing: border-box;\n  height: 60px;\n  flex-shrink: 0;\n  background: #20232a;\n  position: relative;\n  z-index: 1;\n}\n.inner__xCSn {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 90%;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.logo_n4_X7 {\n  font-size: 19px;\n  letter-spacing: 2px;\n  color: #fff;\n  font-family: Georgia, 'Times New Roman', Times, serif;\n}\n.github__ekXl {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.github__ekXl span {\n  margin-right: 5px;\n}\n.nav_I2F21 {\n  display: flex;\n  align-items: center;\n}\n.nav_I2F21 > a {\n  font-size: 14px;\n  color: rgba(255, 255, 255, 0.85);\n  margin-left: 20px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/header/index.less"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,YAAA;EACA,cAAA;EACA,mBAAA;EACA,kBAAA;EACA,UAAA;AACF;AACA;EACE,YAAA;EACA,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,UAAA;EACA,iBAAA;EACA,cAAA;AACF;AACA;EACE,eAAA;EACA,mBAAA;EACA,WAAA;EACA,qDAAA;AACF;AACA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;AACF;AAJA;EAMI,iBAAA;AACJ;AAEA;EACE,aAAA;EACA,mBAAA;AAAF;AAEE;EACE,eAAA;EACA,gCAAA;EACA,iBAAA;AAAJ","sourcesContent":[".header {\n  box-sizing: border-box;\n  height: 60px;\n  flex-shrink: 0;\n  background: #20232a;\n  position: relative;\n  z-index: 1;\n}\n.inner {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 90%;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.logo {\n  font-size: 19px;\n  letter-spacing: 2px;\n  color: #fff;\n  font-family: Georgia, 'Times New Roman', Times, serif;\n}\n.github {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n\n  span {\n    margin-right: 5px;\n  }\n}\n.nav {\n  display: flex;\n  align-items: center;\n\n  & > a {\n    font-size: 14px;\n    color: rgba(255, 255, 255, .85);\n    margin-left: 20px;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header_GbwTn {\n  box-sizing: border-box;\n  height: 60px;\n  flex-shrink: 0;\n  background: #090723;\n  position: relative;\n  z-index: 1;\n}\n.inner__xCSn {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 90%;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.logo_n4_X7 {\n  font-size: 19px;\n  letter-spacing: 2px;\n  color: #fff;\n  font-family: Georgia, 'Times New Roman', Times, serif;\n}\n.github__ekXl {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.github__ekXl span {\n  margin-right: 5px;\n}\n.nav_I2F21 {\n  display: flex;\n  align-items: center;\n}\n.nav_I2F21 > a {\n  font-size: 14px;\n  color: rgba(255, 255, 255, 0.85);\n  margin-left: 20px;\n}\n.nav_I2F21 > a:hover,\n.nav_I2F21 > a.active_IssZj {\n  color: #40a9ff;\n}\n", "",{"version":3,"sources":["webpack://./src/components/header/index.less"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,YAAA;EACA,cAAA;EACA,mBAAA;EACA,kBAAA;EACA,UAAA;AACF;AACA;EACE,YAAA;EACA,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,UAAA;EACA,iBAAA;EACA,cAAA;AACF;AACA;EACE,eAAA;EACA,mBAAA;EACA,WAAA;EACA,qDAAA;AACF;AACA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;AACF;AAJA;EAMI,iBAAA;AACJ;AAEA;EACE,aAAA;EACA,mBAAA;AAAF;AAEE;EACE,eAAA;EACA,gCAAA;EACA,iBAAA;AAAJ;AAEI;;EACE,cAAA;AACN","sourcesContent":[".header {\n  box-sizing: border-box;\n  height: 60px;\n  flex-shrink: 0;\n  background: #090723;\n  position: relative;\n  z-index: 1;\n}\n.inner {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 90%;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.logo {\n  font-size: 19px;\n  letter-spacing: 2px;\n  color: #fff;\n  font-family: Georgia, 'Times New Roman', Times, serif;\n}\n.github {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n\n  span {\n    margin-right: 5px;\n  }\n}\n.nav {\n  display: flex;\n  align-items: center;\n\n  & > a {\n    font-size: 14px;\n    color: rgba(255, 255, 255, .85);\n    margin-left: 20px;\n\n    &:hover, &.active {\n      color: #40a9ff;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"header": "header_GbwTn",
 	"inner": "inner__xCSn",
 	"logo": "logo_n4_X7",
 	"github": "github__ekXl",
-	"nav": "nav_I2F21"
+	"nav": "nav_I2F21",
+	"active": "active_IssZj"
 };
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -685,7 +686,9 @@ var H = function H(_ref) {
   }, "VariousJS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _index_less__WEBPACK_IMPORTED_MODULE_3__["default"].nav
   }, $config.menu.map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_variousjs_various__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_variousjs_various__WEBPACK_IMPORTED_MODULE_1__.NavLink, {
+      exact: true,
+      activeClassName: _index_less__WEBPACK_IMPORTED_MODULE_3__["default"].active,
       key: item.path,
       to: item.path
     }, item.name);
