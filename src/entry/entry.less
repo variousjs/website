@@ -43,6 +43,11 @@ a {
   position: relative;
 }
 
+.header {
+  height: 60px;
+  flex-shrink: 0;
+}
+
 .right {
   flex-shrink: 0;
   box-sizing: border-box;
@@ -59,4 +64,46 @@ a {
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+  background: #fff;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  padding: 15px;
+  font-size: 14px;
+  color: #333;
+  margin: 10px;
+}
+
+button {
+  line-height: 1.2;
+  position: relative;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  box-shadow: 0 2px #00000004;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  user-select: none;
+  touch-action: manipulation;
+  height: 26px;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: #000000d9;
+  border-color: #d9d9d9;
+  background: #fff;
 }

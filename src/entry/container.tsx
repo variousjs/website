@@ -11,7 +11,9 @@ class Container extends Component<ContainerProps<Store, Config>> {
 
     return (
       <div className={csses.container}>
-        <Header />
+        <div className={csses.header}>
+          <Header />
+        </div>
 
         <div className={csses.content}>
           <div className={csses.left}>
@@ -20,11 +22,7 @@ class Container extends Component<ContainerProps<Store, Config>> {
                 $config.pages.map(({ path, components }) => {
                   const cs = () => components.map((name) => {
                     const C = $component(name)
-                    return (
-                      <div key={name}>
-                        <C />
-                      </div>
-                    )
+                    return (<C key={name} />)
                   })
 
                   return (
