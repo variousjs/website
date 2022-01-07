@@ -4,6 +4,10 @@ import { Store, Config } from '../types'
 import csses from './entry.less'
 
 class Container extends Component<ContainerProps<Store, Config>> {
+  componentDidMount() {
+    document.documentElement.classList.remove('loading')
+  }
+
   render() {
     const { $component, $config } = this.props
     const Header = $component('header')
