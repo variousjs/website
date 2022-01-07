@@ -1,10 +1,11 @@
 import React from 'react'
-import { Skeleton } from 'antd'
+import LoadingIcon from '../svg/three-dots.svg'
+import csses from './entry.less'
 
 export default function Loader() {
   return (
-    <div style={{ padding: '32px 48px 60px' }}>
-      <Skeleton active />
+    <div className={csses.loader}>
+      <LoadingIcon fill="#555" width="24" height="6" />
     </div>
   )
 }

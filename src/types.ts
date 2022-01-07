@@ -6,12 +6,12 @@ export type Config = {
     path: string[] | string,
     components: string[],
   }[],
+  menu: {
+    name: string,
+    path: string,
+  }[],
   nav: {
     name: string,
-    path?: string,
-    children?: {
-      name: string,
-      path: string,
-    }[],
+    path: string,
   }[],
 }

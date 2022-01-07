@@ -1,9 +1,9 @@
 {
   "name": "variousjs",
   "version": "0.1.0",
-  "description": "VariousJS boilerplate",
+  "description": "VariousJS website",
   "scripts": {
-    "lint": "eslint . --ext .ts,.tsx,.js",
+    "lint": "tsc --noemit && eslint . --ext .ts,.tsx,.js",
     "start": "webpack --progress --config webpack.component.config.js & webpack serve --config webpack.entry.config.js --progress",
     "build": "NODE_ENV=production webpack --progress --config webpack.base.config.js"
   },
@@ -20,7 +20,7 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
-    "@variousjs/various": "0.2.0",
+    "@variousjs/various": "^0.3.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
@@ -32,7 +32,7 @@
     "html-loader": "^3.0.1",
     "less": "^4.1.1",
     "less-loader": "^10.0.1",
-    "remark-loader": "^4.0.0",
+    "react-svg-loader": "^3.0.3",
     "style-loader": "^3.3.0",
     "typescript": "^4.4.3",
     "webpack": "^5.54.0",
@@ -41,11 +41,6 @@
   },
   "private": true,
   "dependencies": {
-    "react-syntax-highlighter": "^15.4.4",
-    "rehype": "^11.0.0",
-    "rehype-highlight": "^4.1.0",
-    "remark-html": "^13.0.2",
-    "remark-parse": "^9.0.0",
-    "unified": "^9.2.2"
+    "@acyort/markdown": "^2.0.1"
   }
 }

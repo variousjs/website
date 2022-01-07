@@ -6,9 +6,17 @@ const components = {}
 
 fs
   .readdirSync(path.join(__dirname, './src/components'))
-  .filter((name) => name.includes('.tsx'))
+  .filter((name) => {
+    const filePath = path.join(__dirname, './src/components', name)
+    return name.includes('.tsx') || fs.lstatSync(filePath).isDirectory()
+  })
   .forEach((name) => {
-    components[name.split('.tsx')[0]] = path.join(__dirname, './src/components', name)
+    const filePath = path.join(__dirname, './src/components', name)
+    if (name.includes('.tsx')) {
+      components[name.split('.tsx')[0]] = filePath
+    } else {
+      components[name] = path.join(filePath, 'index.tsx')
+    }
   })
 
 const config = {
@@ -39,16 +47,6 @@ const config = {
     '@variousjs/various': {
       root: 'various',
       amd: '@variousjs/various',
-    },
-
-    // 自定义
-    antd: {
-      root: 'antd',
-      amd: 'antd',
-    },
-    highlighter: {
-      root: 'highlighter',
-      amd: 'highlighter',
     },
   },
   mode: NODE_ENV,
@@ -119,6 +117,26 @@ const config = {
           },
           {
             loader: path.resolve(__dirname, './md-loader.js'),
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-react',
+              ],
+            },
+          },
+          {
+            loader: 'react-svg-loader',
+            options: {
+              jsx: true,
+            },
           },
         ],
       },

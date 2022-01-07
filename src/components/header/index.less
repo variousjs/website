@@ -1,0 +1,46 @@
+.header {
+  height: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  background: #090723;
+  position: relative;
+  z-index: 1;
+}
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.logo {
+  font-size: 19px;
+  letter-spacing: 2px;
+  color: #fff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    margin-right: 5px;
+  }
+}
+.nav {
+  display: flex;
+  align-items: center;
+
+  & > a {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .9);
+    margin-left: 20px;
+
+    &:hover, &.active {
+      color: #40a9ff;
+    }
+  }
+}

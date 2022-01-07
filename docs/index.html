@@ -3,14 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <title> VariousJS </title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.min.css" />
-</head>
-<body>
-<div style="height:100%" id="root"></div>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.2.0/dist/index.js"></script>
 <script>
-var config = {
+var VARIOUS_CONFIG = {
   root: '#root',
   entry: './dist/entry.js', // 容器组件
   routerMode: 'hash',
@@ -18,147 +12,121 @@ var config = {
     // 内置依赖重写
     react: 'https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js',
     'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js',
-
-    // 依赖定义
-    moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',
-    antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',
-    highlighter: './dist/highlighter.js',
   },
   components: {
-    // 组件定义
-    introduction: './dist/introduction.js',
-    start: './dist/start.js',
-    dev: './dist/dev.js',
-    dependencies: './dist/dependencies.js',
-    container: './dist/container.js',
-    feature: './dist/feature.js',
-    property: './dist/property.js',
-    dispatch: './dist/dispatch.js',
-    render: './dist/render.js',
-    preload: './dist/preload.js',
+    header: './dist/header.js',
+    nav: './dist/nav.js',
+
+    home: './dist/home.js',
+    tutorial: './dist/tutorial.js',
+    'getting-started': './dist/getting-started.js',
+    design: './dist/design.js',
+    config: './dist/config.js',
+    'core-and-loader': './dist/core-and-loader.js',
     component: './dist/component.js',
+    props: './dist/props.js',
+    api: './dist/api.js',
+    communication: './dist/communication.js',
   },
 
   // 以下属于自定义属性
-  nav: [
+  menu: [
     {
-      name: '简介',
+      name: '文档',
       path: '/',
     },
     {
-      name: '快速上手',
-      children: [
-        {
-          name: '# 基础介绍',
-          path: '/start',
-        },
-        {
-          name: '# 开发说明',
-          path: '/dev',
-        },
-      ],
+      name: '教程',
+      path: '/tutorial',
+    },
+  ],
+  nav: [
+    {
+      name: '简介',
+      path: '/docs',
     },
     {
-      name: '组件说明',
-      children: [
-        {
-          name: '# 依赖组件',
-          path: '/dependencies',
-        },
-        {
-          name: '# 容器组件',
-          path: '/container',
-        },
-        {
-          name: '# 功能组件',
-          path: '/feature',
-        },
-      ],
+      name: '设计',
+      path: '/design',
+    },
+    {
+      name: '开始',
+      path: '/getting-started',
+    },
+    {
+      name: '核心 & 加载器',
+      path: '/core-and-loader',
+    },
+    {
+      name: '配置',
+      path: '/config',
+    },
+    {
+      name: '组件体系',
+      path: '/component',
     },
     {
       name: '组件属性',
-      path: '/property',
+      path: '/props',
     },
     {
       name: '组件 API',
-      children: [
-        {
-          name: '# $component',
-          path: '/component',
-        },
-        {
-          name: '# $dispatch',
-          path: '/dispatch',
-        },
-        {
-          name: '# $render',
-          path: '/render',
-        },
-        {
-          name: '# $preload',
-          path: '/preload',
-        },
-      ],
+      path: '/api',
+    },
+    {
+      name: '组件通信',
+      path: '/communication',
     },
   ],
 
   pages: [
     {
-      path: ['/'],
-      components: ['introduction'],
+      path: ['/', '/docs'],
+      components: ['home'],
     },
     {
-      path: '/start',
-      components: ['start'],
+      path: ['/tutorial'],
+      components: ['tutorial'],
     },
     {
-      path: '/dev',
-      components: ['dev'],
+      path: '/getting-started',
+      components: ['getting-started'],
     },
     {
-      path: '/dependencies',
-      components: ['dependencies'],
+      path: '/design',
+      components: ['design'],
     },
     {
-      path: '/container',
-      components: ['container'],
+      path: '/config',
+      components: ['config'],
     },
     {
-      path: '/feature',
-      components: ['feature'],
-    },
-    {
-      path: '/property',
-      components: ['property'],
-    },
-    {
-      path: '/dispatch',
-      components: ['dispatch'],
-    },
-    {
-      path: '/render',
-      components: ['render'],
-    },
-    {
-      path: '/preload',
-      components: ['preload'],
+      path: '/core-and-loader',
+      components: ['core-and-loader'],
     },
     {
       path: '/component',
       components: ['component'],
     },
+    {
+      path: '/props',
+      components: ['props'],
+    },
+    {
+      path: '/api',
+      components: ['api'],
+    },
+    {
+      path: '/communication',
+      components: ['communication'],
+    },
   ],
 }
-
-var various = new window.Various(config)
-
-various.onError = function(e) {
-  console.log(e)
-  document.write(e.message)
-}
-
-various.start()
 </script>
-
+</head>
+<body>
+<div style="height:100%" id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.4.0/dist/index.js"></script>
 </body>
 </html>

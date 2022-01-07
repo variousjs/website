@@ -1,83 +1,28 @@
 import React, { Component, ComponentType } from 'react'
-import { ContainerProps, Route, Link, Router } from '@variousjs/various'
-import { Menu } from 'antd'
+import { ContainerProps, Route, Router } from '@variousjs/various'
 import { Store, Config } from '../types'
 import csses from './entry.less'
 
 class Container extends Component<ContainerProps<Store, Config>> {
   render() {
-    const { $component, $config, $router } = this.props
+    const { $component, $config } = this.props
+    const Header = $component('header')
+    const Nav = $component('nav')
 
     return (
       <div className={csses.container}>
         <div className={csses.header}>
-          <div className={csses.logo}>VariousJS</div>
-          <div className={csses.nav}>
-            {/* <Link to="/">文档</Link> */}
-            <a
-              rel="noreferrer"
-              target="_blank"
-              href="https://github.com/variousjs/various"
-              className={csses.github}
-            >
-              GitHub
-            </a>
-          </div>
+          <Header />
         </div>
 
         <div className={csses.content}>
           <div className={csses.left}>
-            <Menu
-              className={csses.menu}
-              mode="inline"
-              defaultSelectedKeys={[$router.location.pathname]}
-              defaultOpenKeys={['0', '1', '2', '3', '4']}
-              style={{ width: '100%' }}
-            >
-              {
-                $config.nav.map((item, i) => {
-                  if (item.path) {
-                    return (
-                      <Menu.Item key={item.path}>
-                        <Link to={item.path}>
-                          {item.name}
-                        </Link>
-                      </Menu.Item>
-                    )
-                  }
-
-                  return (
-                    <Menu.SubMenu
-                      key={i}
-                      title={item.name}
-                    >
-                      {
-                        item.children?.map((route) => (
-                          <Menu.Item key={route.path}>
-                            <Link to={route.path}>
-                              {route.name}
-                            </Link>
-                          </Menu.Item>
-                        ))
-                      }
-                    </Menu.SubMenu>
-                  )
-                })
-              }
-          </Menu>
-          </div>
-
-          <div className={csses.right}>
             <Router>
               {
                 $config.pages.map(({ path, components }) => {
                   const cs = () => components.map((name) => {
                     const C = $component(name)
-                    return (
-                      <div key={name}>
-                        <C />
-                      </div>
-                    )
+                    return (<C key={name} />)
                   })
 
                   return (
@@ -91,6 +36,10 @@ class Container extends Component<ContainerProps<Store, Config>> {
                 })
               }
             </Router>
+          </div>
+
+          <div className={csses.right}>
+            <Nav />
           </div>
         </div>
       </div>
