@@ -1,4 +1,4 @@
-# VariousJS 教程
+# 教程
 
 这里将从零开始创建一个基于 VariousJS 的网站应用。该应用非常简单，但会包含大部分 VariousJS 的功能
 
