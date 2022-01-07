@@ -1,2 +1,3 @@
-# website
-VariousJS
+# VariousJS
+
+https://various.js.org
