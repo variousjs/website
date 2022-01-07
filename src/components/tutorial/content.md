@@ -499,4 +499,4 @@ various.start()
 
 ## 全部完成
 
-接着创建 web 服务，访问 `index.html` 即可查看网站应用了。这里提供一个 [demo](/example)。另外可以源码可以在 `https://github.com/variousjs/website/tree/master/docs/example` 查看
+接着创建 web 服务，访问 `index.html` 即可查看网站应用了。这里提供一个 <a href="/example/" target="_blank">DEMO</a>，另外可以源码可以在 `https://github.com/variousjs/website/tree/master/docs/example` 查看
