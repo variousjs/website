@@ -430,13 +430,8 @@ export default connect('value')(X)
 <title> VariousJS </title>
 <!-- antd 样式 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.compact.min.css" />
-</head>
-<body>
-<div id="root"></div>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.3.0/dist/index.js"></script>
 <script>
-var config = {
+var VARIOUS_CONFIG = {
   root: '#root',
   entry: './dist/entry.js',
   routerMode: 'hash',
@@ -482,21 +477,16 @@ var config = {
     },
   ],
 }
-
-var various = new window.Various(config)
-
-various.onError = function(e) {
-  console.log(e)
-  document.write(e.message)
-}
-
-various.start()
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.3.0/dist/index.js"></script>
+</head>
+<body>
+<div id="root"></div>
 </body>
 </html>
 ```
 
 ## 全部完成
 
-接着创建 web 服务，访问 `index.html` 即可查看网站应用了。这里提供一个 <a href="/example/" target="_blank">DEMO</a>，另外可以源码可以在 `https://github.com/variousjs/website/tree/master/docs/example` 查看
+接着创建 web 服务，访问 `index.html` 即可查看网站应用了。这里提供一个 [DEMO](/example/)，另外可以源码可以在 `https://github.com/variousjs/website/tree/master/docs/example` 查看

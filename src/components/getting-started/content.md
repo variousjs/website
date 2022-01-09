@@ -41,6 +41,8 @@ $ npm run build
 $ npm run lint
 ```
 
+由于组件互相独立开发测试，可以使用一些零配置工具进行开发测试，例如 [TSDX](https://tsdx.io)，或者 [Falco](https://github.com/fratercula/falco)
+
 如果使用自定义构建工具开发 VariousJS 应用，需要注意以下
 
 ### 组件要求
