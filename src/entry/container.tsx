@@ -1,5 +1,5 @@
 import React, { Component, ComponentType, createRef } from 'react'
-import { ContainerProps, Route, Router } from '@variousjs/various'
+import { ContainerProps, Route, Router, Switch } from '@variousjs/various'
 import { Store, Config } from '../types'
 import csses from './entry.less'
 
@@ -48,23 +48,25 @@ class Container extends Component<ContainerProps<Store, Config>> {
         >
           <div ref={this.leftRef} className={csses.left}>
             <Router>
-              {
-                $config.pages.map(({ path, components }) => {
-                  const cs = () => components.map((name) => {
-                    const C = $component(name)
-                    return (<C key={name} />)
-                  })
+              <Switch>
+                {
+                  $config.pages.map(({ path, components }) => {
+                    const cs = () => components.map((name) => {
+                      const C = $component(name)
+                      return (<C key={name} />)
+                    })
 
-                  return (
-                    <Route
-                      key={Array.isArray(path) ? path.join() : path}
-                      exact
-                      path={path}
-                      component={cs as unknown as ComponentType}
-                    />
-                  )
-                })
-              }
+                    return (
+                      <Route
+                        key={Array.isArray(path) ? path.join() : path}
+                        exact
+                        path={path}
+                        component={cs as unknown as ComponentType}
+                      />
+                    )
+                  })
+                }
+              </Switch>
             </Router>
             <NavLink />
           </div>

@@ -8,6 +8,11 @@ const N: FC<ComponentProps<{}, Config>> = ({ $config, $router }) => {
   const path = $router!.location.pathname
 
   const index = navs.findIndex((item) => item.path === path)
+
+  if (index === -1) {
+    return null
+  }
+
   const nav = {
     prev: navs[index - 1],
     next: navs[index + 1],
