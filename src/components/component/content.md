@@ -131,14 +131,14 @@ export default function Loader() {
 }
 ```
 
-如果希望组件使用自定义加载，只需要在页面定义组件生成的组件配置 slient 参数即可，这时候组件的加载及出错都不会有提示，需要组件自行处理
+如果希望组件使用自定义加载，只需要在页面定义组件生成的组件配置 `$slient` 参数即可，这时候组件的加载及出错都不会有提示，需要组件自行处理
 
 ```tsx
 // ...
 const C = $component('name')
 return (
   <div key={'name'}>
-    <C slient />
+    <C $slient />
   </div>
 )
 // ...

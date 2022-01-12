@@ -17,7 +17,7 @@ type $component = (name: string) => ComponentType<{
 
 > 注意：此方法只有在容器组件提供
 
-生成的组件可以传递参数，如果传入 `silent` 参数，则表示改组件为静默组件，不显示默认的加载及出错提示
+生成的组件可以传递参数，如果传入 `$slient` 参数，则表示改组件为静默组件，不显示默认的加载及出错提示
 
 ```tsx
 import React, { Component, ComponentType } from 'react'
@@ -31,7 +31,7 @@ class Container extends Component<ContainerProps> {
     return (
       <A
         // 静默组件
-        slient
+        $slient
         value={1}
       />
     )
