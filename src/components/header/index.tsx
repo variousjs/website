@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { ComponentProps, NavLink, Link } from '@variousjs/various'
+import { ComponentProps } from '@variousjs/various'
+import { NavLink, Link } from 'react-router-dom'
 import ExternalIcon from '../../svg/external-link.svg'
 import { Config } from '../../types'
 import csses from './index.less'

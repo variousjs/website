@@ -1,22 +1,25 @@
 import React, { Component, ComponentType, createRef } from 'react'
-import { ContainerProps, Route, Router, Switch } from '@variousjs/various'
-import { Store, Config } from '../types'
+import { ContainerProps } from '@variousjs/various'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { Config } from '../types'
 import csses from './entry.less'
 
-class Container extends Component<ContainerProps<Store, Config>> {
+class Container extends Component<ContainerProps<Config>> {
   leftRef = createRef<HTMLDivElement>()
 
   unListen: () => void
 
   componentDidMount() {
     document.documentElement.classList.remove('loading')
-    this.unListen = this.props.$router.history.listen(() => {
+
+    this.unListen = () => {
       this.leftRef.current?.scrollTo(0, 0)
-    })
+    }
+    window.addEventListener('hashchange', this.unListen)
   }
 
   componentWillUnmount() {
-    this.unListen && this.unListen()
+    window.removeEventListener('hashchange', this.unListen)
   }
 
   onMDClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -38,16 +41,16 @@ class Container extends Component<ContainerProps<Store, Config>> {
 
     return (
       <div className={csses.container}>
-        <div className={csses.header}>
-          <Header />
-        </div>
+        <Router>
+          <div className={csses.header}>
+            <Header />
+          </div>
 
-        <div
-          className={csses.content}
-          onClick={this.onMDClick}
-        >
-          <div ref={this.leftRef} className={csses.left}>
-            <Router>
+          <div
+            className={csses.content}
+            onClick={this.onMDClick}
+          >
+            <div ref={this.leftRef} className={csses.left}>
               <Switch>
                 {
                   $config.pages.map(({ path, components }) => {
@@ -67,14 +70,14 @@ class Container extends Component<ContainerProps<Store, Config>> {
                   })
                 }
               </Switch>
-            </Router>
-            <NavLink />
-          </div>
+              <NavLink />
+            </div>
 
-          <div className={csses.right}>
-            <Nav />
+            <div className={csses.right}>
+              <Nav />
+            </div>
           </div>
-        </div>
+        </Router>
       </div>
     )
   }

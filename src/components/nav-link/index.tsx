@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
-import { ComponentProps, Link } from '@variousjs/various'
+import { ComponentProps } from '@variousjs/various'
+import { Link, useLocation } from 'react-router-dom'
 import { Config } from '../../types'
 import csses from './index.less'
 
-const N: FC<ComponentProps<{}, Config>> = ({ $config, $router }) => {
+const N: FC<ComponentProps<{}, Config>> = ({ $config }) => {
   const navs = $config.nav
-  const path = $router!.location.pathname
+  const { pathname: path } = useLocation()
 
   const index = navs.findIndex((item) => item.path === path)
 

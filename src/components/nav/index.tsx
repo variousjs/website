@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { ComponentProps, NavLink } from '@variousjs/various'
+import { ComponentProps } from '@variousjs/various'
+import { NavLink } from 'react-router-dom'
 import { Config } from '../../types'
 import csses from './index.less'
 

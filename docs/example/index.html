@@ -9,13 +9,13 @@
 var VARIOUS_CONFIG = {
   root: '#root',
   entry: './dist/entry.js',
-  routerMode: 'hash',
   dependencies: {
     // 内置依赖，如果不定义会默认使用 unpkg cdn 链接
     react: 'https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js',
     'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js',
 
     // 依赖定义，antd 依赖 moment
+    'react-router-dom': 'https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js',
     moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',
     antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',
   },
@@ -23,6 +23,7 @@ var VARIOUS_CONFIG = {
     // 组件定义
     a: './dist/a.js',
     b: './dist/b.js',
+    top: './dist/top.js',
   },
 
   // 以下属于自定义属性
@@ -57,6 +58,6 @@ var VARIOUS_CONFIG = {
 <body>
 <div id="root"></div>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.4.1/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.5.0/dist/index.js"></script>
 </body>
 </html>

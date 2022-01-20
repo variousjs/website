@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     a: path.resolve(__dirname, './src/a.js'),
     b: path.resolve(__dirname, './src/b.js'),
+    top: path.resolve(__dirname, './src/top.js'),
     entry: path.resolve(__dirname, './src/entry/index.js'),
   },
   // 需要将 react，react-dom，@variousjs/various 进行打包排除
@@ -23,11 +24,16 @@ module.exports = {
       root: 'Various',
       amd: '@variousjs/various',
     },
-    // 教程 cdn 方式使用 antd UI 组件库，所以这里需要构建排除
+    // 教程 cdn 方式使用 antd / react-router-dom，所以这里需要构建排除
     {
       name: 'antd',
       root: 'antd',
       amd: 'antd',
+    },
+    {
+      name: 'react-router-dom',
+      root: 'ReactRouterDOM',
+      amd: 'react-router-dom',
     },
   ],
   output: {

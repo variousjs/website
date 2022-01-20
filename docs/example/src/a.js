@@ -1,8 +1,9 @@
 import React from 'react'
 import { Card, Button, message } from 'antd'
+import { useParams } from 'react-router-dom'
 
 const A = (props) => {
-  const id = props.$router?.match.params.id
+  const { id } = useParams()
 
   return (
     <div style={{ marginTop: 30 }}>

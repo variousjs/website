@@ -32,12 +32,11 @@
 <script>
 var VARIOUS_CONFIG = {
   root: '#root',
-  entry: './dist/entry.js', // 容器组件
-  routerMode: 'hash',
+  entry: './dist/entry.js',
   dependencies: {
-    // 内置依赖重写
     react: 'https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js',
     'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js',
+    'react-router-dom': 'https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js',
   },
   components: {
     header: './dist/header.js',
@@ -168,6 +167,6 @@ var VARIOUS_CONFIG = {
 <body>
 <div style="height:100%" id="root"></div>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.4.1/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.5.0/dist/index.js"></script>
 </body>
 </html>
