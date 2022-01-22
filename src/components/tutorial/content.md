@@ -47,11 +47,16 @@ module.exports = {
       root: 'Various',
       amd: '@variousjs/various',
     },
-    // 教程 cdn 方式使用 antd UI 组件库，所以这里需要构建排除
+    // 教程 cdn 方式使用 antd / react-router-dom，所以这里需要构建排除
     {
       name: 'antd',
       root: 'antd',
       amd: 'antd',
+    },
+    {
+      name: 'react-router-dom',
+      root: 'ReactRouterDOM',
+      amd: 'react-router-dom',
     },
   ],
   output: {
@@ -150,26 +155,14 @@ export default function Loader() {
 
 ```jsx
 import React, { Component } from 'react'
-import { Router, Route } from '@variousjs/various'
-import { Radio, Badge, Button } from 'antd'
+import { HashRouter as Router, Route } from 'react-router-dom'
 import csses from './entry.module.less'
 
 export default class C extends Component {
-  state = {
-    path: '/'
-  }
-
-  onRouterChange = (e) => {
-    this.props.$router.history.push(e.target.value)
-    this.setState({ path: e.target.value })
-  }
-
-  componentDidMount() {
-    this.setState({ path: this.props.$router.location.pathname })
-  }
-
   render() {
-    const { $component, $config, $store } = this.props
+    const { $component, $config } = this.props
+    // 页面顶部作为一个独立的组件，会在后面定义说明
+    const Top = $component('top')
 
     // 假设有以下配置
     // {
@@ -192,39 +185,12 @@ export default class C extends Component {
 
     return (
       <div className={csses.container}>
-        <div className={csses.top}>
-          <Radio.Group
-            size="large"
-            value={this.state.path}
-            onChange={this.onRouterChange}
-            buttonStyle="solid"
-          >
-            {
-              $config.links.map(({ path, name }) => (
-                <Radio.Button key={path} value={path}>
-                  {name}
-                </Radio.Button>
-              ))
-            }
-          </Radio.Group>
-
-          <div>
-            Store:
-            <Badge
-              style={{ marginLeft: 10 }}
-              count={$store.user.name}
-            />
-            <Button
-              style={{ marginLeft: 10 }}
-              onClick={() => this.props.$dispatch('a', 'getName', 'A')}
-            >
-              Click A
-            </Button>
-          </div>
-        </div>
-
         <Router>
+          <div className={csses.top}>
+            <Top />
+          </div>
           {
+            // 根据配置生成路由结构
             $config.pages.map(({ path, components }) => {
               const cs = () => components.map((name) => {
                 const C = $component(name)
@@ -296,6 +262,78 @@ export { default as Error } from './error'
 ## 创建功能组件
 
 功能组件负责某一部分功能，应该尽量的独立。这里创建两个功能组件 `a.js`，`b.js`。并且两个组件都非常简单
+另外页面顶部也作为一个功能组件
+
+### Top 顶部组件
+
+顶部组件提供路由跳转，并调用 A 组件提供的 `getName` 方法
+
+```jsx
+import React, { useState, useEffect } from 'react'
+import { useLocation, useHistory } from 'react-router-dom'
+import { Radio, Badge, Button } from 'antd'
+
+const T = (props) => {
+  const { pathname } = useLocation()
+  const history = useHistory()
+  const [path, setPath] = useState('')
+
+  useEffect(() => {
+    setPath(pathname)
+  }, [])
+
+  const onRouterChange = (e) => {
+    history.push(e.target.value)
+    setPath(e.target.value)
+  }
+
+  return (
+    <>
+    <Radio.Group
+      size="large"
+      value={path}
+      onChange={onRouterChange}
+      buttonStyle="solid"
+    >
+      {
+        props.$config.links.map(({ path, name }) => (
+          <Radio.Button key={path} value={path}>
+            {name}
+          </Radio.Button>
+        ))
+      }
+    </Radio.Group>
+    <div>
+      Store:
+      <Badge
+        style={{ marginLeft: 10 }}
+        count={props.$store.user.name}
+      />
+        <Button
+          style={{ marginLeft: 10 }}
+          onClick={() => props.$dispatch('a', 'getName', 'Card')}
+        >
+          Card Name
+        </Button>
+      </div>
+    </>
+  )
+}
+
+export default T
+```
+
+接下来修改 `falco.config.js` 的 `entry` 配置，即可打包 Top 组件，生成 `dist/top.js`
+
+```js
+{
+  // ...
+  entry: {
+    top: path.resolve(__dirname, './top.js'),
+  },
+  // ...
+}
+```
 
 ### A 组件
 
@@ -304,9 +342,10 @@ A 组件提供方法给其他组件调用，进行通信
 ```jsx
 import React from 'react'
 import { Card, Button, message } from 'antd'
+import { useParams } from 'react-router-dom'
 
 const A = (props) => {
-  const id = props.$router?.match.params.id
+  const { id } = useParams()
 
   return (
     <div className="container">
@@ -441,6 +480,7 @@ var VARIOUS_CONFIG = {
     'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js',
 
     // 依赖定义，antd 依赖 moment
+    'react-router-dom': 'https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js',
     moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',
     antd: 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd-with-locales.min.js',
   },
@@ -448,6 +488,7 @@ var VARIOUS_CONFIG = {
     // 组件定义
     a: './dist/a.js',
     b: './dist/b.js',
+    top: './dist/top.js',
   },
 
   // 以下属于自定义属性
@@ -479,7 +520,7 @@ var VARIOUS_CONFIG = {
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.3.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.5.0/dist/index.js"></script>
 </head>
 <body>
 <div id="root"></div>

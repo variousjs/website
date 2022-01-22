@@ -6,6 +6,8 @@ VariousJS 环境下，功能组件，容器组件都有一些 API 可以直接�
 
 根据已经定义的组件名字生成可渲染的组件，用于灵活自定义页面结构及功能
 
+> 注意：此方法只有在容器组件提供
+
 ```ts
 import { ComponentType } from 'react'
 
@@ -14,8 +16,6 @@ type $component = (name: string) => ComponentType<{
   [key: string]: any,
 }>
 ```
-
-> 注意：此方法只有在容器组件提供
 
 生成的组件可以传递参数，如果传入 `$slient` 参数，则表示改组件为静默组件，不显示默认的加载及出错提示
 
@@ -41,9 +41,40 @@ class Container extends Component<ContainerProps> {
 export default Container
 ```
 
+### $getMountedComponents
+
+获取当前已加载的组件
+
+> 注意：此方法只有在功能组件提供
+
+```ts
+type $getMountedComponents = () => string[]
+```
+
+不包括已经卸载的组件
+
+```tsx
+import React, { FC } from 'react'
+import { ComponentProps } from '@variousjs/various'
+
+const A: FC<ComponentProps> = (props) => {
+  const onGet = () => {
+    return prop.$getMountedComponents()
+  }
+
+  return (
+    <div>
+      <button onClick={onGet}>当前已加载</button>
+    </div>
+  )
+}
+```
+
 ### $dispatch
 
 此方法用于组件与全局通信，也可以组件间互相通信
+
+> 注意：此方法只有在功能组件提供
 
 ```ts
 // type 通信类型：store(全局) / 组件名字
@@ -52,7 +83,7 @@ export default Container
 type $dispatch = (type: string, method: string, value?: any) => unknown
 ```
 
-可以在功能组件及全局组件使用。通信需要对应组件或者全局提供调用方法
+调用通信需要对应组件或者全局提供调用方法
 
 ```tsx
 import React, { FC } from 'react'
@@ -76,11 +107,55 @@ const A: FC<ComponentProps> = (props) => {
 }
 ```
 
+### $postMessage
+
+可以使用此方法进行广播信息
+
+> 注意：此方法只有在功能组件提供
+
+```ts
+// name：事件名字，用于区分
+// value：传递的参数
+type $postMessage = (name: string, value?: any) => void
+```
+
+组件要进行监听消息，必须定义静态方法 `$onMessage`
+
+```ts
+type Message = {
+  type: string, // 组件名字
+  name: string, // 事件名字
+  value?: any,  // 传递参数
+}
+type $onMessage = (params: Message) => unknown
+```
+
+不能接收自己广播的消息
+
+```tsx
+import React, { FC } from 'react'
+import { ComponentProps } from '@variousjs/various'
+
+const A: FC<ComponentProps> = (props) => {
+  const onMsg = () => {
+    props.$postMessage('m', 'hello world')
+  }
+
+  return (
+    <div>
+      <button onClick={onMsg}>广播消息</button>
+    </div>
+  )
+}
+```
+
 ### $render
 
-功能组件及容器组件都拥有动态加载组件能力，提供这个方法可以更加灵活自定义页面功能，并且动态加载的组件一样可以访问全局数据，也拥有通信能力
+功能组件拥有动态加载组件能力，提供这个方法可以更加灵活自定义页面功能，并且动态加载的组件一样可以访问全局数据，也拥有通信能力
 
 可以利用此功能，在正式环境进行在控制范围的组件测试
+
+> 注意：此方法只有在功能组件提供，并且动态加载进来的组件不存在此方法
 
 ```ts
 type $render = (params: {
@@ -93,7 +168,7 @@ type $render = (params: {
 }) => () => void // 组件卸载方法
 ```
 
-> 注意：动态加载进来的组件不存在此方法
+允许动态加载第三方组件
 
 ```tsx
 import React, { Component } from 'react'
@@ -134,24 +209,24 @@ class Container extends Component<ContainerProps> {
 
 ### $preload
 
-此方法可以预先加载已经定义好的组件，只需要输入组件名字即可，并可以判断是否完成预加载。支持在功能组件及容器组件使用
+此方法可以预先加载已经定义好的组件，只需要输入组件名字即可，并可以判断是否完成预加载
+
+> 注意：此方法只有在功能组件提供
 
 ```ts
 type $preload = (names: string[]) => Promise<void>
 ```
 
-> 注意：预加载的组件必须在页面配置中已经定义
+预加载的组件必须在页面配置中已经定义
 
 ```tsx
 import React, { FC } from 'react'
 import { ComponentProps } from '@variousjs/various'
 
 const A: FC<ComponentProps> = (props) => {
-  const onPre = () => {
-    if (props.$preload) {
-      await props.$preload(['b'])
-      console.log('preload B done')
-    }
+  const onPre = async () => {
+    await props.$preload(['b'])
+    console.log('preload B done')
   }
 
   return (

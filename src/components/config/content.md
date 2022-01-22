@@ -11,7 +11,6 @@ interface Config {
   dependencies?: { [key: string]: string },
   components: { [key: string]: string },
   entry: string,
-  routerMode?: 'browser' | 'hash',
   root?: string,
 }
 ```
@@ -19,7 +18,6 @@ interface Config {
 - dependencies：定义依赖组件名及加载路径
 - components：定义功能组件名及加载路径
 - entry：主体组件加载路径
-- routerMode：页面路由模式（browser 或者 hash），默认 hash
 - root：应用渲染节点（默认 #root）
 
 ### 自定义参数

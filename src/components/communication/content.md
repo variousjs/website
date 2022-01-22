@@ -1,12 +1,18 @@
 # 组件通信
 
-VariousJS 提供简便易用的通信机制，并可以保证组件的安全性，不能随意访问其他组件的数据情况
+由于组件完全独立分离，组件间需要一些互相联系的方式，VariousJS 提供简便易用的通信机制，组件间可以方便进行通信联系
 
-## 提供方法
+提供的通信方式有两种：方法调用及广播消息
 
-组件通信的必要性：由于组件完全独立分离，则组件间需要一些互相联系的方式。被通信组件需要提供方法供其他组件访问，各组件的提供方式有一些差异
+## 方法调用
 
-### 全局
+方法调用的方式为一个组件提供方法，由另外一个组件进行调用，调用后可以返回内容或者进行一些操作。是被动的通信方式
+
+### 方法提供
+
+方法调用的前提是被调用的组件提供方法，以下为提供方法方式
+
+#### 主体组件
 
 通过全局数据定义及方法提供通信方法
 
@@ -38,11 +44,11 @@ export default actions
 
 通过以上数据及方法定义，全局提供了 `setName` 方法，其他组件可以访问该方法修改全局数据 `user`
 
-### 功能组件
+#### 功能组件
 
 功能组件有两种形式，`Function Component` 及 `Class Component`。两种方式的组件提供调用方法并不一样，并且要考虑组件的数据安全性，其他组件不能随意访问内部数据
 
-Function Component 通过定义属性提供调用方法
+Function Component 通过定义静态属性方法提供
 
 ```tsx
 import React, { FC } from 'react'
@@ -54,7 +60,7 @@ A.getName = () => 'A'
 export default A
 ```
 
-Class Component 通过定义 `static` 方法提供
+Class Component 通过定义静态方法 `static` 提供
 
 ```tsx
 import React, { Component } from 'react'
@@ -68,9 +74,48 @@ export default class A extends Component {
 }
 ```
 
-组件 A 两种方式都提供了方法 `getName` 调用，其实底层都是提供属性方法的形式。这样处理保证了组件内部数据的安全性
+组件 A 两种方式都提供了方法 `getName` 调用，其实底层都是提供属性方法的形式。这样处理保证了组件内部数据不被外部直接访问
 
-### 改变状态
+### 调用方法
+
+调用其他组件方法时候必须先知道对方组件提供的方法情况
+
+```ts
+// type 通信类型：store(全局) / 组件名字
+// method 方法：调用全局或者其他组件提供的方法
+// value 值：传递的参数
+type $dispatch = (type: string, method: string, value?: any) => unknown
+```
+
+例如根据上面例子组件提供的方法，可以有以下调用方式
+
+```tsx
+import React, { FC, useEffect } from 'react'
+import { ComponentsProps } from '@variousjs/various'
+
+const C: FC<ComponentProps> = (props) => {
+  useEffect(() => {
+    // 改变全局数据
+    props.$dispatch('store', 'setName', 'C')
+      .then(() => {
+        // ...
+      })
+
+    // 获取 A 组件提供的值
+    const name = props.$dispatch('A', 'setName')
+    console.log(name)
+
+    // 改变 B 组件的状态
+    props.$dispatch('B', 'updateValue', 'C')
+  }, [])
+
+  return (<div>C</div>)
+}
+
+export default C
+```
+
+### 状态改变
 
 通过定义属性形式提供调用方法，保证了组件内部数据安全性，但有个问题是如何通信改变其他组件的自身状态？答案是使用状态管理
 
@@ -107,41 +152,69 @@ export default connect('value')(B)
 
 以上例子 B 组件提供了 `updateValue` 给其他组件调用改变自身数据状态
 
-## 调用方法
+## 广播消息
 
-与其他组件通信调用其方法必须先知道对方组件提供的方法情况
+此方式是一个组件直接进行广播消息，传递相关参数，其他组件可以进行消息监听获取参数。是主动的通信方式
+
+### 主动广播
+
+组件进行广播消息没有什么限制
 
 ```ts
-// type 通信类型：store(全局) / 组件名字
-// method 方法：调用全局或者其他组件提供的方法
-// value 值：传递的参数
-type $dispatch = (type: string, method: string, value?: any) => unknown
+// name：事件名字，用于区分
+// value：传递的参数
+type $postMessage = (name: string, value?: any) => void
 ```
 
-例如根据上面例子组件提供的方法，可以有以下调用方式
+以下例子，点击按钮组件就广播了一个名字为 `m` 的消息，并且传递了参数 `hello world`
 
 ```tsx
-import React, { FC, useEffect } from 'react'
-import { ComponentsProps } from '@variousjs/various'
+import React, { FC } from 'react'
+import { ComponentProps } from '@variousjs/various'
 
-const C: FC<ComponentProps> = (props) => {
-  useEffect(() => {
-    // 改变全局数据
-    props.$dispatch('store', 'setName', 'C')
-      .then(() => {
-        // ...
-      })
+const A: FC<ComponentProps> = (props) => {
+  const onMsg = () => {
+    props.$postMessage('m', 'hello world')
+  }
 
-    // 获取 A 组件提供的值
-    const name = props.$dispatch('A', 'setName')
-    console.log(name)
+  return (
+    <div>
+      <button onClick={onMsg}>广播消息</button>
+    </div>
+  )
+}
+```
 
-    // 改变 B 组件的状态
-    props.$dispatch('B', 'updateValue', 'C')
-  }, [])
+### 监听消息
 
-  return (<div>C</div>)
+其他组件要进行监听消息，必须定义静态方法 `$onMessage`。请注意组件无法监听到自己广播的消息
+
+```ts
+type Message = {
+  type: string, // 组件名字
+  name: string, // 事件名字
+  value?: any,  // 传递参数
+}
+type $onMessage = (params: Message) => unknown
+```
+
+监听消息返回的参数中可以获取到当前广播消息的组件名字
+
+```tsx
+import React, { FC } from 'react'
+import { Message } from '@variousjs/various'
+
+const A: FC = () => {
+  return (
+    <div>
+      <button onClick={onMsg}>广播消息</button>
+    </div>
+  )
 }
 
-export default C
+A.$onMessage = (m: Message) => {
+  console.log(m)
+}
+
+export default A
 ```

@@ -67,10 +67,9 @@ export default actions
 ```tsx
 // container.tsx
 import React, { Component, ComponentType } from 'react'
-import { ContainerProps, Router, Route, Link } from '@variousjs/various'
-import store from './store'
-
-type Store = typeof store
+import { ContainerProps } from '@variousjs/various'
+// 请注意将 react-router-dom 作为一个依赖
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 type Config = {
   pages: {
     path: string[] | string,
@@ -78,7 +77,7 @@ type Config = {
   }[],
 }
 
-class Container extends Component<ContainerProps<Store, Config>> {
+class Container extends Component<ContainerProps<Config>> {
   render() {
     const { $component, $config } = this.props
 
@@ -213,10 +212,6 @@ const H: FC<ComponentProps<Store>> = (props) => {
       <p>
         全局值:
         {props.$store.user.name}
-      </p>
-      <p>
-        当前页面已加载组件:
-        {props.$mounted.join(', ')}
       </p>
       <Button onClick={onSet}>更新全局</Button>
     </div>
