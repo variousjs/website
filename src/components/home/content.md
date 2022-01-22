@@ -26,7 +26,7 @@ VariousJS 提供一个动态加载环境，并提供通信机制，方便组件�
 
 ### 6. 组件共享
 
-基于 AMD 规范，可以抽出公共组件共享使用，避免资源重复浪费加载
+基于 [AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md) 规范，可以抽出公共组件共享使用，避免资源重复浪费加载
 
 ### 7. 容错机制
 

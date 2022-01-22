@@ -36,7 +36,6 @@ interface Config {
 var VARIOUS_CONFIG = {
   root: '#root',
   entry: './dist/entry.js',
-  routerMode: 'hash',
   dependencies: {
     // 依赖定义
     moment: 'https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js',

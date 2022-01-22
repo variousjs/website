@@ -79,3 +79,57 @@ declare module 'antd' {
   export const locales: { [key: string]: any }
 }
 ```
+
+### 组件状态被刷新？
+
+请注意在容器组件不能进行 `state` 操作，因为一旦刷新状态，就会导致功能组件被重新加载。所以容器组件应该作为组件位置结构描述组件，不参与其他任何功能
+
+### 组件太多太细，同时也导致网络请求过多？
+
+在 VariousJS 体系下，页面可以任意拆分成细组件，但是这样会导致组件非常多，请求也变多。所以 VariousJS 组件支持导出多个功能组件。可以参照以下写法
+
+```tsx
+// m 组件，路径为 './dist/m.js'
+import React, { Component } from 'react'
+
+export class X extends Component {
+  render() {
+    return (
+      <div>X</div>
+    )
+  }
+}
+
+export function Y() {
+  return (
+    <div>Y</div>
+  )
+}
+```
+
+以上同时导出 `X`， `Y` 组件，使用时候需要注意
+
+```html
+<script>
+var VARIOUS_CONFIG = {
+  components: {
+    // 指定组件名记路径
+    m: './dist/m.js'
+  },
+  routes: [
+    {
+      path: '/',
+      components: [
+        // 分别使用 X， Y 组件
+        [
+          'm.X',
+          'm.Y',
+        ],
+      ],
+    },
+  ],
+}
+</script>
+```
+
+以上方式处理，可以将多个组件合并成一个 js 文件，减少网络请求

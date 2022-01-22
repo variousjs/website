@@ -4,11 +4,11 @@
 
 ## 了解 VariousJS
 
-使用 VariousJS 前需要一定的应用构建及 `react` 基础，并了解 AMD 模块化规范
+使用 VariousJS 前需要一定的应用构建及 `react` 基础，并了解 [AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md) 模块化规范
 
 ### 基本原则
 
-VariousJS 基于 RequireJS，组件的加载处理由 RequireJS 提供，VariousJS 提供组件间联系的桥梁，并基于 `react` / `react-dom` 提供组件控制及页面路由能力。
+VariousJS 基于 [RequireJS](https://requirejs.org/)，组件的加载处理由 RequireJS 提供，VariousJS 提供组件间联系的桥梁，并基于 `react` / `react-dom` 提供组件控制及页面路由能力。
 
 - VariousJS 核心并不参与应用打包构建，而是通过 cdn script 方式引入
 - VariousJS 由加载器和核心功能两部分组成，加载器主要负责引入核心功能，而核心功能提供相应的基础能力
