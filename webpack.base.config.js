@@ -116,7 +116,7 @@ const config = {
         test: /\.md$/i,
         use: [
           {
-            loader: 'html-loader',
+            loader: 'raw-loader',
           },
           {
             loader: path.resolve(__dirname, './md-loader.js'),
