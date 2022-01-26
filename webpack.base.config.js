@@ -68,6 +68,7 @@ const config = {
     },
     // 监听文件构建后重新刷新页面，包括 html 文件
     watchFiles: ['docs'],
+    historyApiFallback: true,
   },
   module: {
     rules: [

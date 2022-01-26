@@ -17,7 +17,7 @@ VariousJS 基于 [RequireJS](https://requirejs.org/)，组件的加载处理由 
 
 ### 示例教程
 
-可以尝试通过 [教程](#tutorial) 一步步创建一个简单的 VariousJS 应用
+可以尝试通过 [教程](/tutorial) 一步步创建一个简单的 VariousJS 应用
 
 ## 脚手架
 
