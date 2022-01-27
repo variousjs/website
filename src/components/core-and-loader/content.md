@@ -2,6 +2,8 @@
 
 VariousJS 由核心及加载器两部分构成。应用页面引入加载器，由加载器加载核心功能，再由核心功能初始化页面组件相关，并加载其他组件
 
+<!-- toc -->
+
 ### 加载器
 
 加载器用于加载 VariousJS 核心，应用主体组件，以及 react / react-dom，并加载浏览器 polyfill。依赖 RequireJS，需要 script 方式引入

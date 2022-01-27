@@ -10,6 +10,13 @@ class Container extends Component<ContainerProps<Config>> {
   componentDidMount() {
     document.documentElement.classList.remove('loading')
 
+    const { hash } = window.location
+    setTimeout(() => {
+      document.querySelector(decodeURIComponent(hash))?.scrollIntoView({
+        behavior: 'smooth'
+      })
+    }, 1000)
+
     const { pushState, replaceState } = window.history
     window.history.pushState = (...args) => {
       pushState.apply(window.history, args)

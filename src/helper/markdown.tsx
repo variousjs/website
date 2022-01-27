@@ -7,14 +7,15 @@ type Data = {
 }
 
 const M: FC<{ data: Data }> = ({ data }) => (
-  <div>
+  <>
     <div
+      className={csses.toc}
       dangerouslySetInnerHTML={{ __html: data.toc }}
     />
     <div
       className={`${csses.md} markdown-body`} dangerouslySetInnerHTML={{ __html: data.content }}
     />
-  </div>
+  </>
 )
 
 export default M

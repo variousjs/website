@@ -2,7 +2,9 @@
 
 以下是使用 VariousJS 可能遇到的问题
 
-### 使用的第三方插件或者组件没有提供 AMD 导出？
+<!-- toc -->
+
+### 使用的第三方插件或者组件没有提供 AMD 导出
 
 可以引入插件自行导出 AMD 格式，例如 [react-syntax-highlighter](https://unpkg.com/browse/react-syntax-highlighter@15.4.5/dist/) 只有 `commonjs`，及 `es modules` 导出，但可以这样导出 AMD 格式
 
@@ -28,7 +30,7 @@ const H: FC<P> = (props) => {
 export default H
 ```
 
-### 如何设置 `antd` 依赖的 `moment` 为中文？
+### 如何设置 `antd` 依赖的 `moment` 为中文
 
 可以参考以下对 `moment` 的依赖引入进行一些修改
 
@@ -62,7 +64,7 @@ export { default as Loader } from './loading'
 export { default as Error } from './error'
 ```
 
-### 依赖的插件没有 ts 类型提示？
+### 依赖的插件没有 ts 类型提示
 
 因为插件/组件的使用都是 `cdn` 链接引入，并没有本地安装，所以不能 ts 类型提示，解决办法就是安装对应插件依赖。除了这个方式，还可以自行定义 ts 类型
 
@@ -80,11 +82,11 @@ declare module 'antd' {
 }
 ```
 
-### 组件状态被刷新？
+### 组件状态被刷新
 
 请注意在容器组件不能进行 `state` 操作，因为一旦刷新状态，就会导致功能组件被重新加载。所以容器组件应该作为组件位置结构描述组件，不参与其他任何功能
 
-### 组件太多太细，同时也导致网络请求过多？
+### 组件太多太细，同时也导致网络请求过多
 
 在 VariousJS 体系下，页面可以任意拆分成细组件，但是这样会导致组件非常多，请求也变多。所以 VariousJS 组件支持导出多个功能组件。可以参照以下写法
 
