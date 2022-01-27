@@ -11,11 +11,13 @@ class Container extends Component<ContainerProps<Config>> {
     document.documentElement.classList.remove('loading')
 
     const { hash } = window.location
-    setTimeout(() => {
-      document.querySelector(decodeURIComponent(hash))?.scrollIntoView({
-        behavior: 'smooth'
-      })
-    }, 1000)
+    if (hash) {
+      setTimeout(() => {
+        document.querySelector(decodeURIComponent(hash))?.scrollIntoView({
+          behavior: 'smooth'
+        })
+      }, 1000)
+    }
 
     const { pushState, replaceState } = window.history
     window.history.pushState = (...args) => {

@@ -9,7 +9,12 @@ module.exports = async (md) => {
   return {
     content: marker.render(md, {
       getHeadingId(text) {
-        return text.toLowerCase().replace(/\./g, '').split(' ').join('-')
+        return text
+          .toLowerCase()
+          .replace(/\./g, '')
+          .replace(/\$/g, '')
+          .split(' ')
+          .join('-')
       },
     }),
     toc: t,
