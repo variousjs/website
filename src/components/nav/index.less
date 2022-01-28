@@ -22,3 +22,52 @@
   left: 10px;
   top: 98px;
 }
+
+.mark {
+  position: fixed;
+  background: #fff;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transition: all .3s ease;
+  visibility: hidden;
+  transform: translateY(-100%);
+
+  &.ms {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+.mi {
+  display: flex;
+  padding: 50px 40px;
+
+  a {
+    color: #333;
+    font-size: 22px;
+    display: block;
+    margin-bottom: 18px;
+
+    &.ma {
+      color: #40a9ff;
+    }
+  }
+}
+.mt {
+  flex: 1;
+
+  a {
+    color: #444;
+    font-size: 18px;
+  }
+}
+.mb {
+  flex: 2;
+}
+.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

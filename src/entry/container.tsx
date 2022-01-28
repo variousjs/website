@@ -65,11 +65,13 @@ class Container extends Component<ContainerProps<Config>> {
     const Header = $component('header')
     const Nav = $component('nav.N')
     const Top = $component('nav.T')
+    const Mark = $component('nav.M')
     const NavLink = $component('nav-link')
 
     return (
       <div className={csses.container}>
         <Router>
+          <Mark $silent />
           <div className={csses.header}>
             <Header />
           </div>
@@ -103,7 +105,7 @@ class Container extends Component<ContainerProps<Config>> {
 
             <div className={csses.right}>
               <Nav />
-              <Top />
+              <Top $silent />
             </div>
           </div>
         </Router>
