@@ -63,7 +63,8 @@ class Container extends Component<ContainerProps<Config>> {
   render() {
     const { $component, $config } = this.props
     const Header = $component('header')
-    const Nav = $component('nav')
+    const Nav = $component('nav.N')
+    const Top = $component('nav.T')
     const NavLink = $component('nav-link')
 
     return (
@@ -75,6 +76,7 @@ class Container extends Component<ContainerProps<Config>> {
 
           <div className={csses.content}>
             <div ref={this.leftRef} className={csses.left}>
+              <div id="top" />
               <div style={{ minHeight: '100%' }} onClick={this.onMDClick}>
                 <Switch>
                   {
@@ -101,6 +103,7 @@ class Container extends Component<ContainerProps<Config>> {
 
             <div className={csses.right}>
               <Nav />
+              <Top />
             </div>
           </div>
         </Router>

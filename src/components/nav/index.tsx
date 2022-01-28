@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import { ComponentProps } from '@variousjs/various'
 import { NavLink } from 'react-router-dom'
+import Icon from '../../svg/top.svg'
 import { Config } from '../../types'
 import csses from './index.less'
 
-const H: FC<ComponentProps<{}, Config>> = ({ $config }) => {
+export const N: FC<ComponentProps<{}, Config>> = ({ $config }) => {
   return (
     <div className={csses.menu}>
       {
@@ -25,4 +26,19 @@ const H: FC<ComponentProps<{}, Config>> = ({ $config }) => {
   )
 }
 
-export default H
+export const T: FC = () => {
+  const onTop = () => {
+    document.querySelector('#top')?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
+  return (
+    <div
+      onClick={onTop}
+      className={csses.top}
+    >
+      <Icon width="27" height="27" />
+    </div>
+  )
+}
