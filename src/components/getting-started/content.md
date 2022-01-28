@@ -2,6 +2,8 @@
 
 这里主要介绍 VariousJS 的基础概念及相关资源。
 
+<!-- toc -->
+
 ## 了解 VariousJS
 
 使用 VariousJS 前需要一定的应用构建及 `react` 基础，并了解 [AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md) 模块化规范
@@ -17,7 +19,7 @@ VariousJS 基于 [RequireJS](https://requirejs.org/)，组件的加载处理由 
 
 ### 示例教程
 
-可以尝试通过 [教程](#tutorial) 一步步创建一个简单的 VariousJS 应用
+可以尝试通过 [教程](/tutorial) 一步步创建一个简单的 VariousJS 应用
 
 ## 脚手架
 

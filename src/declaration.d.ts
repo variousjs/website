@@ -4,7 +4,7 @@ declare module '*.less' {
 }
 
 declare module '*.md' {
-  const resource: string
+  const resource: { content: string, toc: string }
   export = resource
 }
 

@@ -4,7 +4,7 @@ import md from './content.md'
 
 const H: FC = () => {
   return (
-    <Md>{md}</Md>
+    <Md data={md} />
   )
 }
 
