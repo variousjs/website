@@ -7,8 +7,7 @@ import csses from './index.less'
 const N: FC<ComponentProps<{}, Config>> = ({ $config }) => {
   const navs = $config.nav
   const { pathname: path } = useLocation()
-
-  const index = navs.findIndex((item) => item.path === path)
+  const index = navs.findIndex((item) => item.path === (path === '/' ? '/docs' : path))
 
   if (index === -1) {
     return null

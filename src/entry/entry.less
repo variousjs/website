@@ -20,27 +20,19 @@ a {
   flex-direction: column;
   height: 100%;
   position: relative;
-
-  &::after {
-    content: '';
-    height: 100%;
-    background: #fafcfd;
-    position: absolute;
-    width: 50%;
-    right: 0;
-    top: 0;
-  }
 }
 
 .content {
   flex: 1;
-  display: flex;
   height: 0;
-  justify-content: center;
-  max-width: 1000px;
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
+  overflow-y: auto;
+
+  > div {
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+  }
 }
 
 .header {
@@ -52,22 +44,25 @@ a {
 }
 
 .right {
-  flex-shrink: 0;
   box-sizing: border-box;
   border-left: 1px solid #e5f0f5;
-  width: 260px;
-  overflow-y: auto;
+  flex-shrink: 0;
+  background: #fafcfd;
+  padding-right: 999px;
+  margin-right: -999px;
   position: relative;
-  z-index: 1;
 }
 
 .left {
-  flex: 1;
-  overflow-y: auto;
   box-sizing: border-box;
+  background: #fff;
   position: relative;
   z-index: 1;
-  background: #fff;
+  width: calc(100% - 260px);
+
+  .router {
+    min-height: 100vh;
+  }
 }
 
 .loader {
@@ -128,7 +123,11 @@ button {
     display: none;
   }
 
-  .content {
+  .left {
+    width: 100%;
+  }
+
+  .content > div {
     width: 100%;
   }
 }

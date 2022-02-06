@@ -76,36 +76,38 @@ class Container extends Component<ContainerProps<Config>> {
             <Header />
           </div>
 
-          <div className={csses.content}>
-            <div ref={this.leftRef} className={csses.left}>
-              <div id="top" />
-              <div style={{ minHeight: '100%' }} onClick={this.onMDClick}>
-                <Switch>
-                  {
-                    $config.pages.map(({ path, components }) => {
-                      const cs = () => components.map((name) => {
-                        const C = $component(name)
-                        return (<C key={name} />)
+          <div ref={this.leftRef} className={csses.content}>
+            <div>
+              <div className={csses.left}>
+                <div id="top" />
+                <div className={csses.router} onClick={this.onMDClick}>
+                  <Switch>
+                    {
+                      $config.pages.map(({ path, components }) => {
+                        const cs = () => components.map((name) => {
+                          const C = $component(name)
+                          return (<C key={name} />)
+                        })
+
+                        return (
+                          <Route
+                            key={Array.isArray(path) ? path.join() : path}
+                            exact
+                            path={path}
+                            component={cs as unknown as ComponentType}
+                          />
+                        )
                       })
-
-                      return (
-                        <Route
-                          key={Array.isArray(path) ? path.join() : path}
-                          exact
-                          path={path}
-                          component={cs as unknown as ComponentType}
-                        />
-                      )
-                    })
-                  }
-                </Switch>
+                    }
+                  </Switch>
+                </div>
+                <NavLink />
               </div>
-              <NavLink />
-            </div>
 
-            <div className={csses.right}>
-              <Nav />
-              <Top $silent />
+              <div className={csses.right}>
+                <Nav />
+                <Top $silent />
+              </div>
             </div>
           </div>
         </Router>
