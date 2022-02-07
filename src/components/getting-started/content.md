@@ -89,7 +89,7 @@ VariousJS 内置一些底层依赖，需要在配置 `externals`，其他组件�
 
 ### Polyfill
 
-考虑到组件代码共享及减少重复代码加载，VariousJS 核心 js 已经将浏览器兼容 Polyfill 包含，所以组件构建适合需要注意不需要添加额外的 Polyfill 支持
+考虑到组件代码共享及减少重复代码加载，VariousJS 核心 js 已经将浏览器兼容 Polyfill 包含，所以组件构建时候需要注意不需要添加额外的 Polyfill
 
 ### 兼容性
 

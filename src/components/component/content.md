@@ -69,7 +69,7 @@ export default actions
 // container.tsx
 import React, { Component, ComponentType } from 'react'
 import { ContainerProps } from '@variousjs/various'
-// 请注意将 react-router-dom 作为一个依赖
+// 请注意将 react-router-dom 作为一个依赖 externals 排除
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 type Config = {
   pages: {

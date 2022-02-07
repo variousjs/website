@@ -19,6 +19,10 @@ class Container extends Component<ContainerProps<Config>> {
       }, 1000)
     }
 
+    // window.addEventListener('popstate', (e) => {
+    //   console.log(e)
+    // })
+
     const { pushState, replaceState } = window.history
     window.history.pushState = (...args) => {
       pushState.apply(window.history, args)

@@ -121,7 +121,7 @@ export default C
 
 通过定义属性形式提供调用方法，保证了组件内部数据安全性，但有个问题是如何通信改变其他组件的自身状态？答案是使用状态管理
 
-VariousJS 提供了状态组件 `Store`，基于 基于 [nycticorax](https://github.com/fratercula/nycticorax)，类似 `Redux` 的用法，用于组件状态管理
+VariousJS 提供了状态组件 `Store`，基于 [nycticorax](https://github.com/fratercula/nycticorax)，类似 `Redux` 的用法，用于组件状态管理
 
 ```tsx
 import React, { Component } from 'react'

@@ -14,7 +14,7 @@
 
 为了快速构建教程所需要的组件应用，这里使用一个简单打包工具，简单配置即可进行应用打包。
 
-### 安装 Falco
+### 使用 Falco
 
 Falco 是一个简单的应用打包工具，通过简单配置即可进行应用打包，并且可以自动安装依赖。以下安装 Falco
 
@@ -80,11 +80,11 @@ module.exports = {
 $ falco -c
 ```
 
-## 创建主组件
+## 主组件
 
 主组件承载全局数据及控制页面组件展示，以及页面路由定义相关
 
-### 定义全局数据
+### 全局数据
 
 创建 `store.js`，并设定全局值 `user`
 
@@ -96,7 +96,7 @@ export default {
 }
 ```
 
-### 控制全局数据
+### 控制数据
 
 全局数据不能直接修改，需要创建 `actions.js`，用于操控数据变化
 
@@ -108,7 +108,7 @@ export default {
     user.name = next
     dispatch({ user })
   },
-  // 虽然能够直接通过 $store 数据，但这里还是可以进行一些简单数据处理
+  // 虽然能够直接通过 $store 获取数据，但这里还是可以进行一些简单数据处理
   getName({ getStore }) {
     const { user } = getStore()
     return user.name
@@ -116,9 +116,9 @@ export default {
 }
 ```
 
-### 定义错误提示组件
+### 错误提示组件
 
-错误提示针对组件加载/运行期间的错误友好提示，统一进行处理，创建 `error.jsx`
+用于对组件加载/运行期间的错误友好提示，统一进行处理，创建 `error.jsx`
 
 ```jsx
 import React from 'react'
@@ -136,7 +136,7 @@ export default function Error({ message, type }) {
 }
 ```
 
-### 定义加载提示组件
+### 加载提示组件
 
 创建 `loader.jsx`，用于统一的展示组件加载提示
 
@@ -151,9 +151,9 @@ export default function Loader() {
 }
 ```
 
-### 创建组件容器
+### 容器组件
 
-容器定义页面路由，及页面布局。理论上可以根据配置定义页面各种各样的样式。这里创建最简单的页面结构，接入的组件只需要按顺序排布即可。另外也创建路由相关，创建 `container.jsx`
+容器组件定义页面路由，及页面布局。理论上可以根据配置定义页面各种各样的样式。这里创建最简单的页面结构，接入的组件只需要按顺序排布即可。另外也创建路由相关，创建 `container.jsx`
 
 ```jsx
 import React, { Component } from 'react'
@@ -261,10 +261,9 @@ export { default as Error } from './error'
 }
 ```
 
-## 创建功能组件
+## 功能组件
 
-功能组件负责某一部分功能，应该尽量的独立。这里创建两个功能组件 `a.js`，`b.js`。并且两个组件都非常简单
-另外页面顶部也作为一个功能组件
+功能组件负责某一部分功能，应该尽量的独立。这里创建两个功能组件 `a.js`，`b.js`。组件都非常简单。另外页面顶部也作为一个功能组件
 
 ### Top 顶部组件
 
@@ -459,9 +458,9 @@ export default connect('value')(X)
 }
 ```
 
-## 创建应用页面
+## 应用页面
 
-准备了主应用及功能组件，这时候可以配置页面了，在 dist 目录同级创建 `index.html`
+准备了主应用及功能组件，这时候可以配置页面了，在 dist 目录同级创建 `index.html`，添加相应配置即可生成页面
 
 ```html
 <!doctype html>
@@ -530,6 +529,8 @@ var VARIOUS_CONFIG = {
 </html>
 ```
 
-## 全部完成
+## 完成应用
 
-接着创建 web 服务，访问 `index.html` 即可查看网站应用了。这里提供一个 [DEMO](/example/)，另外可以源码可以在 `https://github.com/variousjs/website/tree/master/docs/example` 查看
+接着创建 web 服务，访问 `index.html` 即可查看网站应用了，这里提供一个 [DEMO](/example/)
+
+此外可以源码可以在 `https://github.com/variousjs/website/tree/master/docs/example` 查看
