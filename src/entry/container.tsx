@@ -4,24 +4,26 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Config } from '../types'
 import csses from './entry.less'
 
+const startScroll = (t?: number) => {
+  const { hash } = window.location
+  if (hash) {
+    setTimeout(() => {
+      document.querySelector(decodeURIComponent(hash))?.scrollIntoView({
+        behavior: 'smooth'
+      })
+    }, t || 1000)
+  }
+}
+
 class Container extends Component<ContainerProps<Config>> {
   leftRef = createRef<HTMLDivElement>()
 
   componentDidMount() {
     document.documentElement.classList.remove('loading')
 
-    const { hash } = window.location
-    if (hash) {
-      setTimeout(() => {
-        document.querySelector(decodeURIComponent(hash))?.scrollIntoView({
-          behavior: 'smooth'
-        })
-      }, 1000)
-    }
+    startScroll()
 
-    // window.addEventListener('popstate', (e) => {
-    //   console.log(e)
-    // })
+    window.addEventListener('popstate', () => startScroll(300))
 
     const { pushState, replaceState } = window.history
     window.history.pushState = (...args) => {

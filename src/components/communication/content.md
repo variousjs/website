@@ -192,19 +192,18 @@ const A: FC<ComponentProps> = (props) => {
 其他组件要进行监听消息，必须定义静态方法 `$onMessage`。请注意组件无法监听到自己广播的消息
 
 ```ts
-type Message = {
-  type: string, // 组件名字
-  name: string, // 事件名字
-  value?: any,  // 传递参数
-}
-type $onMessage = (params: Message) => unknown
+export type OnMessage = (message: {
+    type: string,
+    name: string,
+    value?: any,
+  }) => void
 ```
 
 监听消息返回的参数中可以获取到当前广播消息的组件名字
 
 ```tsx
 import React, { FC } from 'react'
-import { Message } from '@variousjs/various'
+import { OnMessage } from '@variousjs/various'
 
 const A: FC = () => {
   return (
@@ -214,7 +213,7 @@ const A: FC = () => {
   )
 }
 
-A.$onMessage = (m: Message) => {
+A.$onMessage: OnMessage = (m) => {
   console.log(m)
 }
 

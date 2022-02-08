@@ -17,6 +17,12 @@ const H: FC<ComponentProps<{}, Config>> = ({ $config, $dispatch }) => {
               <NavLink
                 exact
                 activeClassName={csses.active}
+                isActive={(_m, { pathname }) => {
+                  if (item.path !== '/docs') {
+                    return pathname === item.path
+                  }
+                  return pathname.includes('/docs') || pathname === '/'
+                }}
                 key={item.path}
                 to={item.path}
               >
