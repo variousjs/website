@@ -30,11 +30,25 @@ const H: FC<P> = (props) => {
 export default H
 ```
 
-### 如何设置 `antd` 依赖的 `moment` 为中文
+### 如何设置 momentjs 为中文
 
 可以参考以下对 `moment` 的依赖引入进行一些修改
 
-1. 修改中文语言的 `moment` 核心引入方式，原 [zh-cn](https://unpkg.com/browse/moment@2.29.1/locale/zh-cn.js) 语言包引入 `moment` 是相对路径方式 `../moment`，需要改成 `moment`，因为 VariousJS 环境下，直接引入 `moment` 了。修改后参考 https://github.com/variousjs/various/blob/master/docs/zh-cn.js
+1. 修改中文语言的 `moment` 核心引入方式，原 [zh-cn](https://unpkg.com/browse/moment@2.29.1/locale/zh-cn.js) 语言包引入 `moment` 是相对路径方式 `../moment`，需要改成 `moment`，因为 VariousJS 环境下，直接引入 `moment` 了。修改后参考
+
+```js
+//! moment.js locale configuration
+;(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined'
+      && typeof require === 'function' ? factory(require('moment')) :
+  typeof define === 'function' && define.amd ? define(['moment'], factory) :
+  factory(global.moment)
+}(this, (function (moment) { 'use strict';
+
+  // ...
+
+})));
+```
 
 2. 在 VariousJS 配置中 `dependencies` 添加刚刚修改后的中文语言包
 
