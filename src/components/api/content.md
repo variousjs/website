@@ -45,7 +45,7 @@ export default Container
 
 ### $getMountedComponents
 
-获取当前已加载的组件
+获取当前已装载的组件
 
 > 注意：此方法只有在功能组件提供
 
@@ -67,6 +67,36 @@ const A: FC<ComponentProps> = (props) => {
   return (
     <div>
       <button onClick={onGet}>当前已加载</button>
+    </div>
+  )
+}
+```
+
+### $isComponentLoaded
+
+判断组件是否已经被加载
+
+> 注意：此方法只有在功能组件提供
+
+```ts
+type $isComponentLoaded = (name: string) => boolean
+```
+
+已加载的组件不会被重复加载
+
+```tsx
+import React, { FC } from 'react'
+import { ComponentProps } from '@variousjs/various'
+
+const A: FC<ComponentProps> = (props) => {
+  const onCheck = () => {
+    const isLoaded = prop.$isComponentLoaded('component-a')
+    console.log(isLoaded)
+  }
+
+  return (
+    <div>
+      <button onClick={onCheck}>check</button>
     </div>
   )
 }
