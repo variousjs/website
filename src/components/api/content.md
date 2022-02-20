@@ -74,7 +74,7 @@ const A: FC<ComponentProps> = (props) => {
 
 ### $isComponentLoaded
 
-判断组件是否已经被加载
+判断组件是否已经被加载（例如被预加载了）
 
 > 注意：此方法只有在功能组件提供
 
