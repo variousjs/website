@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { ComponentProps } from '@variousjs/various'
 import { NavLink, Link } from 'react-router-dom'
+import { DocSearch } from '@docsearch/react';
 import ExternalIcon from '../../svg/external-link.svg'
 import MenuIcon from '../../svg/menu.svg'
 import { Config } from '../../types'
@@ -12,6 +13,13 @@ const H: FC<ComponentProps<{}, Config>> = ({ $config, $dispatch }) => {
       <div className={csses.inner}>
         <Link className={csses.logo} to="/">VariousJS</Link>
         <div className={csses.nav}>
+          <div className={csses.docsearch}>
+            <DocSearch
+              apiKey="ff5c66b061b162bbeada74fada6d1350"
+              appId="ITQUQTCQAP"
+              indexName="various-js"
+            />
+          </div>
           {
             $config.menu.map((item) => (
               <NavLink

@@ -42,6 +42,7 @@
   },
   "private": true,
   "dependencies": {
-    "@acyort/markdown": "^2.0.1"
+    "@acyort/markdown": "^2.0.1",
+    "@docsearch/react": "^3.0.0"
   }
 }
