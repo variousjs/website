@@ -72,36 +72,6 @@ const A: FC<ComponentProps> = (props) => {
 }
 ```
 
-### $isComponentLoaded
-
-判断组件是否已经被加载（例如被预加载了）
-
-> 注意：此方法只有在功能组件提供
-
-```ts
-type $isComponentLoaded = (name: string) => boolean
-```
-
-已加载的组件不会被重复加载
-
-```tsx
-import React, { FC } from 'react'
-import { ComponentProps } from '@variousjs/various'
-
-const A: FC<ComponentProps> = (props) => {
-  const onCheck = () => {
-    const isLoaded = prop.$isComponentLoaded('component-a')
-    console.log(isLoaded)
-  }
-
-  return (
-    <div>
-      <button onClick={onCheck}>check</button>
-    </div>
-  )
-}
-```
-
 ### $dispatch
 
 此方法用于组件与全局通信，也可以组件间互相通信
