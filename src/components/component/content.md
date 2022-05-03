@@ -50,11 +50,12 @@ import store from './store'
 type Store = typeof store
 
 const actions: Actions<Store> = {
-  async setName({ dispatch, getStore }, value) {
+  // value 为调用值，trigger 为调用组件名
+  async setName({ emit, getStore }, { value, trigger }) {
     await new Promise((r) => setTimeout(r, 1000))
     const { user } = getStore()
     user.name = value
-    dispatch({ user })
+    emit({ user })
   },
 }
 

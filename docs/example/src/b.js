@@ -5,7 +5,7 @@ import { Descriptions } from 'antd'
 const {
   createStore,
   connect,
-  dispatch,
+  emit,
   getStore,
 } = new Store()
 
@@ -13,9 +13,9 @@ createStore({ value: 0 })
 
 class X extends Component {
   // 提供 setValue 方法
-  static setValue = async (value) => {
+  static setValue = async ({ value }) => {
     const store = getStore()
-    dispatch({ value: value + store.value }, true)
+    emit({ value: value + store.value }, true)
   }
 
   render() {

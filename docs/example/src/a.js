@@ -40,6 +40,6 @@ const A = (props) => {
 }
 
 // 提供 getName 方法
-A.getName = (e) => message.info(e)
+A.getName = ({ value }) => message.info(value)
 
 export default A

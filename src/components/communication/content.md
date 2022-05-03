@@ -33,11 +33,11 @@ import store from './store'
 type Store = typeof store
 
 const actions: Actions<Store> = {
-  async setName({ dispatch, getStore }, value) {
+  async setName({ emit, getStore }, { value }) {
     await new Promise((r) => setTimeout(r, 1000))
     const { user } = getStore()
     user.name = value
-    dispatch({ user })
+    emit({ user })
   },
 }
 
@@ -54,8 +54,9 @@ Function Component 通过定义静态属性方法提供
 
 ```tsx
 import React, { FC } from 'react'
+import { Invoker } from '@variousjs/various'
 
-const A: FC = () => (<div>A</div>)
+const A: FC & & { getName: Invoker } = () => (<div>A</div>)
 
 A.getName = () => 'A'
 
@@ -66,9 +67,10 @@ Class Component 通过定义静态方法 `static` 提供
 
 ```tsx
 import React, { Component } from 'react'
+import { Invoker } from '@variousjs/various'
 
 export default class A extends Component {
-  static getName = () => 'A'
+  static getName: Invoker = () => 'A'
 
   render() {
     return (<div>A</div>)
@@ -86,7 +88,7 @@ export default class A extends Component {
 // type 通信类型：store(全局) / 组件名字
 // method 方法：调用全局或者其他组件提供的方法
 // value 值：传递的参数
-type $dispatch = (type: string, method: string, value?: any) => unknown
+type $dispatch = (type: string, method: string, value?: any) => Promise<any>
 ```
 
 例如根据上面例子组件提供的方法，可以有以下调用方式
@@ -104,8 +106,9 @@ const C: FC<ComponentProps> = (props) => {
       })
 
     // 获取 A 组件提供的值
-    const name = props.$dispatch('A', 'setName')
-    console.log(name)
+    props.$dispatch('A', 'setName').then(() => {
+      console.log(name)
+    })
 
     // 改变 B 组件的状态
     props.$dispatch('B', 'updateValue', 'C')
@@ -125,19 +128,19 @@ VariousJS 提供了状态组件 `Store`，基于 [nycticorax](https://github.com
 
 ```tsx
 import React, { Component } from 'react'
-import { ComponentProps, Store, Connect as CT } from '@variousjs/various'
+import { ComponentProps, Store, Connect as CT, Invoker } from '@variousjs/various'
 
 type Store = { value: string }
 type Connect = CT<Store>
 
-const { createStore, connect, dispatch } = new Store<S>()
+const { createStore, connect, emit } = new Store<S>()
 
 createStore({ value: 'B' })
 
 class B extends Component<Connect> {
-  static updateValue = async (value: string) => {
+  static updateValue: Invoker = async ({ value }) => {
     await new Promise((r) => setTimeout(r, 1000))
-    dispatch({ value }, true)
+    emit({ value }, true)
   }
 
   render() {
@@ -193,17 +196,17 @@ const A: FC<ComponentProps> = (props) => {
 
 ```ts
 export type OnMessage = (message: {
-    type: string,
-    name: string,
-    value?: any,
-  }) => void
+  type: string,
+  name: string,
+  value?: any,
+}) => void
 ```
 
 监听消息返回的参数中可以获取到当前广播消息的组件名字
 
 ```tsx
 import React, { FC } from 'react'
-import { OnMessage } from '@variousjs/various'
+import { MessageInvoker } from '@variousjs/various'
 
 const A: FC = () => {
   return (
@@ -213,7 +216,7 @@ const A: FC = () => {
   )
 }
 
-A.$onMessage: OnMessage = (m) => {
+A.$onMessage: MessageInvoker = (m) => {
   console.log(m)
 }
 

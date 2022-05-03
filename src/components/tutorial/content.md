@@ -102,14 +102,14 @@ export default {
 
 ```js
 export default {
-  async setName({ dispatch, getStore }, value) {
+  async setName({ emit, getStore }, { value }) {
     const next = await new Promise((r) => setTimeout(r, 1000, value))
     const { user } = getStore()
     user.name = next
-    dispatch({ user })
+    emit({ user })
   },
   // 虽然能够直接通过 $store 获取数据，但这里还是可以进行一些简单数据处理
-  getName({ getStore }) {
+  async getName({ getStore }) {
     const { user } = getStore()
     return user.name
   },
@@ -383,7 +383,7 @@ const A = (props) => {
 }
 
 // 提供 getName 方法
-A.getName = (e) => message.info(e)
+A.getName = ({ value }) => message.info(value)
 
 export default A
 ```
@@ -412,7 +412,7 @@ import { Descriptions } from 'antd'
 const {
   createStore,
   connect,
-  dispatch,
+  emit,
   getStore,
 } = new Store()
 
@@ -420,9 +420,9 @@ createStore({ value: 0 })
 
 class X extends Component {
   // 提供 setValue 方法
-  static setValue = async (value) => {
+  static setValue = async ({ value }) => {
     const store = getStore()
-    dispatch({ value: value + store.value }, true)
+    emit({ value: value + store.value }, true)
   }
 
   render() {
@@ -521,7 +521,7 @@ var VARIOUS_CONFIG = {
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@0.5.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@1.0.0/dist/index.js"></script>
 </head>
 <body>
 <div id="root"></div>

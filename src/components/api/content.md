@@ -82,7 +82,7 @@ const A: FC<ComponentProps> = (props) => {
 // type 通信类型：store(全局) / 组件名字
 // method 方法：调用全局或者其他组件提供的方法
 // value 值：传递的参数
-type $dispatch = (type: string, method: string, value?: any) => unknown
+type $dispatch = (type: string, method: string, value?: any) => Promise<any>
 ```
 
 调用通信需要对应组件或者全局提供调用方法
@@ -129,7 +129,7 @@ type Message = {
   name: string, // 事件名字
   value?: any,  // 传递参数
 }
-type $onMessage = (params: Message) => unknown
+type $onMessage = (params: Message) => any
 ```
 
 不能接收自己广播的消息

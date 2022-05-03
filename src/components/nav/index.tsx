@@ -47,13 +47,13 @@ export const T: FC = () => {
 type S = { visible: boolean }
 type Connect = CT<S>
 
-const { createStore, connect, dispatch } = new Store<S>()
+const { createStore, connect, emit } = new Store<S>()
 
 createStore({ visible: false })
 
 const Mc: FC<Connect & ComponentProps<{}, Config>> & { open: () => void } = (props) => {
   const { $config, visible } = props
-  const close = () => dispatch({ visible: false })
+  const close = () => emit({ visible: false })
 
   return (
     <div className={`${csses.mark} ${visible ? csses.ms : ''}`}>
@@ -104,7 +104,7 @@ const Mc: FC<Connect & ComponentProps<{}, Config>> & { open: () => void } = (pro
 }
 
 Mc.open = () => {
-  dispatch({ visible: true })
+  emit({ visible: true })
 }
 
 export const M = connect('visible')(Mc)
