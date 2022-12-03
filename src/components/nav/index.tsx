@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
-import { ComponentProps, Store, Connect as CT, } from '@variousjs/various'
+import { Store, getConfig } from '@variousjs/various'
 import { NavLink } from 'react-router-dom'
 import Icon from '../../svg/top.svg'
 import Close from '../../svg/close.svg'
 import { Config } from '../../types'
 import csses from './index.less'
 
-export const N: FC<ComponentProps<{}, Config>> = ({ $config }) => {
+export const N = () => {
+  const $config = getConfig() as Config
+
   return (
     <div className={csses.menu}>
       {
@@ -45,14 +47,14 @@ export const T: FC = () => {
 }
 
 type S = { visible: boolean }
-type Connect = CT<S>
 
 const { createStore, connect, emit } = new Store<S>()
 
 createStore({ visible: false })
 
-const Mc: FC<Connect & ComponentProps<{}, Config>> & { open: () => void } = (props) => {
-  const { $config, visible } = props
+const Mc: FC<S> & { open: () => void } = (props) => {
+  const $config = getConfig() as Config
+  const { visible } = props
   const close = () => emit({ visible: false })
 
   return (

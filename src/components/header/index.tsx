@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
-import { ComponentProps } from '@variousjs/various'
+import { ComponentProps, getConfig } from '@variousjs/various'
 import { NavLink, Link } from 'react-router-dom'
 import ExternalIcon from '../../svg/external-link.svg'
 import MenuIcon from '../../svg/menu.svg'
 import { Config } from '../../types'
 import csses from './index.less'
 
-const H: FC<ComponentProps<{}, Config>> = ({ $config, $dispatch }) => {
+const H: FC<ComponentProps> = ({ $dispatch }) => {
+  const $config = getConfig() as Config
+
   return (
     <div className={csses.header}>
       <div className={csses.inner}>

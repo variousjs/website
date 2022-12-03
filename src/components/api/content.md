@@ -14,7 +14,7 @@ VariousJS 环境下，功能组件，容器组件都有一些 API 可以直接�
 import { ComponentType } from 'react'
 
 type $component = (name: string) => ComponentType<{
-  silent?: boolean,
+  $silent?: boolean,
   [key: string]: any,
 }>
 ```

@@ -1,5 +1,5 @@
 import React, { Component, ComponentType, createRef } from 'react'
-import { ContainerProps } from '@variousjs/various'
+import { createComponent, getConfig } from '@variousjs/various'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Config } from '../types'
 import csses from './entry.less'
@@ -15,7 +15,9 @@ const startScroll = (t?: number) => {
   }
 }
 
-class Container extends Component<ContainerProps<Config>> {
+class Container extends Component {
+  config = getConfig() as Config
+
   leftRef = createRef<HTMLDivElement>()
 
   componentDidMount() {
@@ -67,12 +69,12 @@ class Container extends Component<ContainerProps<Config>> {
   }
 
   render() {
-    const { $component, $config } = this.props
-    const Header = $component('header')
-    const Nav = $component('nav.N')
-    const Top = $component('nav.T')
-    const Mark = $component('nav.M')
-    const NavLink = $component('nav-link')
+    const $config = this.config
+    const Header = createComponent('header')
+    const Nav = createComponent('nav.N')
+    const Top = createComponent('nav.T')
+    const Mark = createComponent('nav.M')
+    const NavLink = createComponent('nav-link')
 
     return (
       <div className={csses.container}>
@@ -91,7 +93,7 @@ class Container extends Component<ContainerProps<Config>> {
                     {
                       $config.pages.map(({ path, components }) => {
                         const cs = () => components.map((name) => {
-                          const C = $component(name)
+                          const C = createComponent(name)
                           return (<C key={name} />)
                         })
 

@@ -15,7 +15,7 @@ module.exports = {
       amd: 'react',
     },
     {
-      name: 'react-dom',
+      name: 'react-dom/client',
       root: 'ReactDOM',
       amd: 'react-dom',
     },

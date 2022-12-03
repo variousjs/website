@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
-import { ComponentProps } from '@variousjs/various'
+import React from 'react'
+import { getConfig } from '@variousjs/various'
 import { Link, useLocation } from 'react-router-dom'
 import { Config } from '../../types'
 import csses from './index.less'
 
-const N: FC<ComponentProps<{}, Config>> = ({ $config }) => {
+const N = () => {
+  const $config = getConfig() as Config
   const navs = $config.nav
   const { pathname: path } = useLocation()
   const index = navs.findIndex((item) => item.path === (path === '/' ? '/docs' : path))

@@ -104,6 +104,8 @@ declare module 'antd' {
 
 通常可以直接修改 `VARIOUS_CONFIG` 配置的依赖配置引入的 react URL 路径即可修改 react 版本。如果某个组件有特殊需求，react 版本跟依赖版本不一致，可以将当前组件的 react 依赖不要进行 webpack externals 处理。这样处理后，该组件就可以有自己的 react 版本了
 
+> 默认 react 版本 18.x，react-dom 版本需要 >= 18
+
 ### 组件太多太细同时网络请求过多
 
 在 VariousJS 体系下，页面可以任意拆分成细组件，但是这样会导致组件非常多，请求也变多。所以 VariousJS 组件支持导出多个功能组件。可以参照以下写法
