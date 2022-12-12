@@ -191,3 +191,86 @@ interface LoaderProps<Store = {}> {
   $store: Readonly<Store>,
 }
 ```
+
+### $store
+
+获取当前配置的全局数据，全局数据可以通过配置定义的 actions 改变全局数据
+
+示例
+
+```tsx
+import React, { FC } from 'react'
+import { ComponentProps } from '@variousjs/various'
+
+interface State { value: string }
+
+const R: FC<ComponentProps<State>> = (props) => (
+  <div>{props.$store.value}</div>
+)
+
+export default R
+```
+
+### $dispatch
+
+调用其他组件方法或者全局定义的方法，调用之前需知道具体组件名及事件名
+
+```ts
+// type 通信类型：store(全局) / 组件名字
+// method 方法：调用全局或者其他组件提供的方法
+// value 值：传递的参数
+type $dispatch = (type: string, method: string, value?: any) => Promise<any>
+```
+
+示例
+
+```tsx
+import React, { Component } from 'react'
+import { ComponentProps } from '@variousjs/various'
+
+export default class extends Component<ComponentProps> {
+  dispatch = async () => {
+    const next = await this.props.$dispatch('component-a', 'getValue')
+    console.log(next)
+  }
+
+  render() {
+    return (
+      <button onClick={this.dispatch}>Dispatch</button>
+    )
+  }
+}
+```
+
+### $postMessage
+
+此方法用于组件广播事件，其他组件可以进行消息监听获取广播消息
+
+```ts
+// name 方法名：调用全局或者其他组件提供的方法
+// value 值：传递的参数
+type $postMessage = (name: string, value?: any) => void
+```
+
+示例
+
+```tsx
+import React, { Component } from 'react'
+import { ComponentProps } from '@variousjs/various'
+
+export default class extends Component<ComponentProps> {
+  onMessage = () => {
+    this.props.$postMessage('some-method', { value: 'data' })
+  }
+
+  render() {
+    return (
+      <button onClick={this.onMessage}>PostMessage</button>
+    )
+  }
+}
+```
+
+### $t
+
+国际化函数，使用前需定义国际化文案
