@@ -173,9 +173,9 @@ const { createStore, connect, emit } = new Store<State>()
 // 普通组件 API
 interface ComponentProps<Store = {}> {
   $store: Readonly<Store>,
-  $dispatch: (type: string, method: string, value?: any) => Promise<any>,
-  $postMessage: (name: string, value?: any) => void,
-  $t: (key: string, params?: Record<string, string | number>) => string | undefined,
+  $dispatch: (name: string, method: string, value?: any) => Promise<any>,
+  $postMessage: (event: string, value?: any) => void,
+  $t: (key: string, params?: Record<string, string | number>) => string,
 }
 
 // 错误组件 API
@@ -216,10 +216,10 @@ export default R
 调用其他组件方法或者全局定义的方法，调用之前需知道具体组件名及事件名
 
 ```ts
-// type 通信类型：store(全局) / 组件名字
+// name 通信组件：store(全局) / 组件名字
 // method 方法：调用全局或者其他组件提供的方法
 // value 值：传递的参数
-type $dispatch = (type: string, method: string, value?: any) => Promise<any>
+type $dispatch = (name: string, method: string, value?: any) => Promise<any>
 ```
 
 示例
@@ -247,8 +247,8 @@ export default class extends Component<ComponentProps> {
 此方法用于组件广播事件，其他组件可以进行消息监听获取广播消息
 
 ```ts
-// name 方法名：调用全局或者其他组件提供的方法
-// value 值：传递的参数
+// event: 广播事件名
+// value：广播事件值
 type $postMessage = (name: string, value?: any) => void
 ```
 
@@ -274,3 +274,232 @@ export default class extends Component<ComponentProps> {
 ### $t
 
 国际化函数，使用前需定义国际化文案
+
+```ts
+type $t = (key: string, params?: Record<string, string | number>) => string
+```
+
+示例
+
+```tsx
+import React, { Component } from 'react'
+import { ComponentProps, Ii8n } from '@variousjs/various'
+import Zh from './i18n/zh.json'
+import En from './i18n/en.json'
+
+export default class C extends Component<ComponentProps> {
+  static $i18n: Ii8n = () => ({
+    localeKey: 'locale',
+    resources: {
+      zh: Zh,
+      en: En,
+    },
+  })
+
+  render() {
+    const { $t } = this.props
+
+    return (
+      <div>
+        {$t('name', { value: 1 })}
+      </div>
+    )
+  }
+}
+```
+
+### $reload
+
+此方法只在全局错误组件提供，用于重试加载当前组件，使用前需判断是否存在
+
+```ts
+type $reload = () => void
+```
+
+示例
+
+```tsx
+import React, { FC } from 'react'
+import { ErrorProps } from '@variousjs/various'
+
+const errorComponent: FC<ErrorProps> = (props) => {
+  const { $reload } = props
+  return (
+    <>
+      {
+        $reload && (
+        <button
+          type="button"
+          onClick={$reload}
+        >
+          刷新
+        </button>
+        )
+      }
+    </>
+  )
+}
+
+export default errorComponent
+```
+
+### $type
+
+此属性只有在全局错误组件提供，说明当前组件错误类型
+
+```ts
+type $type = 'LOADING_ERROR' | 'DEPENDENCIES_LOADING_ERROR' | 'NOT_DEFINED' | 'INVALID_COMPONENT' | 'SCRIPT_ERROR' | 'CONTAINER_ERROR'
+```
+
+类型说明
+
+| 类型                       | 描述             | 是否可以重新加载 |
+|----------------------------|------------------|------------------|
+| LOADING_ERROR              | 组件加载失败     | yes              |
+| DEPENDENCIES_LOADING_ERROR | 组件依赖加载失败 | yes              |
+| NOT_DEFINED                | 组件未定义       | no               |
+| INVALID_COMPONENT          | 错误的组件类型   | no               |
+| SCRIPT_ERROR               | 组件运行出错了   | yes              |
+| CONTAINER_ERROR            | 容器组件出错了   | no               |
+
+### $message
+
+此属性只有在全局错误组件提供，说明当前组件错误详细信息
+
+```ts
+type $message = string
+```
+
+## 组件静态属性
+
+以下都是组件的静态属性类型提供，静态属性是 VariousJS 组件的重要功能提供：组件通信，国际化等
+
+### I18n
+
+此属性用于国际化配置提供，对应组件的静态属性名: $i18n
+
+```ts
+// localeKey: 指定当前国际化语言绑定的全局 store key
+// resources: 国际化文案
+type Ii8n = () => {
+  localeKey: string,
+  resources: Record<string, Record<string, string>>,
+}
+```
+
+示例
+
+```tsx
+import React, { FC, useState } from 'react'
+import { ComponentProps, Ii8n } from '@variousjs/various'
+import Zh from './i18n/zh.json'
+import En from './i18n/en.json'
+
+/*
+json example
+{
+  "title": "Title",
+  "hello": "Hello, {name}, {name2}"
+}
+*/
+
+const F: FC<ComponentProps> & { $i18n: Ii8n } = (props) => {
+  const { $t, $dispatch } = props
+  const [lang, setLang] = useState('')
+  const getLang = async () => {
+    const current: string = await $dispatch('store', 'getLocale')
+    setLang(current)
+  }
+
+  return (
+    <div>
+      <span>{$t('title', {})}</span>
+      <button onClick={() => $dispatch('store', 'setLocale', 'zh-CN')}>Set Locale</Button>
+      <button onClick={getLang}>Get Locale</button>
+    </div>
+  )
+}
+
+F.$i18n = () => ({
+  localeKey: 'locale',
+  resources: {
+    zh: Zh,
+    en: En,
+  },
+})
+
+export default F
+```
+
+### Invoker
+
+用于定义组件通信方法，定义被其他组件调用的方法
+
+```ts
+// value: 调用的值
+// trigger: 调用来源组件名
+type Invoker = (value: any, trigger: string) => any
+```
+
+示例
+
+```tsx
+import React, { Component } from 'react'
+import { Invoker } from '@variousjs/various'
+
+export default class extends Component {
+  // 提供一个 `updateValue 方法`
+  static updateValue: Invoker = async (value, trigger) => {
+    await new Promise((r) => setTimeout(r, 100))
+    console.log(value, trigger)
+  }
+
+  render() {
+    return (
+      <div>A</div>
+    )
+  }
+}
+```
+
+### MessageInvoker
+
+定义监听其他组件有广播的消息，对应属性名: $onMessage
+
+```ts
+// event: 消息事件名
+// component: 广播消息组件名
+// value: 消息值
+type MessageInvoker = (
+  message: { event?: string, component?: string, value?: any },
+) => any
+```
+
+示例
+
+```tsx
+import React, { FC } from 'react'
+import { ComponentProps, Store, MessageInvoker } from '@variousjs/various'
+
+type State = { component: string, event: string, value: any }
+
+const { createStore, connect, emit } = new Store<State>()
+
+createStore({ component: '', event: '', value: undefined })
+
+const G: FC<State> & { $onMessage: MessageInvoker } = (props) => (
+  <div>
+    <span>{props.component}</span>
+    <span>{props.event}</span>
+    <span>{props.value}</span>
+  </div>
+)
+
+G.$onMessage = (message) => {
+  // 监听其他组件广播的消息，并传递给当前组件
+  // 由于静态属性不能访问组件实例，所以需要借用状态管理能力
+  emit(message)
+}
+
+export default connect('component', 'event', 'value')(G)
+```
