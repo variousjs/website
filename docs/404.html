@@ -37,128 +37,139 @@ var VARIOUS_CONFIG = {
   root: '#root',
   entry: '/dist/entry.js',
   dependencies: {
-    react: 'https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js',
-    'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js',
+    react: 'https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js',
+    'react-dom': 'https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js',
     'react-router-dom': 'https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js',
   },
   components: {
     header: '/dist/header.js',
     nav: '/dist/nav.js',
-
-    home: '/dist/home.js',
-    tutorial: '/dist/tutorial.js',
-    'getting-started': '/dist/getting-started.js',
-    design: '/dist/design.js',
-    config: '/dist/config.js',
-    'core-and-loader': '/dist/core-and-loader.js',
-    component: '/dist/component.js',
-    props: '/dist/props.js',
-    api: '/dist/api.js',
-    communication: '/dist/communication.js',
-    faq: '/dist/faq.js',
     'nav-link': '/dist/nav-link.js',
     page404: '/dist/page404.js',
+
+    apis: '/dist/apis.js',
+
+    // home: '/dist/home.js',
+    // tutorial: '/dist/tutorial.js',
+    // 'getting-started': '/dist/getting-started.js',
+    // design: '/dist/design.js',
+    // config: '/dist/config.js',
+    // 'core-and-loader': '/dist/core-and-loader.js',
+    // component: '/dist/component.js',
+    // props: '/dist/props.js',
+    // api: '/dist/api.js',
+    // communication: '/dist/communication.js',
+    // faq: '/dist/faq.js',
+    // i18n: '/dist/i18n.js',
   },
 
   // 以下属于自定义属性
   menu: [
-    {
-      name: '文档',
-      path: '/docs',
-    },
-    {
-      name: '教程',
-      path: '/tutorial',
-    },
+    // {
+    //   name: '文档',
+    //   path: '/docs',
+    // },
+    // {
+    //   name: '教程',
+    //   path: '/tutorial',
+    // },
   ],
   nav: [
-    {
-      name: '简介',
-      path: '/docs',
-    },
-    {
-      name: '设计',
-      path: '/docs/design',
-    },
-    {
-      name: '开始',
-      path: '/docs/getting-started',
-    },
-    {
-      name: '核心 & 加载器',
-      path: '/docs/core-and-loader',
-    },
-    {
-      name: '配置',
-      path: '/docs/config',
-    },
-    {
-      name: '组件体系',
-      path: '/docs/component',
-    },
-    {
-      name: '组件属性',
-      path: '/docs/props',
-    },
-    {
-      name: '组件 API',
-      path: '/docs/api',
-    },
-    {
-      name: '组件通信',
-      path: '/docs/communication',
-    },
-    {
-      name: 'FAQ',
-      path: '/docs/faq',
-    },
+    // {
+    //   name: '简介',
+    //   path: '/docs',
+    // },
+    // {
+    //   name: '设计',
+    //   path: '/docs/design',
+    // },
+    // {
+    //   name: '开始',
+    //   path: '/docs/getting-started',
+    // },
+    // {
+    //   name: '核心 & 加载器',
+    //   path: '/docs/core-and-loader',
+    // },
+    // {
+    //   name: '配置',
+    //   path: '/docs/config',
+    // },
+    // {
+    //   name: '组件体系',
+    //   path: '/docs/component',
+    // },
+    // {
+    //   name: '组件属性',
+    //   path: '/docs/props',
+    // },
+    // {
+    //   name: '组件 API',
+    //   path: '/docs/api',
+    // },
+    // {
+    //   name: '组件通信',
+    //   path: '/docs/communication',
+    // },
+    // {
+    //   name: '国际化',
+    //   path: '/docs/i18n',
+    // },
+    // {
+    //   name: 'FAQ',
+    //   path: '/docs/faq',
+    // },
   ],
 
   pages: [
     {
-      path: ['/', '/docs'],
-      components: ['home'],
+      path: ['/', '/apis'],
+      components: ['apis'],
     },
-    {
-      path: '/tutorial',
-      components: ['tutorial'],
-    },
-    {
-      path: '/docs/getting-started',
-      components: ['getting-started'],
-    },
-    {
-      path: '/docs/design',
-      components: ['design'],
-    },
-    {
-      path: '/docs/config',
-      components: ['config'],
-    },
-    {
-      path: '/docs/core-and-loader',
-      components: ['core-and-loader'],
-    },
-    {
-      path: '/docs/component',
-      components: ['component'],
-    },
-    {
-      path: '/docs/props',
-      components: ['props'],
-    },
-    {
-      path: '/docs/api',
-      components: ['api'],
-    },
-    {
-      path: '/docs/communication',
-      components: ['communication'],
-    },
-    {
-      path: '/docs/faq',
-      components: ['faq'],
-    },
+    // {
+    //   path: '/tutorial',
+    //   components: ['tutorial'],
+    // },
+    // {
+    //   path: '/docs/getting-started',
+    //   components: ['getting-started'],
+    // },
+    // {
+    //   path: '/docs/design',
+    //   components: ['design'],
+    // },
+    // {
+    //   path: '/docs/config',
+    //   components: ['config'],
+    // },
+    // {
+    //   path: '/docs/core-and-loader',
+    //   components: ['core-and-loader'],
+    // },
+    // {
+    //   path: '/docs/component',
+    //   components: ['component'],
+    // },
+    // {
+    //   path: '/docs/props',
+    //   components: ['props'],
+    // },
+    // {
+    //   path: '/docs/api',
+    //   components: ['api'],
+    // },
+    // {
+    //   path: '/docs/communication',
+    //   components: ['communication'],
+    // },
+    // {
+    //   path: '/docs/faq',
+    //   components: ['faq'],
+    // },
+    // {
+    //   path: '/docs/i18n',
+    //   components: ['i18n'],
+    // },
     {
       path: '*',
       components: ['page404'],
@@ -170,6 +181,6 @@ var VARIOUS_CONFIG = {
 <body>
 <div style="height:100%" id="root"></div>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@1.1.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@variousjs/various@3.0.0/dist/index.js"></script>
 </body>
 </html>

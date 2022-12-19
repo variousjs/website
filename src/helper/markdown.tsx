@@ -8,6 +8,10 @@ type Data = {
 
 const M: FC<{ data: Data }> = ({ data }) => (
   <>
+    <div
+      className={`${csses.md} markdown-body`}
+      dangerouslySetInnerHTML={{ __html: data.content }}
+    />
     {
     data.toc ? <div className={csses.toc}>
       <div
@@ -16,10 +20,6 @@ const M: FC<{ data: Data }> = ({ data }) => (
       />
     </div> : null
     }
-    <div
-      className={`${csses.md} markdown-body`}
-      dangerouslySetInnerHTML={{ __html: data.content }}
-    />
   </>
 )
 

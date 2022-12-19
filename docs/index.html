@@ -44,130 +44,132 @@ var VARIOUS_CONFIG = {
   components: {
     header: '/dist/header.js',
     nav: '/dist/nav.js',
-
-    home: '/dist/home.js',
-    tutorial: '/dist/tutorial.js',
-    'getting-started': '/dist/getting-started.js',
-    design: '/dist/design.js',
-    config: '/dist/config.js',
-    'core-and-loader': '/dist/core-and-loader.js',
-    component: '/dist/component.js',
-    props: '/dist/props.js',
-    api: '/dist/api.js',
-    communication: '/dist/communication.js',
-    faq: '/dist/faq.js',
     'nav-link': '/dist/nav-link.js',
-    i18n: '/dist/i18n.js',
     page404: '/dist/page404.js',
+
+    apis: '/dist/apis.js',
+
+    // home: '/dist/home.js',
+    // tutorial: '/dist/tutorial.js',
+    // 'getting-started': '/dist/getting-started.js',
+    // design: '/dist/design.js',
+    // config: '/dist/config.js',
+    // 'core-and-loader': '/dist/core-and-loader.js',
+    // component: '/dist/component.js',
+    // props: '/dist/props.js',
+    // api: '/dist/api.js',
+    // communication: '/dist/communication.js',
+    // faq: '/dist/faq.js',
+    // i18n: '/dist/i18n.js',
   },
 
   // 以下属于自定义属性
   menu: [
-    {
-      name: '文档',
-      path: '/docs',
-    },
-    {
-      name: '教程',
-      path: '/tutorial',
-    },
+    // {
+    //   name: '文档',
+    //   path: '/docs',
+    // },
+    // {
+    //   name: '教程',
+    //   path: '/tutorial',
+    // },
   ],
   nav: [
-    {
-      name: '简介',
-      path: '/docs',
-    },
-    {
-      name: '设计',
-      path: '/docs/design',
-    },
-    {
-      name: '开始',
-      path: '/docs/getting-started',
-    },
-    {
-      name: '核心 & 加载器',
-      path: '/docs/core-and-loader',
-    },
-    {
-      name: '配置',
-      path: '/docs/config',
-    },
-    {
-      name: '组件体系',
-      path: '/docs/component',
-    },
-    {
-      name: '组件属性',
-      path: '/docs/props',
-    },
-    {
-      name: '组件 API',
-      path: '/docs/api',
-    },
-    {
-      name: '组件通信',
-      path: '/docs/communication',
-    },
-    {
-      name: '国际化',
-      path: '/docs/i18n',
-    },
-    {
-      name: 'FAQ',
-      path: '/docs/faq',
-    },
+    // {
+    //   name: '简介',
+    //   path: '/docs',
+    // },
+    // {
+    //   name: '设计',
+    //   path: '/docs/design',
+    // },
+    // {
+    //   name: '开始',
+    //   path: '/docs/getting-started',
+    // },
+    // {
+    //   name: '核心 & 加载器',
+    //   path: '/docs/core-and-loader',
+    // },
+    // {
+    //   name: '配置',
+    //   path: '/docs/config',
+    // },
+    // {
+    //   name: '组件体系',
+    //   path: '/docs/component',
+    // },
+    // {
+    //   name: '组件属性',
+    //   path: '/docs/props',
+    // },
+    // {
+    //   name: '组件 API',
+    //   path: '/docs/api',
+    // },
+    // {
+    //   name: '组件通信',
+    //   path: '/docs/communication',
+    // },
+    // {
+    //   name: '国际化',
+    //   path: '/docs/i18n',
+    // },
+    // {
+    //   name: 'FAQ',
+    //   path: '/docs/faq',
+    // },
   ],
 
   pages: [
     {
-      path: ['/', '/docs'],
-      components: ['home'],
+      path: ['/', '/apis'],
+      components: ['apis'],
     },
-    {
-      path: '/tutorial',
-      components: ['tutorial'],
-    },
-    {
-      path: '/docs/getting-started',
-      components: ['getting-started'],
-    },
-    {
-      path: '/docs/design',
-      components: ['design'],
-    },
-    {
-      path: '/docs/config',
-      components: ['config'],
-    },
-    {
-      path: '/docs/core-and-loader',
-      components: ['core-and-loader'],
-    },
-    {
-      path: '/docs/component',
-      components: ['component'],
-    },
-    {
-      path: '/docs/props',
-      components: ['props'],
-    },
-    {
-      path: '/docs/api',
-      components: ['api'],
-    },
-    {
-      path: '/docs/communication',
-      components: ['communication'],
-    },
-    {
-      path: '/docs/faq',
-      components: ['faq'],
-    },
-    {
-      path: '/docs/i18n',
-      components: ['i18n'],
-    },
+    // {
+    //   path: '/tutorial',
+    //   components: ['tutorial'],
+    // },
+    // {
+    //   path: '/docs/getting-started',
+    //   components: ['getting-started'],
+    // },
+    // {
+    //   path: '/docs/design',
+    //   components: ['design'],
+    // },
+    // {
+    //   path: '/docs/config',
+    //   components: ['config'],
+    // },
+    // {
+    //   path: '/docs/core-and-loader',
+    //   components: ['core-and-loader'],
+    // },
+    // {
+    //   path: '/docs/component',
+    //   components: ['component'],
+    // },
+    // {
+    //   path: '/docs/props',
+    //   components: ['props'],
+    // },
+    // {
+    //   path: '/docs/api',
+    //   components: ['api'],
+    // },
+    // {
+    //   path: '/docs/communication',
+    //   components: ['communication'],
+    // },
+    // {
+    //   path: '/docs/faq',
+    //   components: ['faq'],
+    // },
+    // {
+    //   path: '/docs/i18n',
+    //   components: ['i18n'],
+    // },
     {
       path: '*',
       components: ['page404'],
