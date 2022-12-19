@@ -6,6 +6,8 @@ VariousJS 的 API 及 TS 类型都由 `@variousjs/various` 包提供
 
 ## 全局 API
 
+以下 API 可全局使用
+
 ### createComponent
 
 根据组件名字创建一个新的 React 组件，该组件名字必须在页面配置 `components` 已经定义
@@ -157,7 +159,7 @@ const isComponentLoaded: (name: string) => boolean
 VariousJS 核心基于 [nycticorax](https://github.com/fratercula/nycticorax) 同时 nycticorax 也是状态容器，提供状态管理。所以 VariousJS 提供 `Store` 对象用于管理组件的状态
 
 ```ts
-import { Store } from '@variousjs/various'
+import { Store, Dispatch } from '@variousjs/various'
 
 type State = { value: string }
 
@@ -166,7 +168,7 @@ const { createStore, connect, emit } = new Store<State>()
 
 ## 组件 API
 
-此类 API 只能在组件内使用，组件必须为 React 组件
+此类 API 只能在组件内使用
 
 
 ```ts
@@ -502,4 +504,43 @@ G.$onMessage = (message) => {
 }
 
 export default connect('component', 'event', 'value')(G)
+```
+
+## 其他
+
+### Actions
+
+定义改变全局数据方法类型
+
+```ts
+// nycticorax: https://github.com/fratercula/nycticorax
+// value: 调用值
+// trigger: 调用组件名
+type Dispatch<T> = (
+  nycticorax: { getStore: () => T, emit: (next: Partial<T>) => void },
+  value: any,
+  trigger: string,
+) => Promise<any>
+
+type Actions<S = {}> = Record<string, Dispatch<S>>
+```
+
+示例
+
+```ts
+import { Actions } from '@variousjs/various'
+
+type State = { locale: string }
+
+const actions: Actions<State> = {
+  async setLocale({ emit }, value) {
+    emit({ locale: value })
+  },
+
+  async getLocale({ getStore }) {
+    return getStore().locale
+  },
+}
+
+export default actions
 ```
