@@ -154,16 +154,62 @@ const getMountedComponents: () => string[]
 const isComponentLoaded: (name: string) => boolean
 ```
 
+### getStore
+
+获取应用配置的全局数据，用于在非 React 组件中使用
+
+```ts
+const getStore: () => Record<string, any>
+```
+
+### createDispatch
+
+创建一个调用其他组件方法或者全局定义的方法，返回的调用函数使用同组件 API $dispatch。用于在非 React 组件使用
+
+```ts
+const createDispatch: (name: string) => $dispatch
+```
+
+示例
+
+```ts
+// helper.ts
+import { createDispatch } from '@variousjs/various'
+
+const dispatch = createDispatch('helper')
+
+export const setEn = async () => dispatch('store', 'setLocale', 'en')
+```
+
+### createPostMessage
+
+创建一个广播事件的方法，返回的调用函数使用同组件 API $postMessage。用于在非 React 组件使用
+
+```ts
+const createPostMessage: (name: string) => $postMessage
+```
+
+示例
+
+```ts
+// helper.ts
+import { createPostMessage } from '@variousjs/various'
+
+const postMessage = createPostMessage('helper')
+
+export const sendAbc = () => postMessage('abc')
+```
+
 ## 状态管理
 
 VariousJS 核心基于 [nycticorax](https://github.com/fratercula/nycticorax) 同时 nycticorax 也是状态容器，提供状态管理。所以 VariousJS 提供 `Store` 对象用于管理组件的状态
 
 ```ts
-import { Store, Dispatch } from '@variousjs/various'
+import { Nycticorax, Dispatch } from '@variousjs/various'
 
 type State = { value: string }
 
-const { createStore, connect, emit } = new Store<State>()
+const { createStore, connect, emit } = new Nycticorax<State>()
 ```
 
 ## 组件 API
